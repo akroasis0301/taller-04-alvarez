@@ -1,7 +1,7 @@
 [project]
-name = "taller-03-opcional-alvarez-ballesteros-ludena"
+name = "taller-04-alvarez"
 version = "0.1.0"
-description = "Taller 03 v2 MMIA 6013 - Solver multiagente con GraphRAG: del enunciado en PDF al reporte medido"
+description = "Taller 04 MMIA 6013 - LLMOps sobre el solver multiagente del Taller 03 v2: observabilidad (Langfuse), evaluacion con juez calibrado y guardrails"
 readme = "README.md"
 authors = [
     { name = "akroasis0301", email = "miguel.alvrz.n@gmail.com" }
@@ -32,6 +32,8 @@ dependencies = [
     "markdown>=3.6",
     "markdown-it-py>=4.0",       # kit solver-v2: generar_enunciados.py
     "fpdf2>=2.7",
+    "openai==3.22.1",
+    "langfuse==4.17.0",
 ]
 
 [project.optional-dependencies]
