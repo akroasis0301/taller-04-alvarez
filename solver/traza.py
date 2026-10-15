@@ -13,7 +13,10 @@ Tipos de evento (los campos que P2 suma en la 2.b y lee en la 2.c):
   inicio / fin de corrida
 
 Antes de escribir, todo valor de texto pasa por enmascarar(): una traza guarda mensajes
-enteros y se sube al repositorio.
+enteros y se sube al repositorio. Desde el Taller 4 enmascarar() redacta también los datos
+personales (correo, cédula, teléfono: solver/guardrails.py) —la corrección de la Parte 0.c: el
+andamiaje escribía el correo de una pregunta bloqueada—, y la misma función es la máscara de
+Langfuse (solver/observabilidad.py), así que el archivo local y los spans quedan iguales.
 """
 from __future__ import annotations
 
@@ -24,6 +27,8 @@ import threading
 import time
 from collections import defaultdict
 from pathlib import Path
+
+from solver.guardrails import redactar_pii
 
 _PATRONES = [
     re.compile(r"sk-ant-[A-Za-z0-9_\-]{10,}"),
@@ -47,7 +52,7 @@ def enmascarar(texto: str) -> str:
             texto = patron.sub(lambda m: f"{m.group(1)}{m.group(2)}***", texto)
         else:
             texto = patron.sub("***", texto)
-    return texto
+    return redactar_pii(texto)[0]
 
 
 def _limpiar(valor):

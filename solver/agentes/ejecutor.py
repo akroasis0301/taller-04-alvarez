@@ -7,6 +7,10 @@ propia, grupo de procesos nuevo y tiempo máximo que mata al GRUPO (no solo al p
 Límite declarado (D4): en macOS, desde Python, no hay aislamiento de red a nivel del sistema
 operativo. La red la bloquea la guarda (imports) y la falta de variables de proxy; un script
 que la construyera en tiempo de ejecución no estaría contenido. Se declara en el informe.
+
+Taller 4 (Partes 1 y 3): la guarda es un GUARDRAIL con su span —decisión ok, bloqueada o
+pendiente_confirmacion, y el motivo de cada rechazo—, la confirmación humana de una descarga
+es otro, y el proceso es la HERRAMIENTA «sandbox» (returncode, bytes de salida, latencia, error).
 """
 from __future__ import annotations
 
@@ -20,6 +24,7 @@ import time
 from pathlib import Path
 from typing import Callable
 
+from solver import observabilidad as obs
 from solver.sandbox.guarda import revisar
 
 COPIAR_DE_DEPENDENCIAS = {".json", ".csv", ".png", ".parquet", ".npy", ".txt"}
@@ -63,7 +68,16 @@ def ejecutar(codigo: str, carpeta: Path, *, entradas: dict[str, Path] | None = N
              tmp: Path | None = None) -> dict:
     """Resultado de una ejecución. Nunca lanza: todo error vuelve como dato."""
     t0 = time.perf_counter()
-    veredicto = revisar(codigo)
+    with obs.observar("guarda_ast", "guardrail",
+                      input={"subtarea": subtarea, "huella": huella(codigo),
+                             "lineas": codigo.count("\n") + 1}) as g:
+        veredicto = revisar(codigo)
+        decision = ("bloqueada" if not veredicto.permitido
+                    else "pendiente_confirmacion" if veredicto.descargas else "ok")
+        g.update(output=decision, metadata={"violaciones": veredicto.violaciones,
+                                            "descargas": veredicto.descargas})
+        if not veredicto.permitido:                  # el motivo del rechazo, visible en el span
+            g.error("guarda: " + "; ".join(veredicto.violaciones), nivel="WARNING")
     base = {"huella": huella(codigo), "carpeta": str(carpeta), "violaciones": veredicto.violaciones,
             "descargas": veredicto.descargas, "returncode": None, "stdout": "", "stderr": "",
             "archivos": [], "timeout": False, "error": None, "confirmacion": None}
@@ -74,12 +88,29 @@ def ejecutar(codigo: str, carpeta: Path, *, entradas: dict[str, Path] | None = N
         return base
     if veredicto.descargas:
         motivo = f"{subtarea}: el script quiere descargar ({'; '.join(veredicto.descargas)})"
-        aprobado = bool(confirmar and confirmar(motivo))
+        with obs.observar("confirmacion_red", "guardrail", input={"subtarea": subtarea,
+                                                                  "descargas": veredicto.descargas}) as c:
+            aprobado = bool(confirmar and confirmar(motivo))
+            c.update(output="ok" if aprobado else "bloqueada")
         base["confirmacion"] = {"motivo": motivo, "aprobado": aprobado}
         if not aprobado:
             base["error"] = "descarga no confirmada por una persona: " + "; ".join(veredicto.descargas)
             base["duracion_s"] = round(time.perf_counter() - t0, 2)
             return base
+    with obs.observar("sandbox", "tool", input={"subtarea": subtarea, "huella": base["huella"]}) as h:
+        _correr(base, carpeta, timeout_s, tmp)
+        h.update(output={"returncode": base["returncode"], "bytes_stdout": len(base["stdout"]),
+                         "bytes_stderr": len(base["stderr"]), "archivos": len(base["archivos"]),
+                         "timeout": base["timeout"]})
+        if base["error"] or base["returncode"]:
+            ultima = (base["stderr"].strip().splitlines() or [""])[-1]
+            h.error(base["error"] or f"returncode {base['returncode']}: {ultima}")
+    base["duracion_s"] = round(time.perf_counter() - t0, 2)
+    return base
+
+
+def _correr(base: dict, carpeta: Path, timeout_s: int, tmp: Path | None) -> None:
+    """El proceso confinado: rellena `base` con returncode, salidas, archivos y error."""
     antes = {p for p in carpeta.rglob("*") if p.is_file()}
     proc = subprocess.Popen([sys.executable, "script.py"], cwd=carpeta, env=entorno_vacio(carpeta, tmp),
                             stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True,
@@ -101,5 +132,3 @@ def ejecutar(codigo: str, carpeta: Path, *, entradas: dict[str, Path] | None = N
     base["archivos"] = sorted(str(p.relative_to(carpeta)) for p in carpeta.rglob("*")
                               if p.is_file() and p not in antes and ".tmp" not in p.parts
                               and p.name not in {"stdout.txt", "stderr.txt"})
-    base["duracion_s"] = round(time.perf_counter() - t0, 2)
-    return base

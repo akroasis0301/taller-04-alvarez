@@ -12,3 +12,6 @@ import pytest
 def _sin_capa2_por_defecto(monkeypatch, tmp_path_factory):
     monkeypatch.setenv("SOLVER_CAPA2", "0")
     monkeypatch.setenv("SOLVER_CACHE_GRAPHRAG", str(tmp_path_factory.mktemp("cache_graphrag")))
+    # Taller 4: ninguna prueba manda spans al Langfuse del .env. Las de observabilidad
+    # (tests/test_t4_observabilidad.py) lo encienden con un exportador en memoria.
+    monkeypatch.setenv("SOLVER_LANGFUSE", "0")

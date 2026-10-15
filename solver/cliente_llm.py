@@ -19,6 +19,7 @@ import os
 import re
 import sys
 import time
+from solver import observabilidad as obs
 from solver.config import RAIZ, Config
 from solver.traza import Traza
 
@@ -121,31 +122,44 @@ class ClienteLLM:
                 raise PresupuestoAgotado(f"{agente}: presupuesto agotado ({self.consumido} tokens)")
             intento += 1
             t0 = time.perf_counter()
-            try:
-                r = self.llm.chat(mensajes, tools=tools, json_mode=json_mode, max_tokens=max_tokens)
-            except Exception as err:                  # red, HTTP, VPN caída…
-                self.traza.llamada(agente, modelo=self.modelo, tokens_entrada=0, tokens_salida=0,
-                                   latencia_s=round(time.perf_counter() - t0, 2), fin=None,
-                                   intento=intento, subtarea=subtarea,
-                                   error=f"{type(err).__name__}: {err}")
-                if not es_timeout(err) and red < self.cfg.reintentos_red:
-                    red += 1
-                    continue
-                raise
-            uso = r.get("uso") or {}
-            crudo = r.get("contenido") or ""
-            contenido = sin_pensamiento(crudo)
-            r = {**r, "contenido": contenido}
-            vacio = not contenido.strip() and not r.get("tool_calls")
-            self.traza.llamada(
-                agente, modelo=self.modelo, subtarea=subtarea, intento=intento,
-                tokens_entrada=int(uso.get("prompt_tokens", 0)),
-                tokens_salida=int(uso.get("completion_tokens", 0)),
-                latencia_s=r.get("latencia_s", round(time.perf_counter() - t0, 2)),
-                fin=r.get("fin"), max_tokens=max_tokens,
-                error=f"contenido vacío (fin={r.get('fin')})" if vacio else None,
-                entrada=_recortar(mensajes), salida=contenido,
-                razonamiento_caracteres=len(r.get("razonamiento") or "") + len(crudo) - len(contenido))
+            # Taller 4: una generation por llamada HTTP (también la que falla o vuelve vacía), hija
+            # del span del agente que la pidió. El nombre es el agente: así el export reparte los
+            # tokens por rol; el modelo va en su campo.
+            with obs.observar(agente, "generation", model=self.modelo, input=_recortar(mensajes),
+                              model_parameters={"max_tokens": max_tokens, "json_mode": json_mode},
+                              metadata={"agente": agente, "subtarea": subtarea, "intento": intento}) as gen:
+                try:
+                    r = self.llm.chat(mensajes, tools=tools, json_mode=json_mode, max_tokens=max_tokens)
+                except Exception as err:                  # red, HTTP, VPN caída…
+                    self.traza.llamada(agente, modelo=self.modelo, tokens_entrada=0, tokens_salida=0,
+                                       latencia_s=round(time.perf_counter() - t0, 2), fin=None,
+                                       intento=intento, subtarea=subtarea,
+                                       error=f"{type(err).__name__}: {err}")
+                    gen.error(err)
+                    if not es_timeout(err) and red < self.cfg.reintentos_red:
+                        red += 1
+                        continue
+                    raise
+                uso = r.get("uso") or {}
+                crudo = r.get("contenido") or ""
+                contenido = sin_pensamiento(crudo)
+                r = {**r, "contenido": contenido}
+                vacio = not contenido.strip() and not r.get("tool_calls")
+                tokens_entrada = int(uso.get("prompt_tokens", 0))
+                tokens_salida = int(uso.get("completion_tokens", 0))   # incluye el razonamiento
+                self.traza.llamada(
+                    agente, modelo=self.modelo, subtarea=subtarea, intento=intento,
+                    tokens_entrada=tokens_entrada, tokens_salida=tokens_salida,
+                    latencia_s=r.get("latencia_s", round(time.perf_counter() - t0, 2)),
+                    fin=r.get("fin"), max_tokens=max_tokens,
+                    error=f"contenido vacío (fin={r.get('fin')})" if vacio else None,
+                    entrada=_recortar(mensajes), salida=contenido,
+                    razonamiento_caracteres=len(r.get("razonamiento") or "") + len(crudo) - len(contenido))
+                gen.update(output=contenido or (r.get("tool_calls") or None),
+                           usage_details={"input": tokens_entrada, "output": tokens_salida},
+                           metadata={"fin": r.get("fin")})
+                if vacio:
+                    gen.error(f"contenido vacío (fin={r.get('fin')}, max_tokens={max_tokens})", nivel="WARNING")
             if not vacio:
                 return r
             if r.get("fin") == "length" and max_tokens >= tope:

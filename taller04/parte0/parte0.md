@@ -91,8 +91,10 @@ uv run python guion.py traza
    deja rastro.
 
 Un cuarto fallo silencioso, fuera de lo que pide el guion: `maybe_langfuse_trace` (líneas 29–40)
-llama a `langfuse.trace(...)`, un método del SDK 2.x que **no existe** en `langfuse==4.17.0` (el
-`Langfuse` 4.x no define `trace`; se usa `start_as_current_observation`). Con `USE_LANGFUSE=true`
+llama a `langfuse.trace(...)`, un método de una versión anterior del SDK que **no existe** en
+`langfuse==4.17.0` (se comprobó en la librería instalada: el cliente 4.x no define `trace`; se usa
+`start_as_current_observation`). El `.env.example` del kit lo declara a propósito («con
+USE_LANGFUSE=true falla en silencio»). Con `USE_LANGFUSE=true`
 lanzaría `AttributeError`, el `except Exception` de la línea 39 lo convierte en un aviso por
 pantalla y la corrida sigue como si nada: la observabilidad se apaga sin error.
 

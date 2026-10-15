@@ -11,8 +11,12 @@ después de quién. El LLM y la traza no viajan en el estado (no son serializabl
 la instancia del Solver.
 
 Contrato (Parte 1): Solver().solve(ruta_pdf, carpeta_salida) -> dict
-    status, entregables, subtareas [{id, tipo, status, intentos}], usage, model, trace
-y Solver().run(pregunta) -> dict con answer, trace, status, model, usage (Taller 4).
+    status, entregables, subtareas [{id, tipo, status, intentos}], usage, model, trace, traza_id
+y Solver().run(pregunta) -> dict con answer, trace, status, model, usage, traza_id (Taller 4).
+
+Taller 4 (observabilidad): solve() es la raíz de la traza de Langfuse y cada nodo deja su span
+—los ocho roles como `agent`, el orquestador y la procedencia como `chain`—. Ver
+solver/observabilidad.py.
 """
 from __future__ import annotations
 
@@ -31,6 +35,7 @@ except ImportError:  # pragma: no cover  (nombres anteriores de LangGraph)
     from langgraph.checkpoint.memory import MemorySaver as InMemorySaver
 
 from solver import formatos, graphrag
+from solver import observabilidad as obs
 from solver.agentes import critico, ejecutor, indexador, investigador, lector, planificador, programador, redactor
 from solver.cliente_llm import ClienteLLM, PresupuestoAgotado
 from solver.config import RAIZ, Config
@@ -42,6 +47,15 @@ from solver.traza import Traza
 MAX_INTENTOS_PLAN = 3
 MAX_REDACCIONES = 3          # la primera más dos correcciones
 INTERNO = "cache_solver"     # lo que no escribió una ejecución: el evaluador no lo cuenta como respaldo
+
+# Taller 4: el span de cada nodo del grafo. Los ocho roles son `agent` (un span por agente,
+# opción B); el resto es trabajo del orquestador o una verificación por código.
+SPAN_DE_NODO = {"leer": ("lector", "agent"), "indexar": ("indexador", "agent"),
+                "planificar": ("planificador", "agent"), "investigar": ("investigador", "agent"),
+                "programar": ("programador", "agent"), "ejecutar": ("ejecutor", "agent"),
+                "criticar": ("critico", "agent"), "redactar": ("redactor", "agent"),
+                "verificar": ("procedencia", "chain"), "siguiente": ("orquestador", "chain"),
+                "cerrar": ("orquestador", "chain")}
 
 
 def _cargar(ruta: str) -> dict:
@@ -80,6 +94,7 @@ class Solver:
         self.traza: Traza | None = None
         self.llm: ClienteLLM | None = None
         self.capa2: graphrag.IndiceTarea | None = None   # en memoria, como el LLM: no es serializable
+        self.traza_id: str | None = None                   # Taller 4: el id de la traza en Langfuse
         self.app = self._grafo().compile(checkpointer=InMemorySaver())
 
     # ================================================================ grafo
@@ -115,17 +130,27 @@ class Solver:
 
     def _nodo(self, nombre: str, fn):
         """Ningún error mata la corrida: el presupuesto agotado o una excepción quedan en la
-        traza y en motivo_parada, y los enrutadores deciden a dónde ir (redactar o cerrar)."""
+        traza y en motivo_parada, y los enrutadores deciden a dónde ir (redactar o cerrar).
+
+        Taller 4: cada ejecución del nodo es un span (SPAN_DE_NODO). Es un `with`: el span se
+        cierra y conserva su duración aunque el nodo falle, y el error queda en el span."""
+        span, tipo = SPAN_DE_NODO.get(nombre, (nombre, "chain"))
+
         @functools.wraps(fn)
         def envuelto(estado: Estado) -> dict:
-            try:
-                return fn(estado) or {}
-            except PresupuestoAgotado as err:
-                self.traza.decision("orquestador", "presupuesto_agotado", str(err), nodo=nombre)
-                return {"motivo_parada": "presupuesto"}
-            except Exception as err:
-                self.traza.error(nombre, err, subtarea=estado.get("actual"))
-                return {"motivo_parada": f"error en {nombre}: {type(err).__name__}: {err}"}
+            with obs.observar(span, tipo, metadata={"nodo": nombre, "subtarea": estado.get("actual")}) as o:
+                try:
+                    cambios = fn(estado) or {}
+                    o.update(output={"cambios": sorted(cambios), "motivo_parada": cambios.get("motivo_parada")})
+                    return cambios
+                except PresupuestoAgotado as err:
+                    self.traza.decision("orquestador", "presupuesto_agotado", str(err), nodo=nombre)
+                    o.error(err, nivel="WARNING")       # un freno que funciona no es un error
+                    return {"motivo_parada": "presupuesto"}
+                except Exception as err:
+                    self.traza.error(nombre, err, subtarea=estado.get("actual"))
+                    o.error(err)
+                    return {"motivo_parada": f"error en {nombre}: {type(err).__name__}: {err}"}
         return envuelto
 
     # ================================================================ enrutadores
@@ -188,7 +213,11 @@ class Solver:
 
     # ================================================================ nodos
     def _leer(self, estado: Estado) -> dict:
-        doc = lector.leer(estado["ruta_entrada"])
+        with obs.observar("leer_pdf", "tool", input={"archivo": Path(estado["ruta_entrada"]).name}) as h:
+            doc = lector.leer(estado["ruta_entrada"])
+            h.update(output={"secciones": len(doc["secciones"]), "tablas": len(doc["tablas"]),
+                             "escaneado": doc["escaneado"],
+                             "bytes": len(json.dumps(doc, ensure_ascii=False, default=str))})
         ruta = _guardar(self._salida(estado) / INTERNO / "enunciado_leido.json", doc)
         trabajo = [s["clave"] for s in doc["secciones"] if s["trabajo"]]
         self.traza.decision("lector", "leido", f"{len(doc['secciones'])} secciones; de trabajo: {trabajo}; "
@@ -277,14 +306,22 @@ class Solver:
         s = self._subtarea(estado, estado["actual"])
         doc = _cargar(estado["documento"])
         g = indexador.cargar(estado["grafo"]) if self.cfg.usar_grafo else None
-        ctx = investigador.investigar(s, doc, g, estado["plan"], usar_grafo=self.cfg.usar_grafo)
+        with obs.observar("seccion_literal", "retriever", input={"subtarea": s["id"],
+                                                                 "secciones": s.get("secciones")}) as r:
+            ctx = investigador.investigar(s, doc, g, estado["plan"], usar_grafo=self.cfg.usar_grafo)
+            r.update(output={"citas": ctx["citas"], "fragmentos": ctx["texto"][:4000]},
+                     metadata={"caracteres": len(ctx["texto"]), "modo": ctx["modo"]})
         local = {}
         if self.cfg.usar_grafo and self.capa2 is not None:
             try:                                 # búsqueda local + global de la capa 2, con citas
                 titulos = [x["titulo"] for x in doc["secciones"] if x["clave"] in (s.get("secciones") or [])]
                 propias = s.get("secciones") or []
-                local = graphrag.busqueda_local(self.capa2, s, propias, titulos,
-                                                dependencias=indexador.dependencias(g, propias))
+                with obs.observar("busqueda_local", "retriever", input={"subtarea": s["id"],
+                                                                        "titulos": titulos}) as r:
+                    local = graphrag.busqueda_local(self.capa2, s, propias, titulos,
+                                                    dependencias=indexador.dependencias(g, propias))
+                    r.update(output={"citas": local["citas"], "fragmentos": local["texto"][:4000]},
+                             metadata={"semillas": local.get("semillas"), "vecinos": local.get("vecinos")})
                 ctx["texto"] += "\n\n" + local["texto"]
                 ctx["citas"] = ctx["citas"] + local["citas"]
                 ctx["modo"] = "grafo+capa2"
@@ -591,6 +628,31 @@ class Solver:
 
     # ================================================================ contrato
     def solve(self, ruta_pdf: str, salida: str) -> dict:
+        """Resuelve una tarea. Taller 4: es la raíz de la traza de Langfuse (span «corrida»).
+
+        La raíz se abre ANTES que cualquier otra cosa —lector, guardrails de entrada— y se
+        cierra después de todo, así que su duración es la de la corrida entera (corrección 0.c
+        #2). Si algo lanza, el span queda en ERROR y se envía igual (0.c #3)."""
+        tarea = Path(salida).name
+        try:
+            with obs.corrida("solver", entrada={"enunciado": Path(ruta_pdf).name, "carpeta": tarea},
+                             metadata={"variante": self.variante, "tarea": tarea},
+                             etiquetas=[self.variante]) as raiz:
+                self.traza_id = obs.traza_id()
+                r = self._resolver(ruta_pdf, salida)
+                r["traza_id"] = self.traza_id
+                raiz.update(output={"status": r["status"], "motivo_parada": r.get("motivo_parada", ""),
+                                    "entregables": [Path(e).name for e in r["entregables"]],
+                                    "usage": r["usage"], "duracion_s": r.get("duracion_s")})
+                if r["status"] == "fallido":
+                    raiz.error(r.get("error") or r.get("motivo_parada") or "sin entregable")
+                elif r["status"] == "parcial":
+                    raiz.error(r.get("motivo_parada") or "parcial", nivel="WARNING")
+                return r
+        finally:
+            obs.flush()
+
+    def _resolver(self, ruta_pdf: str, salida: str) -> dict:
         carpeta = Path(salida).resolve()
         entrada = Path(ruta_pdf).resolve()
         if carpeta.exists() and (entrada == carpeta or entrada.is_relative_to(carpeta)
@@ -609,7 +671,10 @@ class Solver:
         self.capa2 = None
         if apartada:
             self.traza.decision("orquestador", "corrida_anterior_apartada", str(apartada))
+        if self.traza_id:                          # de la carpeta de la corrida a sus spans
+            (carpeta / "traza_id.txt").write_text(self.traza_id + "\n", encoding="utf-8")
         self.traza.evento("inicio", agente="orquestador", variante=self.variante, entrada=str(ruta_pdf),
+                          traza_id=self.traza_id, sesion=obs.sesion(), prompt_version=obs.prompt_version(),
                           config={k: v for k, v in vars(self.cfg).items() if k not in {"llm", "confirmar", "embedder"}})
         t0 = time.perf_counter()
         try:
@@ -632,14 +697,35 @@ class Solver:
                 "procedencia": final.get("procedencia"), "duracion_s": round(time.perf_counter() - t0, 1)}
 
     def run(self, pregunta: str) -> dict:
-        """Para el Taller 4: la pregunta es la ruta a un enunciado."""
+        """Para el Taller 4: la pregunta es la ruta a un enunciado; la respuesta, el texto del
+        entregable (Markdown, PDF o notebook: antes se leía todo como texto y el PDF de la Tarea
+        C o el .ipynb de la B devolvían basura o lanzaban)."""
         salida = RAIZ / "corridas" / "run" / f"{Path(pregunta).stem}-{time.strftime('%Y%m%d-%H%M%S')}"
         r = self.solve(pregunta, str(salida))
-        answer = ""
-        if r["entregables"]:
-            answer = Path(r["entregables"][0]).read_text(encoding="utf-8")
-        return {"answer": answer, "trace": r["trace"], "status": r["status"], "model": r["model"],
-                "usage": r["usage"]}
+        return {"answer": texto_entregable(r["entregables"]), "trace": r["trace"], "status": r["status"],
+                "model": r["model"], "usage": r["usage"], "traza_id": r.get("traza_id")}
+
+
+def texto_entregable(rutas: list[str]) -> str:
+    """El texto del entregable principal: el .md si hay, si no el .pdf, si no el .ipynb
+    (celdas de Markdown y salidas de texto). Cadena vacía si no hay entregable legible."""
+    por_tipo = {Path(r).suffix.lower(): Path(r) for r in reversed(rutas or []) if Path(r).exists()}
+    if ".md" in por_tipo:
+        return por_tipo[".md"].read_text(encoding="utf-8")
+    if ".pdf" in por_tipo:
+        from pypdf import PdfReader
+        return "\n".join(p.extract_text() or "" for p in PdfReader(str(por_tipo[".pdf"])).pages)
+    if ".ipynb" in por_tipo:
+        nb = json.loads(por_tipo[".ipynb"].read_text(encoding="utf-8"))
+        partes = []
+        for celda in nb.get("cells", []):
+            if celda.get("cell_type") == "markdown":
+                partes.append("".join(celda.get("source", [])))
+            for salida in celda.get("outputs", []):
+                texto = salida.get("text") or (salida.get("data") or {}).get("text/plain") or ""
+                partes.append("".join(texto) if isinstance(texto, list) else str(texto))
+        return "\n\n".join(p for p in partes if p.strip())
+    return ""
 
 
 class SolverSinGrafo(Solver):

@@ -35,6 +35,7 @@ from pathlib import Path
 import networkx as nx
 import numpy as np
 
+from solver import observabilidad as obs
 from solver.cliente_llm import ClienteLLM, PresupuestoAgotado
 from solver.traza import Traza
 
@@ -203,8 +204,10 @@ def extraer_en_paralelo(llm: ClienteLLM, piezas: list[tuple[str, str]], hilos: i
         except Exception as err:
             llm.traza.decision("indexador", "extraccion_fallida", f"{cita}: {type(err).__name__}: {err}"[:300])
             return None
+    # Taller 4: cada hilo hereda el span del indexador; sin esto, sus llamadas quedaban como
+    # trazas sueltas fuera de la corrida (el contexto no pasa solo a otro hilo).
     with ThreadPoolExecutor(max_workers=max(1, hilos)) as pool:
-        return [r for r in pool.map(una, piezas) if r is not None]
+        return [r for r in pool.map(obs.en_contexto(una), piezas) if r is not None]
 
 
 # =========================================================================== fusión
@@ -326,7 +329,10 @@ def embeber(embedder, textos: list[str], traza: Traza, que: str) -> np.ndarray:
     if not textos:
         return np.zeros((0, 1), dtype=np.float32)
     t0 = time.perf_counter()
-    m = embedder.embed(textos)
+    with obs.observar("embeddings", "embedding", model=getattr(embedder, "nombre", "?"),
+                      input={"que": que, "textos": len(textos)}) as o:
+        m = embedder.embed(textos)
+        o.update(output={"dimension": int(m.shape[1])})
     traza.evento("embeddings", agente="indexador", modelo=embedder.nombre, que=que,
                  textos=len(textos), dimension=int(m.shape[1]), latencia_s=round(time.perf_counter() - t0, 2))
     return m
@@ -376,7 +382,7 @@ def resumir_comunidades(llm: ClienteLLM, fusion: Fusion, grupos: list[list[str]]
             resumen = "Entidades: " + ", ".join(e["nombre"] for e in ents[:12])
         return {"id": i, "miembros": miembros, "resumen": resumen[:1200], "citas": citas}
     with ThreadPoolExecutor(max_workers=max(1, hilos)) as pool:
-        return list(pool.map(una, enumerate(grupos)))
+        return list(pool.map(obs.en_contexto(una), enumerate(grupos)))
 
 
 # =========================================================================== índice de las notas
