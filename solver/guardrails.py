@@ -20,8 +20,11 @@ Lo que NO se toca, y por qué la regla es más estrecha que la del andamiaje (Pa
     («cédula», «CI», «identificación»). Sin esa doble condición, cualquier código de diez
     dígitos sería una cédula.
 
-Límite declarado: no hay modelo de entidades, así que los NOMBRES de personas se escapan
-(«Ana Pérez» pasa tal cual). Ver el informe, Parte 3.
+Nombres (desde el ensayo del 2026-10-15, en que el nombre de la Tarea P llegó a la traza): sin un
+modelo de entidades, un nombre se reconoce solo POR CONTEXTO, cuando lo presenta una etiqueta
+(«Estudiante:», «Nombre:», «Autor:», «Elaborado por») seguida de 2 a 4 palabras con mayúscula
+inicial → [NOMBRE]. Límite declarado: un nombre suelto en medio de una frase («como dijo Ana
+Pérez») se escapa. Ver el informe, Parte 3.
 """
 from __future__ import annotations
 
@@ -45,7 +48,15 @@ MOVIL = re.compile(_ANTES + r"(?:\+?593[\s-]?|0)9\d(?:[\s-]?\d){7}" + _DESPUES)
 # Fijo: 0[2-7] + 7 dígitos (o +593 [2-7] + 7), con paréntesis, espacios o guiones opcionales.
 FIJO = re.compile(_ANTES + r"(?:\+?593[\s-]?|\(?0)[2-7]\)?[\s-]?\d{3}[\s-]?\d{4}" + _DESPUES)
 
-MARCADORES = {"correo": "[CORREO]", "cedula": "[CEDULA]", "telefono": "[TELEFONO]"}
+# Un nombre presentado por una etiqueta: 2 a 4 palabras con mayúscula inicial («de», «del», «de la»
+# se admiten entre ellas). Sin etiqueta no se toca: «Naive Bayes Gaussiano» no es una persona.
+_ETIQUETA_NOMBRE = (r"(?:[Ee]studiante|[Aa]lumn[oa]|[Nn]ombres?(?: completo)?|[Aa]utor(?:a|es|as)?|"
+                    r"[Ee]laborad[oa] por|[Pp]resentad[oa] por|[Ss]tudent|[Nn]ame|[Aa]uthor)")
+_PALABRA = r"[A-ZÁÉÍÓÚÑ][a-záéíóúñü]+"
+NOMBRE = re.compile(rf"(\b{_ETIQUETA_NOMBRE}\**\s*[:\-–]?\**\s*)"
+                    rf"({_PALABRA}(?:[ \t]+(?:de(?:l| la| los)?[ \t]+)?{_PALABRA}){{1,3}})")
+
+MARCADORES = {"correo": "[CORREO]", "cedula": "[CEDULA]", "telefono": "[TELEFONO]", "nombre": "[NOMBRE]"}
 
 
 def sin_tildes(texto: str) -> str:
@@ -102,6 +113,11 @@ def redactar_pii(texto: str) -> tuple[str, list[str]]:
             return MARCADORES[tipo]
         return f
 
+    def nombre(m: re.Match) -> str:
+        hallazgos.append("nombre")
+        return m.group(1) + MARCADORES["nombre"]
+
+    texto = NOMBRE.sub(nombre, texto)
     texto = CORREO.sub(marcar("correo"), texto)
     texto = _cedulas(texto, hallazgos)
     texto = MOVIL.sub(marcar("telefono"), texto)

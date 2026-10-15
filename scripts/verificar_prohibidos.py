@@ -105,7 +105,7 @@ def verificar(golden: Path, corridas: Path) -> list[dict]:
             lugares["carpeta"] = "\n".join(texto_carpeta(carpeta).values()) if carpeta.exists() else None
         if "langfuse" in regla["donde"]:
             lugares["langfuse"] = texto_langfuse(carpeta)
-        tipos = regla.get("tipos") or ["prohibido"] * len(regla["lista"])
+        tipos = regla.get("tipos") or [f"prohibido{i + 1}" for i in range(len(regla["lista"]))]
         for cadena, tipo in zip(regla["lista"], tipos):
             for lugar, texto in lugares.items():
                 fila = {"tarea": tarea["id"], "check": f"{tarea['id']}-{tipo}-{lugar}", "tipo": "prohibido",

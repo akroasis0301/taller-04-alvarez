@@ -65,3 +65,10 @@ Thumbs.db
 .vscode/
 .idea/
 *.swp
+
+# ---------- Taller 04 ----------
+# Los ensayos (scripts/corridas_t4.sh prueba) no se entregan: el del 2026-10-15 se hizo antes de
+# la regla de nombres y su traza tiene el nombre sintético de la Tarea P. Se entregan base y mejora.
+corridas/t4/prueba/
+resultados/t4/*prueba*
+taller04/parte1/*prueba*
