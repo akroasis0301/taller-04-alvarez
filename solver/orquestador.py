@@ -35,6 +35,7 @@ except ImportError:  # pragma: no cover  (nombres anteriores de LangGraph)
     from langgraph.checkpoint.memory import MemorySaver as InMemorySaver
 
 from solver import formatos, graphrag
+from solver import guardrails
 from solver import observabilidad as obs
 from solver.agentes import critico, ejecutor, indexador, investigador, lector, planificador, programador, redactor
 from solver.cliente_llm import ClienteLLM, PresupuestoAgotado
@@ -218,6 +219,7 @@ class Solver:
             h.update(output={"secciones": len(doc["secciones"]), "tablas": len(doc["tablas"]),
                              "escaneado": doc["escaneado"],
                              "bytes": len(json.dumps(doc, ensure_ascii=False, default=str))})
+        doc = self._guardrails_entrada(doc)
         ruta = _guardar(self._salida(estado) / INTERNO / "enunciado_leido.json", doc)
         trabajo = [s["clave"] for s in doc["secciones"] if s["trabajo"]]
         self.traza.decision("lector", "leido", f"{len(doc['secciones'])} secciones; de trabajo: {trabajo}; "
@@ -229,6 +231,59 @@ class Solver:
             self.traza.decision("lector", "sin_secciones_de_trabajo",
                                 "no se reconoció ninguna «Parte N»: el plan cubrirá el documento entero")
         return {"documento": ruta, "restricciones": doc["restricciones"]}
+
+    # ================================================================ guardrails (Taller 4, Parte 3)
+    def _guardrails_entrada(self, doc: dict) -> dict:
+        """El enunciado es la entrada del solver (opción B): antes de que lo vea ningún modelo,
+        se retiran las oraciones con una inyección y se redactan los datos personales. Cada uno
+        deja su span `guardrail` con la decisión (ok / redactada) y el motivo."""
+        def aplicar(fn, valor):
+            """fn(str) -> (str, hallazgos); recorre el texto, las secciones y las tablas."""
+            hallados: list = []
+
+            def uno(s):
+                nuevo, h = fn(s)
+                hallados.extend(h)
+                return nuevo
+            valor["texto"] = uno(valor["texto"])
+            for s in valor["secciones"]:
+                s["titulo"], s["texto"] = uno(s["titulo"]), uno(s["texto"])
+            for tabla in valor["tablas"]:
+                tabla["filas"] = [[uno(c) for c in fila] for fila in tabla["filas"]]
+            return hallados
+
+        with obs.observar("entrada_inyeccion", "guardrail", input={"caracteres": len(doc["texto"])}) as g:
+            hallazgos = aplicar(guardrails.limpiar_enunciado, doc)
+            unicos = list({h["fragmento"]: h for h in hallazgos}.values())   # texto y sección repiten
+            decision = "redactada" if unicos else "ok"
+            g.update(output=decision, metadata={"retiradas": unicos})
+            if unicos:
+                g.error("instrucción retirada del enunciado: " + " | ".join(h["fragmento"][:120] for h in unicos),
+                        nivel="WARNING")
+        self.traza.decision("guardrail", "entrada_inyeccion", decision, retiradas=unicos)
+
+        with obs.observar("entrada_pii", "guardrail", input={"caracteres": len(doc["texto"])}) as g:
+            tipos = aplicar(guardrails.redactar_pii, doc)
+            decision = "redactada" if tipos else "ok"
+            g.update(output=decision, metadata={"tipos": sorted(set(tipos))})
+        self.traza.decision("guardrail", "entrada_pii", decision, tipos=sorted(set(tipos)))
+
+        if unicos or tipos:                     # el texto cambió: las restricciones se releen
+            doc["restricciones"] = lector.restricciones(doc["texto"], doc["secciones"])
+        return doc
+
+    def _guardrails_salida(self, texto: str) -> str:
+        """El entregable antes de publicarse: sin líneas con credenciales y sin datos personales."""
+        with obs.observar("salida_secretos", "guardrail", input={"caracteres": len(texto or "")}) as g:
+            lineas = [l for l in (texto or "").split("\n") if guardrails.detectar_secretos(l)]
+            g.update(output="bloqueada" if lineas else "ok", metadata={"lineas": len(lineas)})
+        with obs.observar("salida_pii", "guardrail", input={"caracteres": len(texto or "")}) as g:
+            limpio, info = guardrails.limpiar_salida(texto)
+            g.update(output="redactada" if info["pii"] else "ok", metadata={"tipos": sorted(set(info["pii"]))})
+        if lineas or info["pii"]:
+            self.traza.decision("guardrail", "salida", "credenciales y/o datos personales retirados del entregable",
+                                lineas_con_secreto=info["lineas_con_secreto"], tipos=sorted(set(info["pii"])))
+        return limpio
 
     def _indexar(self, estado: Estado) -> dict:
         doc = _cargar(estado["documento"])
@@ -471,6 +526,7 @@ class Solver:
         publicados = self._publicar_exigidos(estado, doc, plan, aprobadas)
         texto = redactor.redactar(self.llm, doc, plan, figuras, estado.get("problemas_redaccion"),
                                   estado.get("borrador"), self._notas(estado))
+        texto = self._guardrails_salida(texto)
         destino = self._construir(estado, doc, plan, aprobadas, texto)
         return {"borrador": texto, "entregables": [str(destino)] + publicados,
                 "intentos_redaccion": estado.get("intentos_redaccion", 0) + 1}
