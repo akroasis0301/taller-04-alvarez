@@ -1,0 +1,146 @@
+{
+  "corridas": 4,
+  "corridas_sin_span_corrida": [],
+  "latencia_p50_ms": 1613.0,
+  "latencia_p95_ms": 4664.45,
+  "tokens_entrada": 19800,
+  "tokens_salida": 4200,
+  "costo_usd": 0.00549,
+  "precio": "fila propietario_economico (gpt-4o-mini), verificada el 2026-08-26",
+  "errores": 1,
+  "por_span": {
+    "agent:ejecutor": {
+      "n": 10,
+      "ms_total": 8863.0,
+      "ms_medio": 886.3,
+      "parte_del_total": 0.489,
+      "errores": 0
+    },
+    "herramienta:sandbox": {
+      "n": 7,
+      "ms_total": 8841.0,
+      "ms_medio": 1263.0,
+      "parte_del_total": 0.488,
+      "errores": 1
+    },
+    "agent:indexador": {
+      "n": 4,
+      "ms_total": 267.0,
+      "ms_medio": 66.8,
+      "parte_del_total": 0.015,
+      "errores": 0
+    },
+    "agent:programador": {
+      "n": 11,
+      "ms_total": 23.0,
+      "ms_medio": 2.1,
+      "parte_del_total": 0.001,
+      "errores": 0
+    },
+    "agent:critico": {
+      "n": 10,
+      "ms_total": 21.0,
+      "ms_medio": 2.1,
+      "parte_del_total": 0.001,
+      "errores": 0
+    },
+    "llm:programador": {
+      "n": 10,
+      "ms_total": 19.0,
+      "ms_medio": 1.9,
+      "parte_del_total": 0.001,
+      "errores": 0
+    },
+    "agent:investigador": {
+      "n": 8,
+      "ms_total": 13.0,
+      "ms_medio": 1.6,
+      "parte_del_total": 0.001,
+      "errores": 0
+    },
+    "agent:planificador": {
+      "n": 4,
+      "ms_total": 11.0,
+      "ms_medio": 2.8,
+      "parte_del_total": 0.001,
+      "errores": 0
+    },
+    "agent:redactor": {
+      "n": 4,
+      "ms_total": 9.0,
+      "ms_medio": 2.2,
+      "parte_del_total": 0.0,
+      "errores": 0
+    },
+    "llm:redactor": {
+      "n": 4,
+      "ms_total": 8.0,
+      "ms_medio": 2.0,
+      "parte_del_total": 0.0,
+      "errores": 0
+    },
+    "chain:orquestador": {
+      "n": 15,
+      "ms_total": 7.0,
+      "ms_medio": 0.5,
+      "parte_del_total": 0.0,
+      "errores": 0
+    },
+    "llm:critico": {
+      "n": 5,
+      "ms_total": 7.0,
+      "ms_medio": 1.4,
+      "parte_del_total": 0.0,
+      "errores": 0
+    },
+    "agent:lector": {
+      "n": 4,
+      "ms_total": 6.0,
+      "ms_medio": 1.5,
+      "parte_del_total": 0.0,
+      "errores": 0
+    },
+    "herramienta:leer_pdf": {
+      "n": 4,
+      "ms_total": 5.0,
+      "ms_medio": 1.2,
+      "parte_del_total": 0.0,
+      "errores": 0
+    },
+    "llm:planificador": {
+      "n": 4,
+      "ms_total": 5.0,
+      "ms_medio": 1.2,
+      "parte_del_total": 0.0,
+      "errores": 0
+    },
+    "retriever:seccion_literal": {
+      "n": 8,
+      "ms_total": 4.0,
+      "ms_medio": 0.5,
+      "parte_del_total": 0.0,
+      "errores": 0
+    },
+    "chain:procedencia": {
+      "n": 4,
+      "ms_total": 3.0,
+      "ms_medio": 0.8,
+      "parte_del_total": 0.0,
+      "errores": 0
+    },
+    "guardrail:guarda_ast": {
+      "n": 8,
+      "ms_total": 2.0,
+      "ms_medio": 0.2,
+      "parte_del_total": 0.0,
+      "errores": 0
+    },
+    "guardrail:confirmacion_red": {
+      "n": 1,
+      "ms_total": 0.0,
+      "ms_medio": 0.0,
+      "parte_del_total": 0.0,
+      "errores": 0
+    }
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "_fuente": "Transcrita del «Anexo — precios de la tabla de modelos» del enunciado taller-04-llmops.pdf (generado el 2026-10-09 desde la tabla semestral del curso). La tabla original vive en el repositorio del curso (fuentes/modelos/modelos-2026-1.json) y no viene en el kit; evaluar_llmops.py la busca subiendo desde Lab-04-LLMOps/ y la encuentra aquí. Solo se usa para el costo de REFERENCIA (--precio <fila>): las corridas medidas son en la H200, a costo cero.",
+  "verified_at": null,
+  "models": [
+    {"id": "propietario_grande",     "provider": "anthropic",   "model": "claude-opus-4-8",            "input_usd_per_1m": 5.00, "output_usd_per_1m": 25.00, "verified_at": "2026-07-10"},
+    {"id": "propietario_balanceado", "provider": "anthropic",   "model": "claude-sonnet-4-6",          "input_usd_per_1m": 3.00, "output_usd_per_1m": 15.00, "verified_at": "2026-07-10"},
+    {"id": "propietario_economico",  "provider": "openai",      "model": "gpt-4o-mini",                "input_usd_per_1m": 0.15, "output_usd_per_1m": 0.60,  "verified_at": "2026-08-26"},
+    {"id": "openai_razonamiento",    "provider": "openai",      "model": "gpt-5.6-luna",               "input_usd_per_1m": 0.20, "output_usd_per_1m": 1.20,  "verified_at": "2026-09-18"},
+    {"id": "juez_economico",         "provider": "anthropic",   "model": "claude-haiku-4-5",           "input_usd_per_1m": 1.00, "output_usd_per_1m": 5.00,  "verified_at": "2026-07-10"},
+    {"id": "open_weight_local",      "provider": "ollama",      "model": "llama3.1:8b",                "input_usd_per_1m": 0.0,  "output_usd_per_1m": 0.0,   "verified_at": null},
+    {"id": "base_local",             "provider": "huggingface", "model": "openai-community/gpt2",      "input_usd_per_1m": 0.0,  "output_usd_per_1m": 0.0,   "verified_at": null},
+    {"id": "open_weight_pequeno",    "provider": "ollama",      "model": "qwen3:1.7b",                 "input_usd_per_1m": 0.0,  "output_usd_per_1m": 0.0,   "verified_at": null},
+    {"id": "open_weight_razonamiento","provider": "ollama",     "model": "gpt-oss:20b",                "input_usd_per_1m": 0.0,  "output_usd_per_1m": 0.0,   "verified_at": null}
+  ]
+}

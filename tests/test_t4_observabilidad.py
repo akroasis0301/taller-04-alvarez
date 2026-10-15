@@ -163,7 +163,28 @@ def test_una_corrida_del_solver_deja_el_arbol_completo(spans, tmp_path, monkeypa
     for g in (s for s in todos if _attr(s, "type") == "generation"):
         assert _padre(g, todos).name == g.name          # cada llamada, bajo el agente que la pidió
         assert json.loads(_attr(g, "usage_details"))["input"] > 0
+    # En «repetición» el script tiene FUGA de datos: eso lo rechaza el crítico, no la guarda,
+    # que solo mira imports y llamadas peligrosas. La guarda dice ok (el bloqueo se prueba abajo).
     guardas = [s for s in todos if s.name == "guarda_ast"]
-    assert any(_attr(s, "output") == "bloqueada" for s in guardas)    # el sandbox como guardrail
+    assert guardas and all(_attr(s, "output") == "ok" for s in guardas)
     assert any(s.name == "sandbox" and _attr(s, "type") == "tool" for s in todos)
     assert any(s.name == "leer_pdf" and _attr(s, "type") == "tool" for s in todos)
+
+
+def test_la_guarda_del_sandbox_es_un_guardrail_con_su_motivo(spans, tmp_path):
+    """Parte 3, opción B: cada script rechazado deja un span de guardrail con su motivo, y no
+    llega a existir el proceso (no hay span «sandbox»)."""
+    from solver.agentes import ejecutor
+
+    r = ejecutor.ejecutar("import socket\nsocket.socket()\n", tmp_path / "a", subtarea="T9")
+    assert r["error"].startswith("guarda:")
+    r = ejecutor.ejecutar("from sklearn.datasets import fetch_openml\nfetch_openml('mnist_784')\n",
+                          tmp_path / "b", subtarea="T9", confirmar=lambda motivo: False)
+    assert r["confirmacion"]["aprobado"] is False
+    todos = spans()
+    guardas = {s.name: s for s in todos if _attr(s, "type") == "guardrail" and _attr(s, "output") != "pendiente_confirmacion"}
+    bloqueo = guardas["guarda_ast"]
+    assert _attr(bloqueo, "output") == "bloqueada" and _attr(bloqueo, "level") == "WARNING"
+    assert "socket" in _attr(bloqueo, "status_message")
+    assert _attr(guardas["confirmacion_red"], "output") == "bloqueada"
+    assert not any(s.name == "sandbox" for s in todos)
