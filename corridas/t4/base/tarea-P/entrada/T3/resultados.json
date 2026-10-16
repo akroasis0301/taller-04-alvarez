@@ -1,0 +1,68 @@
+{
+  "subtarea": "T3_comprobacion_empirica_kl_bits",
+  "n_muestras": 10000,
+  "semilla": 0,
+  "generador": "numpy.random.default_rng(0)",
+  "metodo_muestreo": "rng.choice(k, size=10000, p=distribucion_renormalizada)",
+  "fuente_distribucion_teorica": "entrada/T2/resultados.json",
+  "tokens_nucleo": [
+    "t0",
+    "t1",
+    "t2",
+    "t3"
+  ],
+  "p_teorica_valores": [
+    0.5693760554907313,
+    0.2094617451103304,
+    0.12704497044632815,
+    0.09411722895261025
+  ],
+  "p_teorica": {
+    "t0": 0.5693760554907313,
+    "t1": 0.2094617451103304,
+    "t2": 0.12704497044632815,
+    "t3": 0.09411722895261025
+  },
+  "p_teorica_4_decimales": {
+    "t0": "0.5694",
+    "t1": "0.2095",
+    "t2": "0.1270",
+    "t3": "0.0941"
+  },
+  "conteos_observados_valores": [
+    5682,
+    2093,
+    1296,
+    929
+  ],
+  "conteos_observados": {
+    "t0": 5682,
+    "t1": 2093,
+    "t2": 1296,
+    "t3": 929
+  },
+  "frecuencias_observadas_valores": [
+    0.5682,
+    0.2093,
+    0.1296,
+    0.0929
+  ],
+  "frecuencias_observadas": {
+    "t0": 0.5682,
+    "t1": 0.2093,
+    "t2": 0.1296,
+    "t3": 0.0929
+  },
+  "frecuencias_observadas_4_decimales": {
+    "t0": "0.5682",
+    "t1": "0.2093",
+    "t2": "0.1296",
+    "t3": "0.0929"
+  },
+  "suma_frecuencias_observadas": 1.0,
+  "formula_kl": "KL(q||p) = sum_i q_i * log2(q_i / p_i), q = empírica, p = teórica (bits)",
+  "kl_bits_empirica_respecto_teorica": 5.006898814879229e-05,
+  "kl_bits": 5.006898814879229e-05,
+  "kl_bits_4_decimales": "0.0001",
+  "figura": "t3_frecuencias_vs_teoricas.png"
+}

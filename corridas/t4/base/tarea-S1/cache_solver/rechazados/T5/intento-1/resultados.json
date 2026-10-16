@@ -1,0 +1,118 @@
+{
+  "subtarea": "T5_guardar_y_verificar_parquet",
+  "archivo": "output/server_analysis.parquet",
+  "archivo_existe": true,
+  "metodo_guardado": "pyarrow.Table.from_pandas(preserve_index=False) + pyarrow.parquet.write_table",
+  "indice_incluido": false,
+  "fuente_dataframe": "reconstruido desde data/server_measurements.csv",
+  "fuente_info": {
+    "tipo": "reconstrucción desde data/server_measurements.csv",
+    "formula_load_score": "gpu/100 + cpu/100 + power/500",
+    "validacion": {
+      "fila23": false,
+      "n_mayor_1_5": false,
+      "requires_review": false,
+      "total": false
+    },
+    "error_fila23": 0.056217861183744056
+  },
+  "filas_antes": 300,
+  "filas_despues": 300,
+  "filas_ok": true,
+  "columnas_antes": [
+    "server",
+    "timestamp",
+    "gpu_utilization",
+    "cpu_utilization",
+    "memory_gb",
+    "power_w",
+    "temperature_c",
+    "load_score",
+    "requires_review"
+  ],
+  "columnas_despues": [
+    "server",
+    "timestamp",
+    "gpu_utilization",
+    "cpu_utilization",
+    "memory_gb",
+    "power_w",
+    "temperature_c",
+    "load_score",
+    "requires_review"
+  ],
+  "n_columnas_antes": 9,
+  "n_columnas_despues": 9,
+  "columnas_ok": true,
+  "esquema_antes": "server: large_string\ntimestamp: timestamp[us]\ngpu_utilization: double\ncpu_utilization: double\nmemory_gb: double\npower_w: double\ntemperature_c: double\nload_score: double\nrequires_review: bool\n-- schema metadata --\npandas: '{\"index_columns\": [], \"column_indexes\": [], \"columns\": [{\"name\":' + 1197",
+  "esquema_despues": "server: large_string\ntimestamp: timestamp[us]\ngpu_utilization: double\ncpu_utilization: double\nmemory_gb: double\npower_w: double\ntemperature_c: double\nload_score: double\nrequires_review: bool\n-- schema metadata --\npandas: '{\"index_columns\": [], \"column_indexes\": [], \"columns\": [{\"name\":' + 1197",
+  "esquema_igual": true,
+  "esquema_igual_estricto": true,
+  "esquema_igual_estructural": true,
+  "valores_ok": true,
+  "valores_iguales_por_columna": {
+    "server": true,
+    "timestamp": true,
+    "gpu_utilization": true,
+    "cpu_utilization": true,
+    "memory_gb": true,
+    "power_w": true,
+    "temperature_c": true,
+    "load_score": true,
+    "requires_review": true
+  },
+  "pandas_dataframe_equals": true,
+  "dtypes_antes": {
+    "server": "str",
+    "timestamp": "datetime64[us]",
+    "gpu_utilization": "float64",
+    "cpu_utilization": "float64",
+    "memory_gb": "float64",
+    "power_w": "float64",
+    "temperature_c": "float64",
+    "load_score": "float64",
+    "requires_review": "bool"
+  },
+  "dtypes_despues": {
+    "server": "str",
+    "timestamp": "datetime64[us]",
+    "gpu_utilization": "float64",
+    "cpu_utilization": "float64",
+    "memory_gb": "float64",
+    "power_w": "float64",
+    "temperature_c": "float64",
+    "load_score": "float64",
+    "requires_review": "bool"
+  },
+  "fila_23_antes": {
+    "server": "AI-SRV-01",
+    "timestamp": "2026-08-24 09:55:00",
+    "gpu_utilization": 97.0,
+    "cpu_utilization": 93.0,
+    "memory_gb": 55.0,
+    "power_w": 590.0,
+    "temperature_c": 66.97,
+    "load_score": 3.08,
+    "requires_review": true
+  },
+  "fila_23_despues": {
+    "server": "AI-SRV-01",
+    "timestamp": "2026-08-24 09:55:00",
+    "gpu_utilization": 97.0,
+    "cpu_utilization": 93.0,
+    "memory_gb": 55.0,
+    "power_w": 590.0,
+    "temperature_c": 66.97,
+    "load_score": 3.08,
+    "requires_review": true
+  },
+  "n_requires_review_true": 281,
+  "lineas_verificacion": [
+    "Round trip verificado: output/server_analysis.parquet",
+    "Filas: True",
+    "Columnas: True",
+    "Esquema: True",
+    "Valores: True"
+  ],
+  "criterio_exito_ok": true
+}

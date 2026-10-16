@@ -1,0 +1,18 @@
+ServerMeasurements(shape=(300, 3), features=('gpu_utilization', 'cpu_utilization', 'memory_gb'))
+Resumen T1
+  repr: ServerMeasurements(shape=(300, 3), features=('gpu_utilization', 'cpu_utilization', 'memory_gb'))
+  repr coincide con el esperado: True
+  shape: (300, 3), dtype: float64
+  timestamp como datetime: True
+  CSV sin modificar: True
+  validacion no_bidimensional_1d: OK (ValueError)
+  validacion no_bidimensional_3d: OK (ValueError)
+  validacion columnas_menos_que_nombres: OK (ValueError)
+  validacion columnas_mas_que_nombres: OK (ValueError)
+  validacion no_numericos_texto: OK (ValueError)
+  validacion no_numericos_mixto: OK (ValueError)
+  validacion todas_lanzan_valueerror: OK (ValueError)
+  gpu_utilization: media=57.9931, std=14.4301, min=22.3100, max=97.8200
+  cpu_utilization: media=50.5416, std=12.6985, min=19.0900, max=93.0000
+  memory_gb: media=29.4553, std=6.5368, min=13.5900, max=55.0000
+  resultados escritos en: resultados.json

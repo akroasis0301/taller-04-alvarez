@@ -1,0 +1,12 @@
+Round trip verificado: output/server_analysis.parquet
+Filas: True
+Columnas: True
+Esquema: True
+Valores: True
+----------------------------------------------------------------
+Fuente del DataFrame analizado: reconstruido desde data/server_measurements.csv
+Filas: 300 -> 300 | Columnas: 9 -> 9
+pandas.DataFrame.equals (antes vs después): True
+Filas requires_review=True: 281
+Archivo parquet escrito: output/server_analysis.parquet (existe: True)
+Criterio de éxito T5: CUMPLIDO

@@ -1,0 +1,11 @@
+==============================================================
+T1 — Breast Cancer Wisconsin (Diagnostic): resumen
+==============================================================
+Ejemplos totales : 569
+Atributos        : 30
+Clases           : {'malignant': 212, 'benign': 357}
+División 70/30 estratificada (random_state=42):
+  Entrenamiento  : 398 (0.6995) -> {'malignant': 148, 'benign': 250}
+  Prueba         : 171 (0.3005) -> {'malignant': 64, 'benign': 107}
+Consistencia 70/30 estratificada (tolerancia 1 ejemplo): OK
+Archivos: resultados.json, t1_division_7030.npz, t1_distribucion_clases.png

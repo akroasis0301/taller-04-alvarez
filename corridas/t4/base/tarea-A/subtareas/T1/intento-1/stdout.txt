@@ -1,0 +1,8 @@
+=== T1: Carga y división de Breast Cancer Wisconsin (Diagnostic) ===
+Ejemplos totales : 569
+Atributos        : 30
+Clases           : ['malignant', 'benign']
+Casos por clase (total): {'malignant': 212, 'benign': 357}
+División 70/30 estratificada (random_state=42): train=398 ({'malignant': 148, 'benign': 250}), test=171 ({'malignant': 64, 'benign': 107})
+Archivos reutilizables guardados en datos/ (parquet, csv, npz).
+Contrato escrito en resultados.json; figura en t1_distribucion_clases.png.

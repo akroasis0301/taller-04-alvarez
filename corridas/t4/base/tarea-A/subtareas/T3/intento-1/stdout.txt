@@ -1,0 +1,23 @@
+División usada (reconstrucción determinista de la división de T1: load_breast_cancer + train_test_split(test_size=0.3, stratify=y, random_state=42))
+  train: 398 ejemplos | test: 171 ejemplos | atributos: 30
+    5% (n= 19) | Naive Bayes gaussiano  accuracy=0.9415  f1_macro=0.9353
+    5% (n= 19) | Regresión logística    accuracy=0.9298  f1_macro=0.9217
+   10% (n= 39) | Naive Bayes gaussiano  accuracy=0.9474  f1_macro=0.9420
+   10% (n= 39) | Regresión logística    accuracy=0.9357  f1_macro=0.9285
+   25% (n= 99) | Naive Bayes gaussiano  accuracy=0.9357  f1_macro=0.9302
+   25% (n= 99) | Regresión logística    accuracy=0.9415  f1_macro=0.9363
+   50% (n=199) | Naive Bayes gaussiano  accuracy=0.9240  f1_macro=0.9180
+   50% (n=199) | Regresión logística    accuracy=0.9766  f1_macro=0.9747
+  100% (n=398) | Naive Bayes gaussiano  accuracy=0.9357  f1_macro=0.9307
+  100% (n=398) | Regresión logística    accuracy=0.9883  f1_macro=0.9875
+
+Resumen T3 — exactitud en prueba por tamaño de entrenamiento:
+modelo   Naive Bayes gaussiano  Regresión logística
+n_train                                            
+19                      0.9415               0.9298
+39                      0.9474               0.9357
+99                      0.9357               0.9415
+199                     0.9240               0.9766
+398                     0.9357               0.9883
+
+Archivos generados: t3_curva_aprendizaje.png, t3_curva_aprendizaje.csv, resultados.json

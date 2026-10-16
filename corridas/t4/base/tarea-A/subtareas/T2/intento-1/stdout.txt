@@ -1,0 +1,11 @@
+T2 — Parte 2: generativo (Naive Bayes gaussiano) contra discriminativo (regresión logística)
+División usada: reconstrucción determinista de la división de T1: load_breast_cancer + train_test_split(test_size=0.3, stratify=y, random_state=42)
+n_train=398  n_test=171  n_atributos=30
+Escalador: StandardScaler ajustado solo con el conjunto de entrenamiento
+
+Tabla de métricas sobre el conjunto de prueba:
+               modelo  accuracy_prueba  f1_macro_prueba
+Naive Bayes gaussiano         0.935673         0.930654
+  Regresión logística         0.988304         0.987515
+
+Archivos generados: resultados.json, t2_tabla_metricas.csv, t2_comparacion_modelos.png

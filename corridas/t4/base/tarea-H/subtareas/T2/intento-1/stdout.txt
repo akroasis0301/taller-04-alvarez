@@ -1,0 +1,18 @@
+=== T2: Generativo (GaussianNB) vs discriminativo (Regresión Logística) ===
+División usada: entrada/T1/resultados.json (indices_entrenamiento / indices_prueba)
+n_entrenamiento=398  n_prueba=171
+Escalador: StandardScaler ajustado solo con entrenamiento (medias train usadas; prueba nunca usada para ajustar).
+Verificación: la división coincide con train_test_split(0.7/0.3, stratify, seed=42): True
+
+Tabla de métricas en PRUEBA:
+            modelo  accuracy_prueba  f1_macro_prueba
+        GaussianNB         0.935673         0.930654
+LogisticRegression         0.988304         0.987515
+
+GaussianNB: errores en prueba = 11
+  matriz de confusión (filas=real [malignant, benign], cols=predicho): [[57, 7], [4, 103]]
+
+LogisticRegression: errores en prueba = 2
+  matriz de confusión (filas=real [malignant, benign], cols=predicho): [[63, 1], [1, 106]]
+
+Archivos generados: resultados.json, tabla_t2_metricas.csv, tabla_t2_metricas.md, t2_metricas_por_modelo.png, t2_tabla_metricas.png

@@ -1,0 +1,67 @@
+{
+  "subtarea": "T3",
+  "descripcion": "Comprobación empírica: 10,000 muestras de la distribución renormalizada top-p (p=0.9, T=1) con numpy.random.default_rng(0); frecuencias observadas vs probabilidades teóricas y divergencia KL en bits (empírica || teórica).",
+  "semilla": 0,
+  "num_muestras": 10000,
+  "tokens_nucleo": [
+    "t0",
+    "t1",
+    "t2",
+    "t3"
+  ],
+  "probabilidades_teoricas_renormalizadas": {
+    "t0": 0.5693760554907313,
+    "t1": 0.2094617451103304,
+    "t2": 0.12704497044632815,
+    "t3": 0.09411722895261025
+  },
+  "conteos_observados": {
+    "t0": 5682,
+    "t1": 2093,
+    "t2": 1296,
+    "t3": 929
+  },
+  "frecuencias_observadas": {
+    "t0": 0.5682,
+    "t1": 0.2093,
+    "t2": 0.1296,
+    "t3": 0.0929
+  },
+  "tabla_comparativa": {
+    "token": [
+      "t0",
+      "t1",
+      "t2",
+      "t3"
+    ],
+    "probabilidad_teorica": [
+      0.5693760554907313,
+      0.2094617451103304,
+      0.12704497044632815,
+      0.09411722895261025
+    ],
+    "frecuencia_observada": [
+      0.5682,
+      0.2093,
+      0.1296,
+      0.0929
+    ],
+    "conteo_observado": [
+      5682,
+      2093,
+      1296,
+      929
+    ],
+    "diferencia_obs_menos_teorica": [
+      -0.0011760554907312981,
+      -0.00016174511033037464,
+      0.002555029553671845,
+      -0.0012172289526102553
+    ]
+  },
+  "divergencia_KL_bits": 5.006898814879229e-05,
+  "divergencia_KL_nats": 3.470517796882468e-05,
+  "entropia_bits_empirica": 1.6361596553054363,
+  "entropia_bits_teorica_renormalizada": 1.6340748427749392,
+  "figura": "T3_frecuencias_observadas_vs_teoricas.png"
+}

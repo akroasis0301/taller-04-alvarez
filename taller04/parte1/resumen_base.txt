@@ -1,0 +1,188 @@
+{
+  "corridas": 6,
+  "corridas_sin_span_corrida": [],
+  "latencia_p50_ms": 468777.5,
+  "latencia_p95_ms": 1534135.75,
+  "tokens_entrada": 305317,
+  "tokens_salida": 565581,
+  "costo_usd": 0.385146,
+  "precio": "fila propietario_economico (gpt-4o-mini), verificada el 2026-08-26",
+  "errores": 2,
+  "por_span": {
+    "agent:programador": {
+      "n": 23,
+      "ms_total": 2957545.0,
+      "ms_medio": 128588.9,
+      "parte_del_total": 0.354,
+      "errores": 0
+    },
+    "llm:programador": {
+      "n": 26,
+      "ms_total": 2957526.0,
+      "ms_medio": 113751.0,
+      "parte_del_total": 0.354,
+      "errores": 0
+    },
+    "llm:indexador": {
+      "n": 25,
+      "ms_total": 468073.0,
+      "ms_medio": 18722.9,
+      "parte_del_total": 0.056,
+      "errores": 0
+    },
+    "agent:redactor": {
+      "n": 9,
+      "ms_total": 432953.0,
+      "ms_medio": 48105.9,
+      "parte_del_total": 0.052,
+      "errores": 0
+    },
+    "llm:redactor": {
+      "n": 9,
+      "ms_total": 426813.0,
+      "ms_medio": 47423.7,
+      "parte_del_total": 0.051,
+      "errores": 0
+    },
+    "agent:critico": {
+      "n": 23,
+      "ms_total": 340799.0,
+      "ms_medio": 14817.3,
+      "parte_del_total": 0.041,
+      "errores": 0
+    },
+    "llm:critico": {
+      "n": 21,
+      "ms_total": 340669.0,
+      "ms_medio": 16222.3,
+      "parte_del_total": 0.041,
+      "errores": 0
+    },
+    "agent:indexador": {
+      "n": 6,
+      "ms_total": 166138.0,
+      "ms_medio": 27689.7,
+      "parte_del_total": 0.02,
+      "errores": 0
+    },
+    "agent:planificador": {
+      "n": 6,
+      "ms_total": 90986.0,
+      "ms_medio": 15164.3,
+      "parte_del_total": 0.011,
+      "errores": 0
+    },
+    "llm:planificador": {
+      "n": 6,
+      "ms_total": 90960.0,
+      "ms_medio": 15160.0,
+      "parte_del_total": 0.011,
+      "errores": 0
+    },
+    "agent:ejecutor": {
+      "n": 23,
+      "ms_total": 24114.0,
+      "ms_medio": 1048.4,
+      "parte_del_total": 0.003,
+      "errores": 0
+    },
+    "herramienta:sandbox": {
+      "n": 23,
+      "ms_total": 23932.0,
+      "ms_medio": 1040.5,
+      "parte_del_total": 0.003,
+      "errores": 2
+    },
+    "embedding:embeddings": {
+      "n": 6,
+      "ms_total": 9595.0,
+      "ms_medio": 1599.2,
+      "parte_del_total": 0.001,
+      "errores": 0
+    },
+    "agent:investigador": {
+      "n": 20,
+      "ms_total": 9396.0,
+      "ms_medio": 469.8,
+      "parte_del_total": 0.001,
+      "errores": 0
+    },
+    "retriever:busqueda_local": {
+      "n": 20,
+      "ms_total": 9234.0,
+      "ms_medio": 461.7,
+      "parte_del_total": 0.001,
+      "errores": 0
+    },
+    "agent:lector": {
+      "n": 6,
+      "ms_total": 401.0,
+      "ms_medio": 66.8,
+      "parte_del_total": 0.0,
+      "errores": 0
+    },
+    "herramienta:leer_pdf": {
+      "n": 6,
+      "ms_total": 375.0,
+      "ms_medio": 62.5,
+      "parte_del_total": 0.0,
+      "errores": 0
+    },
+    "chain:procedencia": {
+      "n": 9,
+      "ms_total": 220.0,
+      "ms_medio": 24.4,
+      "parte_del_total": 0.0,
+      "errores": 0
+    },
+    "guardrail:guarda_ast": {
+      "n": 23,
+      "ms_total": 92.0,
+      "ms_medio": 4.0,
+      "parte_del_total": 0.0,
+      "errores": 0
+    },
+    "chain:orquestador": {
+      "n": 32,
+      "ms_total": 37.0,
+      "ms_medio": 1.2,
+      "parte_del_total": 0.0,
+      "errores": 0
+    },
+    "retriever:seccion_literal": {
+      "n": 20,
+      "ms_total": 33.0,
+      "ms_medio": 1.6,
+      "parte_del_total": 0.0,
+      "errores": 0
+    },
+    "guardrail:salida_pii": {
+      "n": 9,
+      "ms_total": 26.0,
+      "ms_medio": 2.9,
+      "parte_del_total": 0.0,
+      "errores": 0
+    },
+    "guardrail:salida_secretos": {
+      "n": 9,
+      "ms_total": 11.0,
+      "ms_medio": 1.2,
+      "parte_del_total": 0.0,
+      "errores": 0
+    },
+    "guardrail:entrada_inyeccion": {
+      "n": 6,
+      "ms_total": 10.0,
+      "ms_medio": 1.7,
+      "parte_del_total": 0.0,
+      "errores": 0
+    },
+    "guardrail:entrada_pii": {
+      "n": 6,
+      "ms_total": 4.0,
+      "ms_medio": 0.7,
+      "parte_del_total": 0.0,
+      "errores": 0
+    }
+  }
+}

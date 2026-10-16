@@ -1,0 +1,5 @@
+Traceback (most recent call last):
+  File "/Users/miguelestebanalvarez/Posgrado Maestría Inteligencia Artificial/1er Semestre/IA Generativa y Agentes/Talleres/Taller 04/taller-04-alvarez/corridas/t4/base/tarea-H/subtareas/T3/intento-1/script.py", line 93, in <module>
+    acc, f1m = entrenar_y_evaluar(X_sub, y_sub, X_test, y_test)
+                                                ^^^^^^
+NameError: name 'X_test' is not defined. Did you mean: 'y_test'?

@@ -1,0 +1,29 @@
+============================================================================
+T4 · RESUMEN POR SERVIDOR
+============================================================================
+Base            : data/server_measurements.csv
+load_score      : reconstruido y verificado con oráculo de T3: 0.5*z(gpu)+0.3*z(cpu)+0.2*z(memory)|ddof=0
+requires_review : entrada/T3/resultados.json (lista requires_review)
+----------------------------------------------------------------------------
+   server  observations  mean_power_w  max_temperature_c  mean_load  review_count
+AI-SRV-01            50      363.4598              86.50  -0.614527             2
+AI-SRV-02            50      390.4990              76.47  -0.417730             1
+AI-SRV-03            50      416.6088              86.50  -0.085884             2
+AI-SRV-04            50      434.8684              80.86  -0.003041             5
+AI-SRV-05            50      471.1808              86.50   0.453583            12
+AI-SRV-06            50      495.7276              88.01   0.667600            27
+----------------------------------------------------------------------------
+Filas: 6 | Columnas: ['server', 'observations', 'mean_power_w', 'max_temperature_c', 'mean_load', 'review_count']
+Fila AI-SRV-01: {'server': 'AI-SRV-01', 'observations': 50, 'mean_power_w': 363.45980000000003, 'max_temperature_c': 86.5, 'mean_load': -0.6145273545959999, 'review_count': 2}
+  [OK] seis_filas_una_por_servidor
+  [OK] columnas_en_orden_exacto
+  [OK] servidores_en_orden_alfabetico
+  [OK] sin_nulos_en_resumen
+  [OK] AI_SRV_01_observations_50
+  [OK] AI_SRV_01_mean_power_w_363_4598
+  [OK] AI_SRV_01_max_temperature_c_86_50
+  [OK] AI_SRV_01_mean_load_menos_0_614527
+  [OK] AI_SRV_01_review_count_2
+Coherencia con T3: {'n_filas_300': True, 'requires_review_dtype_bool': True, 'total_requires_review_true_49': True, 'review_count_suma_49': True, 'n_load_score_mayor_1_5_9': True, 'fila_control_load_score_coincide': True, 'fila_control_server_y_timestamp_ok': True}
+CRITERIO DE ÉXITO: CUMPLIDO
+Archivos escritos: resultados.json, output/server_analysis.parquet, output/server_summary.parquet, output/server_summary.csv, t4_resumen_por_servidor.png

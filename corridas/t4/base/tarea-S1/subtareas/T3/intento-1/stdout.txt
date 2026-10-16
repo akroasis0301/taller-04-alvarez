@@ -1,0 +1,9 @@
+=== T3: DataFrame con load_score y requires_review ===
+Filas x columnas: 300 x 9 | Columnas: ['server', 'timestamp', 'gpu_utilization', 'cpu_utilization', 'memory_gb', 'power_w', 'temperature_c', 'load_score', 'requires_review']
+requires_review dtype: bool (bool esperado: True)
+Fila 23: server=AI-SRV-01, timestamp=2026-08-24 09:55:00, load_score=3.136218, temperature_c=66.97, requires_review=True
+Fila 23 coincide con lo esperado: True {'server_ok': True, 'timestamp_ok': True, 'load_score_ok': True, 'temperature_c_ok': True, 'requires_review_ok': True}
+Original intacto: True
+requires_review=True: 49 filas (load>1.5: 9, temp>80: 42, ambas: 2)
+Parquet guardado en: output/server_analysis.parquet (existe: True)
+Criterio de éxito global: True

@@ -1,0 +1,103 @@
+{
+  "subtarea": "T2",
+  "descripcion": "Naive Bayes gaussiano y regresión logística (atributos estandarizados) entrenados con la división 70/30 estratificada de T1; accuracy y F1 macro medidos sobre el conjunto de prueba.",
+  "division_fuente": "entrada/T1/resultados.json (indices_entrenamiento / indices_prueba)",
+  "n_entrenamiento": 398,
+  "n_prueba": 171,
+  "conteo_por_clase_prueba": {
+    "malignant": 64,
+    "benign": 107
+  },
+  "preprocesamiento": "StandardScaler ajustado únicamente con el conjunto de entrenamiento; el mismo escalador transforma entrenamiento y prueba.",
+  "config_modelos": {
+    "GaussianNB": "GaussianNB() con parámetros por defecto, sobre atributos estandarizados",
+    "LogisticRegression": "LogisticRegression(max_iter=5000, random_state=42), sobre atributos estandarizados"
+  },
+  "tabla": [
+    {
+      "modelo": "GaussianNB",
+      "accuracy_prueba": 0.935672514619883,
+      "f1_macro_prueba": 0.9306543778801843
+    },
+    {
+      "modelo": "LogisticRegression",
+      "accuracy_prueba": 0.9883040935672515,
+      "f1_macro_prueba": 0.9875146028037383
+    }
+  ],
+  "accuracy_prueba": {
+    "GaussianNB": 0.935672514619883,
+    "LogisticRegression": 0.9883040935672515
+  },
+  "f1_macro_prueba": {
+    "GaussianNB": 0.9306543778801843,
+    "LogisticRegression": 0.9875146028037383
+  },
+  "detalle_por_modelo": {
+    "GaussianNB": {
+      "accuracy_prueba": 0.935672514619883,
+      "f1_macro_prueba": 0.9306543778801843,
+      "n_errores_prueba": 11,
+      "matriz_confusion_prueba": {
+        "clases_orden": [
+          "malignant",
+          "benign"
+        ],
+        "matriz": [
+          [
+            57,
+            7
+          ],
+          [
+            4,
+            103
+          ]
+        ]
+      },
+      "precision_por_clase": {
+        "malignant": 0.9344262295081968,
+        "benign": 0.9363636363636364
+      },
+      "recall_por_clase": {
+        "malignant": 0.890625,
+        "benign": 0.9626168224299065
+      }
+    },
+    "LogisticRegression": {
+      "accuracy_prueba": 0.9883040935672515,
+      "f1_macro_prueba": 0.9875146028037383,
+      "n_errores_prueba": 2,
+      "matriz_confusion_prueba": {
+        "clases_orden": [
+          "malignant",
+          "benign"
+        ],
+        "matriz": [
+          [
+            63,
+            1
+          ],
+          [
+            1,
+            106
+          ]
+        ]
+      },
+      "precision_por_clase": {
+        "malignant": 0.984375,
+        "benign": 0.9906542056074766
+      },
+      "recall_por_clase": {
+        "malignant": 0.984375,
+        "benign": 0.9906542056074766
+      }
+    }
+  },
+  "verificacion_division_t1": {
+    "coincide_con_train_test_split_recalculado": true,
+    "train_size": 0.7,
+    "test_size": 0.3,
+    "estratificada_por_clase": true,
+    "random_state": 42
+  }
+}

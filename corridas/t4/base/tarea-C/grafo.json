@@ -1,0 +1,1314 @@
+{
+ "directed": true,
+ "multigraph": false,
+ "graph": {},
+ "nodes": [
+  {
+   "titulo": "Tarea C — Recuperación léxica contra semántica latente sobre un corpus mínimo",
+   "trabajo": false,
+   "id": "Preámbulo",
+   "capa": "enunciado"
+  },
+  {
+   "titulo": "Corpus",
+   "trabajo": false,
+   "id": "Corpus",
+   "capa": "enunciado"
+  },
+  {
+   "titulo": "Consultas y juicios de relevancia",
+   "trabajo": false,
+   "id": "Consultas y juicios de relevancia",
+   "capa": "enunciado"
+  },
+  {
+   "titulo": "Parte 1 — Línea base léxica",
+   "trabajo": true,
+   "id": "Parte 1",
+   "capa": "enunciado"
+  },
+  {
+   "titulo": "Parte 2 — Semántica latente",
+   "trabajo": true,
+   "id": "Parte 2",
+   "capa": "enunciado"
+  },
+  {
+   "titulo": "Parte 3 — Análisis por consulta",
+   "trabajo": true,
+   "id": "Parte 3",
+   "capa": "enunciado"
+  },
+  {
+   "titulo": "Parte 4 — Pregunta conceptual",
+   "trabajo": true,
+   "id": "Parte 4",
+   "capa": "enunciado"
+  },
+  {
+   "titulo": "El reporte",
+   "trabajo": false,
+   "id": "El reporte",
+   "capa": "enunciado"
+  },
+  {
+   "capa": "entidad",
+   "nombre": "costo",
+   "tipo": "metrica",
+   "origen": [
+    "notas",
+    "enunciado"
+   ],
+   "citas": [
+    "s1-transformers-y-foundation-models § 6. Notas del Lab 01",
+    "s4-llmops-y-finetuning § 3. Observabilidad … 3.4 Prompt Versioning",
+    "Parte 4"
+   ],
+   "comunidad": 6,
+   "id": "ent:costo"
+  },
+  {
+   "capa": "entidad",
+   "nombre": "text-embedding-3-large",
+   "tipo": "metodo",
+   "origen": [
+    "notas"
+   ],
+   "citas": [
+    "s2-rag-y-vector-search § 2. Embeddings … 2.3 Similitud semántica"
+   ],
+   "comunidad": 4,
+   "id": "ent:text embedding 3 large"
+  },
+  {
+   "capa": "entidad",
+   "nombre": "producto punto",
+   "tipo": "metrica",
+   "origen": [
+    "notas"
+   ],
+   "citas": [
+    "s2-rag-y-vector-search § 2. Embeddings … 2.3 Similitud semántica"
+   ],
+   "comunidad": 4,
+   "id": "ent:producto punto"
+  },
+  {
+   "capa": "entidad",
+   "nombre": "Answer Relevancy",
+   "tipo": "metrica",
+   "origen": [
+    "notas"
+   ],
+   "citas": [
+    "s2-rag-y-vector-search § 6. Evaluación de RAG … 6.3 GraphRAG",
+    "s4-llmops-y-finetuning § 2.3 RAGAS para RAG"
+   ],
+   "comunidad": 1,
+   "id": "ent:answer relevancy"
+  },
+  {
+   "capa": "entidad",
+   "nombre": "tres métricas",
+   "tipo": "metrica",
+   "origen": [
+    "enunciado"
+   ],
+   "citas": [
+    "Parte 2"
+   ],
+   "comunidad": 1,
+   "id": "ent:tre metrica"
+  },
+  {
+   "capa": "entidad",
+   "nombre": "random_state=0",
+   "tipo": "restriccion",
+   "origen": [
+    "enunciado"
+   ],
+   "citas": [
+    "Parte 2"
+   ],
+   "comunidad": 4,
+   "id": "ent:random state 0"
+  },
+  {
+   "capa": "entidad",
+   "nombre": "contrastive learning",
+   "tipo": "metodo",
+   "origen": [
+    "notas"
+   ],
+   "citas": [
+    "s2-rag-y-vector-search § 2. Embeddings … 2.3 Similitud semántica"
+   ],
+   "comunidad": 4,
+   "id": "ent:contrastive learning"
+  },
+  {
+   "capa": "entidad",
+   "nombre": "sentence-transformers/all-MiniLM-L6-v2",
+   "tipo": "metodo",
+   "origen": [
+    "notas"
+   ],
+   "citas": [
+    "s2-rag-y-vector-search § 2. Embeddings … 2.3 Similitud semántica",
+    "s2-rag-y-vector-search § 4. Chunking Strategies … 4.3 Regla práctica"
+   ],
+   "comunidad": 4,
+   "id": "ent:sentence transformer all minilm l6 v2"
+  },
+  {
+   "capa": "entidad",
+   "nombre": "modelos propietarios",
+   "tipo": "metodo",
+   "origen": [
+    "notas"
+   ],
+   "citas": [
+    "s1-transformers-y-foundation-models § 6. Notas del Lab 01"
+   ],
+   "comunidad": 6,
+   "id": "ent:modelo propietario"
+  },
+  {
+   "capa": "entidad",
+   "nombre": "span",
+   "tipo": "concepto",
+   "origen": [
+    "notas"
+   ],
+   "citas": [
+    "s4-llmops-y-finetuning § 3. Observabilidad … 3.4 Prompt Versioning"
+   ],
+   "comunidad": 2,
+   "id": "ent:span"
+  },
+  {
+   "capa": "entidad",
+   "nombre": "curse of dimensionality",
+   "tipo": "concepto",
+   "origen": [
+    "notas"
+   ],
+   "citas": [
+    "s2-rag-y-vector-search § 2. Embeddings … 2.3 Similitud semántica"
+   ],
+   "comunidad": 4,
+   "id": "ent:curse of dimensionality"
+  },
+  {
+   "capa": "entidad",
+   "nombre": "términos compartidos",
+   "tipo": "concepto",
+   "origen": [
+    "enunciado"
+   ],
+   "citas": [
+    "Parte 3"
+   ],
+   "comunidad": null,
+   "id": "ent:termino compartido"
+  },
+  {
+   "capa": "entidad",
+   "nombre": "clusters",
+   "tipo": "concepto",
+   "origen": [
+    "notas"
+   ],
+   "citas": [
+    "s1-transformers-y-foundation-models § 2.4 Gaussian Mixture Models — variables latentes … 2.5 Hidden Markov Models — generación secuencial"
+   ],
+   "comunidad": 0,
+   "id": "ent:cluster"
+  },
+  {
+   "capa": "entidad",
+   "nombre": "Dense Retrieval",
+   "tipo": "metodo",
+   "origen": [
+    "notas"
+   ],
+   "citas": [
+    "s2-rag-y-vector-search § 5. Retrieval: Sparse, Dense, Hybrid … 5.4 Reranking",
+    "s2-rag-y-vector-search § 6. Evaluación de RAG … 6.3 GraphRAG"
+   ],
+   "comunidad": 1,
+   "id": "ent:dense retrieval"
+  },
+  {
+   "capa": "entidad",
+   "nombre": "chunks",
+   "tipo": "dataset",
+   "origen": [
+    "notas"
+   ],
+   "citas": [
+    "s2-rag-y-vector-search § 1. Por qué RAG existe",
+    "s2-rag-y-vector-search § 6. Evaluación de RAG … 6.3 GraphRAG",
+    "s4-llmops-y-finetuning § 2.3 RAGAS para RAG"
+   ],
+   "comunidad": 1,
+   "id": "ent:chunk"
+  },
+  {
+   "capa": "entidad",
+   "nombre": "TF-IDF",
+   "tipo": "metodo",
+   "origen": [
+    "notas",
+    "enunciado"
+   ],
+   "citas": [
+    "s2-rag-y-vector-search § 5. Retrieval: Sparse, Dense, Hybrid … 5.4 Reranking",
+    "Parte 1",
+    "Parte 2",
+    "Parte 4"
+   ],
+   "comunidad": 4,
+   "id": "ent:tf idf"
+  },
+  {
+   "capa": "entidad",
+   "nombre": "consultas",
+   "tipo": "dataset",
+   "origen": [
+    "enunciado"
+   ],
+   "citas": [
+    "Parte 1",
+    "Parte 2",
+    "Parte 3"
+   ],
+   "comunidad": 1,
+   "id": "ent:consulta"
+  },
+  {
+   "capa": "entidad",
+   "nombre": "documento relevante",
+   "tipo": "concepto",
+   "origen": [
+    "enunciado"
+   ],
+   "citas": [
+    "Parte 3"
+   ],
+   "comunidad": 1,
+   "id": "ent:documento relevante"
+  },
+  {
+   "capa": "entidad",
+   "nombre": "juicios",
+   "tipo": "dataset",
+   "origen": [
+    "enunciado"
+   ],
+   "citas": [
+    "Parte 2"
+   ],
+   "comunidad": 4,
+   "id": "ent:juicio"
+  },
+  {
+   "capa": "entidad",
+   "nombre": "Sentence-BERT",
+   "tipo": "metodo",
+   "origen": [
+    "notas"
+   ],
+   "citas": [
+    "s2-rag-y-vector-search § 2. Embeddings … 2.3 Similitud semántica"
+   ],
+   "comunidad": 4,
+   "id": "ent:sentence bert"
+  },
+  {
+   "capa": "entidad",
+   "nombre": "Langfuse",
+   "tipo": "metodo",
+   "origen": [
+    "notas"
+   ],
+   "citas": [
+    "s4-llmops-y-finetuning § 3. Observabilidad … 3.4 Prompt Versioning"
+   ],
+   "comunidad": 2,
+   "id": "ent:langfuse"
+  },
+  {
+   "capa": "entidad",
+   "nombre": "Hit@1",
+   "tipo": "metrica",
+   "origen": [
+    "enunciado"
+   ],
+   "citas": [
+    "Parte 1"
+   ],
+   "comunidad": 4,
+   "id": "ent:hit 1"
+  },
+  {
+   "capa": "entidad",
+   "nombre": "calidad",
+   "tipo": "metrica",
+   "origen": [
+    "notas"
+   ],
+   "citas": [
+    "s1-transformers-y-foundation-models § 6. Notas del Lab 01"
+   ],
+   "comunidad": 6,
+   "id": "ent:calidad"
+  },
+  {
+   "capa": "entidad",
+   "nombre": "text-embedding-3-small",
+   "tipo": "metodo",
+   "origen": [
+    "notas"
+   ],
+   "citas": [
+    "s2-rag-y-vector-search § 2. Embeddings … 2.3 Similitud semántica"
+   ],
+   "comunidad": 4,
+   "id": "ent:text embedding 3 small"
+  },
+  {
+   "capa": "entidad",
+   "nombre": "BAAI/bge-m3",
+   "tipo": "metodo",
+   "origen": [
+    "notas"
+   ],
+   "citas": [
+    "s2-rag-y-vector-search § 2. Embeddings … 2.3 Similitud semántica"
+   ],
+   "comunidad": 4,
+   "id": "ent:baai bge m3"
+  },
+  {
+   "capa": "entidad",
+   "nombre": "top 3",
+   "tipo": "metrica",
+   "origen": [
+    "enunciado"
+   ],
+   "citas": [
+    "Parte 3"
+   ],
+   "comunidad": 1,
+   "id": "ent:top 3"
+  },
+  {
+   "capa": "entidad",
+   "nombre": "Hit@3",
+   "tipo": "metrica",
+   "origen": [
+    "enunciado"
+   ],
+   "citas": [
+    "Parte 1"
+   ],
+   "comunidad": 4,
+   "id": "ent:hit 3"
+  },
+  {
+   "capa": "entidad",
+   "nombre": "TruncatedSVD",
+   "tipo": "metodo",
+   "origen": [
+    "enunciado"
+   ],
+   "citas": [
+    "Parte 2"
+   ],
+   "comunidad": 4,
+   "id": "ent:truncatedsvd"
+  },
+  {
+   "capa": "entidad",
+   "nombre": "n_components=4",
+   "tipo": "restriccion",
+   "origen": [
+    "enunciado"
+   ],
+   "citas": [
+    "Parte 2"
+   ],
+   "comunidad": 4,
+   "id": "ent:n component 4"
+  },
+  {
+   "capa": "entidad",
+   "nombre": "similitud coseno",
+   "tipo": "metrica",
+   "origen": [
+    "notas",
+    "enunciado"
+   ],
+   "citas": [
+    "s2-rag-y-vector-search § 2. Embeddings … 2.3 Similitud semántica",
+    "s2-rag-y-vector-search § 5. Retrieval: Sparse, Dense, Hybrid … 5.4 Reranking",
+    "Parte 1"
+   ],
+   "comunidad": 4,
+   "id": "ent:similitud coseno"
+  },
+  {
+   "capa": "entidad",
+   "nombre": "límite de tokens de contexto",
+   "tipo": "concepto",
+   "origen": [
+    "notas"
+   ],
+   "citas": [
+    "s2-rag-y-vector-search § 4. Chunking Strategies … 4.3 Regla práctica"
+   ],
+   "comunidad": 4,
+   "id": "ent:limite de token de contexto"
+  },
+  {
+   "capa": "entidad",
+   "nombre": "MRR",
+   "tipo": "metrica",
+   "origen": [
+    "notas",
+    "enunciado"
+   ],
+   "citas": [
+    "s2-rag-y-vector-search § 6. Evaluación de RAG … 6.3 GraphRAG",
+    "Parte 1"
+   ],
+   "comunidad": 1,
+   "id": "ent:mrr"
+  },
+  {
+   "capa": "entidad",
+   "nombre": "BM25",
+   "tipo": "metodo",
+   "origen": [
+    "notas"
+   ],
+   "citas": [
+    "s2-rag-y-vector-search § 5. Retrieval: Sparse, Dense, Hybrid … 5.4 Reranking"
+   ],
+   "comunidad": 4,
+   "id": "ent:bm25"
+  },
+  {
+   "capa": "entidad",
+   "nombre": "modelo entrenado",
+   "tipo": "metodo",
+   "origen": [
+    "enunciado"
+   ],
+   "citas": [
+    "Parte 4"
+   ],
+   "comunidad": 4,
+   "id": "ent:modelo entrenado"
+  },
+  {
+   "capa": "entidad",
+   "nombre": "q5",
+   "tipo": "dataset",
+   "origen": [
+    "enunciado"
+   ],
+   "citas": [
+    "Parte 4"
+   ],
+   "comunidad": 4,
+   "id": "ent:q5"
+  },
+  {
+   "capa": "entidad",
+   "nombre": "línea base léxica",
+   "tipo": "concepto",
+   "origen": [
+    "enunciado"
+   ],
+   "citas": [
+    "Parte 1"
+   ],
+   "comunidad": 4,
+   "id": "ent:linea base lexica"
+  },
+  {
+   "capa": "entidad",
+   "nombre": "documentos",
+   "tipo": "dataset",
+   "origen": [
+    "enunciado"
+   ],
+   "citas": [
+    "Parte 1"
+   ],
+   "comunidad": 4,
+   "id": "ent:documento"
+  },
+  {
+   "capa": "entidad",
+   "nombre": "parámetros por defecto",
+   "tipo": "restriccion",
+   "origen": [
+    "enunciado"
+   ],
+   "citas": [
+    "Parte 1"
+   ],
+   "comunidad": 4,
+   "id": "ent:parametro por defecto"
+  },
+  {
+   "capa": "entidad",
+   "nombre": "recuperador denso",
+   "tipo": "metodo",
+   "origen": [
+    "enunciado"
+   ],
+   "citas": [
+    "Parte 4"
+   ],
+   "comunidad": 4,
+   "id": "ent:recuperador denso"
+  },
+  {
+   "capa": "entidad",
+   "nombre": "embeddings",
+   "tipo": "metodo",
+   "origen": [
+    "notas",
+    "enunciado"
+   ],
+   "citas": [
+    "s1-transformers-y-foundation-models § 2.4 Gaussian Mixture Models — variables latentes … 2.5 Hidden Markov Models — generación secuencial",
+    "s2-rag-y-vector-search § 2. Embeddings … 2.3 Similitud semántica",
+    "s2-rag-y-vector-search § 4. Chunking Strategies … 4.3 Regla práctica",
+    "s2-rag-y-vector-search § 5. Retrieval: Sparse, Dense, Hybrid … 5.4 Reranking",
+    "s2-rag-y-vector-search § 7. Notas del Lab 02",
+    "s4-llmops-y-finetuning § 2.3 RAGAS para RAG",
+    "Parte 4"
+   ],
+   "comunidad": 4,
+   "id": "ent:embedding"
+  },
+  {
+   "capa": "entidad",
+   "nombre": "análisis por consulta",
+   "tipo": "concepto",
+   "origen": [
+    "enunciado"
+   ],
+   "citas": [
+    "Parte 3"
+   ],
+   "comunidad": null,
+   "id": "ent:analisi por consulta"
+  },
+  {
+   "capa": "entidad",
+   "nombre": "evaluación",
+   "tipo": "concepto",
+   "origen": [
+    "enunciado"
+   ],
+   "citas": [
+    "Parte 2"
+   ],
+   "comunidad": 1,
+   "id": "ent:evaluacion"
+  },
+  {
+   "capa": "entidad",
+   "nombre": "TfidfVectorizer",
+   "tipo": "metodo",
+   "origen": [
+    "enunciado"
+   ],
+   "citas": [
+    "Parte 1"
+   ],
+   "comunidad": 4,
+   "id": "ent:tfidfvectorizer"
+  },
+  {
+   "capa": "entidad",
+   "nombre": "RAG baseline",
+   "tipo": "metodo",
+   "origen": [
+    "notas"
+   ],
+   "citas": [
+    "s2-rag-y-vector-search § 7. Notas del Lab 02"
+   ],
+   "comunidad": 8,
+   "id": "ent:rag baseline"
+  },
+  {
+   "capa": "entidad",
+   "nombre": "semántica latente",
+   "tipo": "concepto",
+   "origen": [
+    "enunciado"
+   ],
+   "citas": [
+    "Parte 2"
+   ],
+   "comunidad": 4,
+   "id": "ent:semantica latente"
+  }
+ ],
+ "aristas": [
+  {
+   "tipo": "menciona",
+   "source": "Parte 1",
+   "target": "ent:linea base lexica"
+  },
+  {
+   "tipo": "menciona",
+   "source": "Parte 1",
+   "target": "ent:tf idf"
+  },
+  {
+   "tipo": "menciona",
+   "source": "Parte 1",
+   "target": "ent:tfidfvectorizer"
+  },
+  {
+   "tipo": "menciona",
+   "source": "Parte 1",
+   "target": "ent:similitud coseno"
+  },
+  {
+   "tipo": "menciona",
+   "source": "Parte 1",
+   "target": "ent:consulta"
+  },
+  {
+   "tipo": "menciona",
+   "source": "Parte 1",
+   "target": "ent:documento"
+  },
+  {
+   "tipo": "menciona",
+   "source": "Parte 1",
+   "target": "ent:parametro por defecto"
+  },
+  {
+   "tipo": "menciona",
+   "source": "Parte 1",
+   "target": "ent:hit 1"
+  },
+  {
+   "tipo": "menciona",
+   "source": "Parte 1",
+   "target": "ent:hit 3"
+  },
+  {
+   "tipo": "menciona",
+   "source": "Parte 1",
+   "target": "ent:mrr"
+  },
+  {
+   "tipo": "depende_de",
+   "regla": "anafora",
+   "evidencia": "Con las mismas consultas y los mismos juicios, proyecta la matri",
+   "source": "Parte 2",
+   "target": "Parte 1"
+  },
+  {
+   "tipo": "menciona",
+   "source": "Parte 2",
+   "target": "ent:truncatedsvd"
+  },
+  {
+   "tipo": "menciona",
+   "source": "Parte 2",
+   "target": "ent:tf idf"
+  },
+  {
+   "tipo": "menciona",
+   "source": "Parte 2",
+   "target": "ent:semantica latente"
+  },
+  {
+   "tipo": "menciona",
+   "source": "Parte 2",
+   "target": "ent:consulta"
+  },
+  {
+   "tipo": "menciona",
+   "source": "Parte 2",
+   "target": "ent:juicio"
+  },
+  {
+   "tipo": "menciona",
+   "source": "Parte 2",
+   "target": "ent:evaluacion"
+  },
+  {
+   "tipo": "menciona",
+   "source": "Parte 2",
+   "target": "ent:tre metrica"
+  },
+  {
+   "tipo": "menciona",
+   "source": "Parte 2",
+   "target": "ent:n component 4"
+  },
+  {
+   "tipo": "menciona",
+   "source": "Parte 2",
+   "target": "ent:random state 0"
+  },
+  {
+   "tipo": "menciona",
+   "source": "Parte 3",
+   "target": "ent:analisi por consulta"
+  },
+  {
+   "tipo": "menciona",
+   "source": "Parte 3",
+   "target": "ent:consulta"
+  },
+  {
+   "tipo": "menciona",
+   "source": "Parte 3",
+   "target": "ent:documento relevante"
+  },
+  {
+   "tipo": "menciona",
+   "source": "Parte 3",
+   "target": "ent:top 3"
+  },
+  {
+   "tipo": "menciona",
+   "source": "Parte 3",
+   "target": "ent:termino compartido"
+  },
+  {
+   "tipo": "depende_de",
+   "regla": "anafora",
+   "evidencia": "de un modelo entrenado) resolvería la consulta q5 mejor que los dos métodos de esta tarea? ¿Qué costo tiene frente a TF-",
+   "source": "Parte 4",
+   "target": "Parte 3"
+  },
+  {
+   "tipo": "menciona",
+   "source": "Parte 4",
+   "target": "ent:recuperador denso"
+  },
+  {
+   "tipo": "menciona",
+   "source": "Parte 4",
+   "target": "ent:embedding"
+  },
+  {
+   "tipo": "menciona",
+   "source": "Parte 4",
+   "target": "ent:modelo entrenado"
+  },
+  {
+   "tipo": "menciona",
+   "source": "Parte 4",
+   "target": "ent:tf idf"
+  },
+  {
+   "tipo": "menciona",
+   "source": "Parte 4",
+   "target": "ent:q5"
+  },
+  {
+   "tipo": "menciona",
+   "source": "Parte 4",
+   "target": "ent:costo"
+  },
+  {
+   "tipo": "depende_de",
+   "regla": "referencia",
+   "evidencia": "las secciones Objetivo, Método, Resultados (la tabla de la Parte 2 y la de la Parte 3) y Discusión. Toda cifra sale de",
+   "source": "El reporte",
+   "target": "Parte 2"
+  },
+  {
+   "tipo": "depende_de",
+   "regla": "referencia",
+   "evidencia": "tivo, Método, Resultados (la tabla de la Parte 2 y la de la Parte 3) y Discusión. Toda cifra sale de la ejecución.",
+   "source": "El reporte",
+   "target": "Parte 3"
+  },
+  {
+   "tipo": "relacion",
+   "relacion": "produce",
+   "citas": [
+    "s2-rag-y-vector-search § 2. Embeddings … 2.3 Similitud semántica"
+   ],
+   "source": "ent:text embedding 3 large",
+   "target": "ent:embedding"
+  },
+  {
+   "tipo": "relacion",
+   "relacion": "equivale_a",
+   "citas": [
+    "s2-rag-y-vector-search § 2. Embeddings … 2.3 Similitud semántica"
+   ],
+   "source": "ent:producto punto",
+   "target": "ent:similitud coseno"
+  },
+  {
+   "tipo": "relacion",
+   "relacion": "usa",
+   "citas": [
+    "s4-llmops-y-finetuning § 2.3 RAGAS para RAG"
+   ],
+   "source": "ent:answer relevancy",
+   "target": "ent:embedding"
+  },
+  {
+   "tipo": "relacion",
+   "relacion": "produce",
+   "citas": [
+    "s2-rag-y-vector-search § 2. Embeddings … 2.3 Similitud semántica"
+   ],
+   "source": "ent:sentence transformer all minilm l6 v2",
+   "target": "ent:embedding"
+  },
+  {
+   "tipo": "relacion",
+   "relacion": "tiene",
+   "citas": [
+    "s2-rag-y-vector-search § 4. Chunking Strategies … 4.3 Regla práctica"
+   ],
+   "source": "ent:sentence transformer all minilm l6 v2",
+   "target": "ent:limite de token de contexto"
+  },
+  {
+   "tipo": "relacion",
+   "relacion": "tiene",
+   "citas": [
+    "s1-transformers-y-foundation-models § 6. Notas del Lab 01"
+   ],
+   "source": "ent:modelo propietario",
+   "target": "ent:costo"
+  },
+  {
+   "tipo": "relacion",
+   "relacion": "registra",
+   "citas": [
+    "s4-llmops-y-finetuning § 3. Observabilidad … 3.4 Prompt Versioning"
+   ],
+   "source": "ent:span",
+   "target": "ent:costo"
+  },
+  {
+   "tipo": "relacion",
+   "relacion": "usa",
+   "citas": [
+    "s2-rag-y-vector-search § 5. Retrieval: Sparse, Dense, Hybrid … 5.4 Reranking"
+   ],
+   "source": "ent:dense retrieval",
+   "target": "ent:embedding"
+  },
+  {
+   "tipo": "relacion",
+   "relacion": "usa",
+   "citas": [
+    "s2-rag-y-vector-search § 5. Retrieval: Sparse, Dense, Hybrid … 5.4 Reranking"
+   ],
+   "source": "ent:dense retrieval",
+   "target": "ent:similitud coseno"
+  },
+  {
+   "tipo": "relacion",
+   "relacion": "compara_con",
+   "citas": [
+    "Parte 2"
+   ],
+   "source": "ent:tf idf",
+   "target": "ent:truncatedsvd"
+  },
+  {
+   "tipo": "relacion",
+   "relacion": "comparte_terminos_con",
+   "citas": [
+    "Parte 3"
+   ],
+   "source": "ent:consulta",
+   "target": "ent:documento relevante"
+  },
+  {
+   "tipo": "relacion",
+   "relacion": "queda_fuera_de",
+   "citas": [
+    "Parte 3"
+   ],
+   "source": "ent:documento relevante",
+   "target": "ent:top 3"
+  },
+  {
+   "tipo": "relacion",
+   "relacion": "produce",
+   "citas": [
+    "s2-rag-y-vector-search § 2. Embeddings … 2.3 Similitud semántica"
+   ],
+   "source": "ent:sentence bert",
+   "target": "ent:embedding"
+  },
+  {
+   "tipo": "relacion",
+   "relacion": "registra",
+   "citas": [
+    "s4-llmops-y-finetuning § 3. Observabilidad … 3.4 Prompt Versioning"
+   ],
+   "source": "ent:langfuse",
+   "target": "ent:costo"
+  },
+  {
+   "tipo": "relacion",
+   "relacion": "evalua",
+   "citas": [
+    "Parte 1"
+   ],
+   "source": "ent:hit 1",
+   "target": "ent:consulta"
+  },
+  {
+   "tipo": "relacion",
+   "relacion": "no_proporcional_a",
+   "citas": [
+    "s1-transformers-y-foundation-models § 6. Notas del Lab 01"
+   ],
+   "source": "ent:calidad",
+   "target": "ent:costo"
+  },
+  {
+   "tipo": "relacion",
+   "relacion": "produce",
+   "citas": [
+    "s2-rag-y-vector-search § 2. Embeddings … 2.3 Similitud semántica"
+   ],
+   "source": "ent:text embedding 3 small",
+   "target": "ent:embedding"
+  },
+  {
+   "tipo": "relacion",
+   "relacion": "produce",
+   "citas": [
+    "s2-rag-y-vector-search § 2. Embeddings … 2.3 Similitud semántica"
+   ],
+   "source": "ent:baai bge m3",
+   "target": "ent:embedding"
+  },
+  {
+   "tipo": "relacion",
+   "relacion": "evalua",
+   "citas": [
+    "Parte 1"
+   ],
+   "source": "ent:hit 3",
+   "target": "ent:consulta"
+  },
+  {
+   "tipo": "relacion",
+   "relacion": "proyecta",
+   "citas": [
+    "Parte 2"
+   ],
+   "source": "ent:truncatedsvd",
+   "target": "ent:tf idf"
+  },
+  {
+   "tipo": "relacion",
+   "relacion": "usa",
+   "citas": [
+    "Parte 2"
+   ],
+   "source": "ent:truncatedsvd",
+   "target": "ent:n component 4"
+  },
+  {
+   "tipo": "relacion",
+   "relacion": "usa",
+   "citas": [
+    "Parte 2"
+   ],
+   "source": "ent:truncatedsvd",
+   "target": "ent:random state 0"
+  },
+  {
+   "tipo": "relacion",
+   "relacion": "implementa",
+   "citas": [
+    "Parte 2"
+   ],
+   "source": "ent:truncatedsvd",
+   "target": "ent:semantica latente"
+  },
+  {
+   "tipo": "relacion",
+   "relacion": "evalua_con",
+   "citas": [
+    "Parte 2"
+   ],
+   "source": "ent:truncatedsvd",
+   "target": "ent:consulta"
+  },
+  {
+   "tipo": "relacion",
+   "relacion": "evalua_con",
+   "citas": [
+    "Parte 2"
+   ],
+   "source": "ent:truncatedsvd",
+   "target": "ent:juicio"
+  },
+  {
+   "tipo": "relacion",
+   "relacion": "compara",
+   "citas": [
+    "s2-rag-y-vector-search § 2. Embeddings … 2.3 Similitud semántica"
+   ],
+   "source": "ent:similitud coseno",
+   "target": "ent:embedding"
+  },
+  {
+   "tipo": "relacion",
+   "relacion": "es_robusta_a",
+   "citas": [
+    "s2-rag-y-vector-search § 2. Embeddings … 2.3 Similitud semántica"
+   ],
+   "source": "ent:similitud coseno",
+   "target": "ent:curse of dimensionality"
+  },
+  {
+   "tipo": "relacion",
+   "relacion": "ordena",
+   "citas": [
+    "Parte 1"
+   ],
+   "source": "ent:similitud coseno",
+   "target": "ent:documento"
+  },
+  {
+   "tipo": "relacion",
+   "relacion": "evalua",
+   "citas": [
+    "s2-rag-y-vector-search § 6. Evaluación de RAG … 6.3 GraphRAG"
+   ],
+   "source": "ent:mrr",
+   "target": "ent:chunk"
+  },
+  {
+   "tipo": "relacion",
+   "relacion": "evalua",
+   "citas": [
+    "Parte 1"
+   ],
+   "source": "ent:mrr",
+   "target": "ent:consulta"
+  },
+  {
+   "tipo": "relacion",
+   "relacion": "evoluciona_de",
+   "citas": [
+    "s2-rag-y-vector-search § 5. Retrieval: Sparse, Dense, Hybrid … 5.4 Reranking"
+   ],
+   "source": "ent:bm25",
+   "target": "ent:tf idf"
+  },
+  {
+   "tipo": "relacion",
+   "relacion": "usa",
+   "citas": [
+    "Parte 1"
+   ],
+   "source": "ent:linea base lexica",
+   "target": "ent:tf idf"
+  },
+  {
+   "tipo": "relacion",
+   "relacion": "usa",
+   "citas": [
+    "Parte 1"
+   ],
+   "source": "ent:linea base lexica",
+   "target": "ent:similitud coseno"
+  },
+  {
+   "tipo": "relacion",
+   "relacion": "ordena",
+   "citas": [
+    "Parte 1"
+   ],
+   "source": "ent:linea base lexica",
+   "target": "ent:documento"
+  },
+  {
+   "tipo": "relacion",
+   "relacion": "reporta",
+   "citas": [
+    "Parte 1"
+   ],
+   "source": "ent:linea base lexica",
+   "target": "ent:hit 1"
+  },
+  {
+   "tipo": "relacion",
+   "relacion": "reporta",
+   "citas": [
+    "Parte 1"
+   ],
+   "source": "ent:linea base lexica",
+   "target": "ent:hit 3"
+  },
+  {
+   "tipo": "relacion",
+   "relacion": "reporta",
+   "citas": [
+    "Parte 1"
+   ],
+   "source": "ent:linea base lexica",
+   "target": "ent:mrr"
+  },
+  {
+   "tipo": "relacion",
+   "relacion": "usa",
+   "citas": [
+    "Parte 4"
+   ],
+   "source": "ent:recuperador denso",
+   "target": "ent:embedding"
+  },
+  {
+   "tipo": "relacion",
+   "relacion": "resuelve",
+   "citas": [
+    "Parte 4"
+   ],
+   "source": "ent:recuperador denso",
+   "target": "ent:q5"
+  },
+  {
+   "tipo": "relacion",
+   "relacion": "compara_con",
+   "citas": [
+    "Parte 4"
+   ],
+   "source": "ent:recuperador denso",
+   "target": "ent:tf idf"
+  },
+  {
+   "tipo": "relacion",
+   "relacion": "tiene",
+   "citas": [
+    "Parte 4"
+   ],
+   "source": "ent:recuperador denso",
+   "target": "ent:costo"
+  },
+  {
+   "tipo": "relacion",
+   "relacion": "forman",
+   "citas": [
+    "s1-transformers-y-foundation-models § 2.4 Gaussian Mixture Models — variables latentes … 2.5 Hidden Markov Models — generación secuencial"
+   ],
+   "source": "ent:embedding",
+   "target": "ent:cluster"
+  },
+  {
+   "tipo": "relacion",
+   "relacion": "se_entrena_con",
+   "citas": [
+    "s2-rag-y-vector-search § 2. Embeddings … 2.3 Similitud semántica"
+   ],
+   "source": "ent:embedding",
+   "target": "ent:contrastive learning"
+  },
+  {
+   "tipo": "relacion",
+   "relacion": "tiene",
+   "citas": [
+    "s2-rag-y-vector-search § 4. Chunking Strategies … 4.3 Regla práctica"
+   ],
+   "source": "ent:embedding",
+   "target": "ent:limite de token de contexto"
+  },
+  {
+   "tipo": "relacion",
+   "relacion": "proviene_de",
+   "citas": [
+    "Parte 4"
+   ],
+   "source": "ent:embedding",
+   "target": "ent:modelo entrenado"
+  },
+  {
+   "tipo": "relacion",
+   "relacion": "usa",
+   "citas": [
+    "Parte 3"
+   ],
+   "source": "ent:analisi por consulta",
+   "target": "ent:termino compartido"
+  },
+  {
+   "tipo": "relacion",
+   "relacion": "usa",
+   "citas": [
+    "Parte 2"
+   ],
+   "source": "ent:evaluacion",
+   "target": "ent:consulta"
+  },
+  {
+   "tipo": "relacion",
+   "relacion": "usa",
+   "citas": [
+    "Parte 2"
+   ],
+   "source": "ent:evaluacion",
+   "target": "ent:juicio"
+  },
+  {
+   "tipo": "relacion",
+   "relacion": "mide",
+   "citas": [
+    "Parte 2"
+   ],
+   "source": "ent:evaluacion",
+   "target": "ent:tre metrica"
+  },
+  {
+   "tipo": "relacion",
+   "relacion": "implementa",
+   "citas": [
+    "Parte 1"
+   ],
+   "source": "ent:tfidfvectorizer",
+   "target": "ent:tf idf"
+  },
+  {
+   "tipo": "relacion",
+   "relacion": "usa",
+   "citas": [
+    "Parte 1"
+   ],
+   "source": "ent:tfidfvectorizer",
+   "target": "ent:parametro por defecto"
+  },
+  {
+   "tipo": "relacion",
+   "relacion": "incluye",
+   "citas": [
+    "s2-rag-y-vector-search § 7. Notas del Lab 02"
+   ],
+   "source": "ent:rag baseline",
+   "target": "ent:embedding"
+  }
+ ]
+}

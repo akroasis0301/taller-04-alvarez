@@ -1,0 +1,11 @@
+=== Subtarea T3 — Comprobación empírica (top-p p=0.9, T=1) ===
+Muestras: 10000 con numpy.random.default_rng(0)
+Token | conteo | frec. observada | prob. teórica
+  t0  |   5682 |      0.5682     |    0.5694
+  t1  |   2093 |      0.2093     |    0.2095
+  t2  |   1296 |      0.1296     |    0.1270
+  t3  |    929 |      0.0929     |    0.0941
+Suma frecuencias observadas: 1.000000
+Divergencia KL (empírica || teórica) = 0.000050 bits
+Figura guardada: t3_frecuencias_vs_teoricas.png
+Contrato escrito: resultados.json

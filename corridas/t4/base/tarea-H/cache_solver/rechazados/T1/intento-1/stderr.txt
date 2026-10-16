@@ -1,0 +1,7 @@
+Traceback (most recent call last):
+  File "/Users/miguelestebanalvarez/Posgrado Maestría Inteligencia Artificial/1er Semestre/IA Generativa y Agentes/Talleres/Taller 04/taller-04-alvarez/corridas/t4/base/tarea-H/subtareas/T1/intento-1/script.py", line 190, in <module>
+    main()
+  File "/Users/miguelestebanalvarez/Posgrado Maestría Inteligencia Artificial/1er Semestre/IA Generativa y Agentes/Talleres/Taller 04/taller-04-alvarez/corridas/t4/base/tarea-H/subtareas/T1/intento-1/script.py", line 81, in main
+    assert consistente, "La división no es consistente con 70/30 estratificado."
+           ^^^^^^^^^^^
+AssertionError: La división no es consistente con 70/30 estratificado.

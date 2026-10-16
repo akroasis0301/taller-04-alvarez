@@ -1,0 +1,11 @@
+modelo_clave,modelo,porcentaje_entrenamiento,n_train,accuracy_prueba,f1_macro_prueba
+naive_bayes_gaussiano,Naive Bayes gaussiano,5,19,0.9415204678362573,0.9353056900726393
+regresion_logistica,Regresión logística,5,19,0.9298245614035088,0.9217271895025938
+naive_bayes_gaussiano,Naive Bayes gaussiano,10,39,0.9473684210526315,0.9420055017522704
+regresion_logistica,Regresión logística,10,39,0.935672514619883,0.9285470085470086
+naive_bayes_gaussiano,Naive Bayes gaussiano,25,99,0.935672514619883,0.9301703975943869
+regresion_logistica,Regresión logística,25,99,0.9415204678362573,0.9362891207153503
+naive_bayes_gaussiano,Naive Bayes gaussiano,50,199,0.9239766081871345,0.9180460829493088
+regresion_logistica,Regresión logística,50,199,0.9766081871345029,0.97469665581533
+naive_bayes_gaussiano,Naive Bayes gaussiano,100,398,0.935672514619883,0.9306543778801843
+regresion_logistica,Regresión logística,100,398,0.9883040935672515,0.9875146028037383

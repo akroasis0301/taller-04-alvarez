@@ -1,0 +1,11 @@
+means: [57.99313333 50.54163333 29.45533333]
+stds : [14.43011728 12.69846349  6.53680183]
+zscores.shape    -> (300, 3)
+load_score.shape -> (300,)
+media por columna de zscores   : [ 5.68434189e-16  2.36847579e-16 -3.31586610e-16]
+desv. est. por columna zscores : [1. 1. 1.]
+max|media col| = 5.684e-16 (tol 1e-10) -> True
+max|std - 1|   = 0.000e+00 (tol 1e-10) -> True
+load_score == zscores @ [0.50, 0.30, 0.20]: max diff = 2.220e-16 -> True
+load_score: media=0.000000, min=-1.955650, max=3.136218
+Parquet escrito en output/server_analysis.parquet (300 filas)

@@ -1,0 +1,17 @@
+================================================================
+T3 — Comprobación empírica del muestreo top-p (p=0.9, T=1)
+================================================================
+Muestras: 10000 | Semilla: 0 (numpy.random.default_rng)
+Tokens del núcleo: ['t0', 't1', 't2', 't3']
+
+Token | Teórica (renorm.) | Observada | Conteo
+  t0  |      0.5694       |  0.5682  | 5682
+  t1  |      0.2095       |  0.2093  | 2093
+  t2  |      0.1270       |  0.1296  | 1296
+  t3  |      0.0941       |  0.0929  | 929
+
+Divergencia KL (empírica || teórica) = 0.000050 bits
+  (equivalente en nats: 0.000035)
+Entropía empírica: 1.636160 bits | Entropía teórica: 1.634075 bits
+Figura guardada: T3_frecuencias_observadas_vs_teoricas.png
+Resultados escritos en resultados.json

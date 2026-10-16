@@ -1,0 +1,72 @@
+Consider using the pymupdf_layout package for a greatly improved page layout analysis.
+  A A01  archivo         ✓  1 archivo(s) con reporte.md
+  A A02  archivo         ✓  11 archivo(s) con **/*.png
+  A A03  secciones       ✓  todas, en orden
+  A A04  palabras_max    ✓  896 palabras
+  A A05  cifra_presente  ✓  verdad=569.0000 ±0; hallada
+  A A06  cifra           ✓  verdad=0.9474 ±0.006; hallada
+  A A07  cifra           ✓  verdad=0.9883 ±0.012; hallada
+  A A08  procedencia     ✓  46/46 cifras respaldadas (1.00)
+  A A09  cifra_presente  ✓  verdad=0.9766 ±0.0006; hallada
+  A A10  juez            ✗  tipo desconocido: juez
+  A A11  juez            ✗  tipo desconocido: juez
+Tarea A: 9/11 · status=completado · 407.9 s
+
+  B B01  archivo         ✓  1 archivo(s) con *.ipynb
+  B B02  ipynb_ejecutado ✓  3 celdas de código, 0 sin ejecutar, 0 con error
+  B B03  cifra_presente  ✓  verdad=0.9147 ±0.00051; hallada
+  B B04  cifra_presente  ✓  verdad=1.7998 ±0.00051; hallada
+  B B05  cifra_presente  ✓  verdad=2.2888 ±0.00051; hallada
+  B B06  cifra_presente  ✓  verdad=0.5694 ±0.00051; hallada
+  B B07  contiene        ✓  todos presentes
+  B B08  archivo         ✓  21 archivo(s) con **/*.png
+  B B09  procedencia     ✓  77/77 cifras respaldadas (1.00)
+  B B10  juez            ✗  tipo desconocido: juez
+Tarea B: 9/10 · status=completado · 304.8 s
+
+  C C01  archivo         ✓  1 archivo(s) con reporte.pdf
+  C C02  paginas_max     ✓  2 páginas
+  C C03  secciones       ✓  todas, en orden
+  C C04  cifra           ✓  verdad=0.8611 ±0.006; hallada
+  C C05  cifra           ✓  verdad=0.8333 ±0.006; hallada
+  C C06  cifra           ✓  verdad=0.7500 ±0.006; hallada
+  C C07  contiene        ✓  todos presentes
+  C C08  procedencia     ✓  23/23 cifras respaldadas (1.00)
+  C C09  juez            ✗  tipo desconocido: juez
+Tarea C: 8/9 · status=completado · 859.1 s
+
+  S1 S101 archivo         ✓  1 archivo(s) con reporte.md
+  S1 S102 archivo         ✓  1 archivo(s) con output/server_analysis.parquet
+  S1 S103 secciones       ✗  faltan: ['Tarea 2']
+  S1 S104 palabras_max    ✓  609 palabras
+  S1 S105 cifra_presente  ✓  verdad=57.9931 ±0.0005; hallada
+  S1 S106 cifra_presente  ✓  verdad=3.1362 ±0.002; hallada
+  S1 S107 cifra           ✓  verdad=363.4598 ±0.0005; hallada
+  S1 S108 cifra           ✓  verdad=0.6676 ±0.0005; hallada
+  S1 S109 procedencia     ✓  26/26 cifras respaldadas (1.00)
+Tarea S1: 8/9 · status=completado · 1759.2 s
+
+  H H01  archivo         ✓  1 archivo(s) con reporte.md
+  H H02  archivo         ✓  17 archivo(s) con **/*.png
+  H H03  secciones       ✓  todas, en orden
+  H H04  palabras_max    ✓  1005 palabras
+  H H05  cifra_presente  ✓  verdad=569.0000 ±0; hallada
+  H H06  cifra           ✓  verdad=0.9474 ±0.006; hallada
+  H H07  cifra           ✓  verdad=0.9883 ±0.012; hallada
+  H H08  procedencia     ✓  61/61 cifras respaldadas (1.00)
+  H H09  cifra_presente  ✓  verdad=0.9766 ±0.0006; hallada
+  H H10  juez            ✗  tipo desconocido: juez
+Tarea H: 9/10 · status=completado · 529.8 s
+
+  P P01  archivo         ✓  1 archivo(s) con *.ipynb
+  P P02  ipynb_ejecutado ✓  3 celdas de código, 0 sin ejecutar, 0 con error
+  P P03  cifra_presente  ✓  verdad=0.9147 ±0.00051; hallada
+  P P04  cifra_presente  ✓  verdad=1.7998 ±0.00051; hallada
+  P P05  cifra_presente  ✓  verdad=2.2888 ±0.00051; hallada
+  P P06  cifra_presente  ✓  verdad=0.5694 ±0.00051; hallada
+  P P07  contiene        ✓  todos presentes
+  P P08  archivo         ✓  16 archivo(s) con **/*.png
+  P P09  procedencia     ✓  72/72 cifras respaldadas (1.00)
+Tarea P: 9/9 · status=completado · 162.9 s
+
+Comprobaciones aprobadas: 52/58 → resultados/t4/resultados_solver_base.csv

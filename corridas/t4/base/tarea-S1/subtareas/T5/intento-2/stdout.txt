@@ -1,0 +1,12 @@
+Round trip verificado: output/server_analysis.parquet
+Filas: True
+Columnas: True
+Esquema: True
+Valores: True
+----------------------------------------------------------------
+Fuente del DataFrame analizado: recálculo desde data/server_measurements.csv con la fórmula de T2/T3 (load_score = zscores @ [0.50, 0.30, 0.20]; columnas z-score: ['gpu_utilization', 'cpu_utilization', 'memory_gb']; ddof=0)
+Filas: 300 -> 300 | Columnas: 9 -> 9
+pandas.DataFrame.equals (antes vs después): True
+Filas requires_review=True: 49
+Archivo parquet escrito: output/server_analysis.parquet (existe: True)
+Criterio de éxito T5: CUMPLIDO

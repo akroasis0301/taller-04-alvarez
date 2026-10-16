@@ -1,0 +1,10 @@
+T3 — Curva de aprendizaje (división 70/30 de T1; prueba fija de 171 ejemplos)
+ fracción | n_train | Acc GaussianNB | Acc LogReg | F1m GaussianNB | F1m LogReg
+       5% |      19 |         0.9415 |     0.9298 |         0.9353 |     0.9217
+      10% |      39 |         0.9474 |     0.9357 |         0.9420 |     0.9285
+      25% |      99 |         0.9357 |     0.9415 |         0.9302 |     0.9363
+      50% |     199 |         0.9240 |     0.9766 |         0.9180 |     0.9747
+     100% |     398 |         0.9357 |     0.9883 |         0.9307 |     0.9875
+División de T1 verificada: True
+Figura guardada: curva_aprendizaje.png (existe: True)
+Cifras escritas en: resultados.json
