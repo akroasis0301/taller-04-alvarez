@@ -1,0 +1,6 @@
+calibración,pares,acuerdo,kappa,discrepancias
+juez vs. verificador (golden ORIGINAL),30,0.967,0.0,S103
+juez vs. verificador (golden corregido),30,1.0,indefinido: una sola clase,—
+juez vs. persona (etiquetas.csv),16,1.0,indefinido: una sola clase,—
+verificador (corregido) vs. persona,11,1.0,indefinido: una sola clase,—
+verificador (original) vs. persona,11,0.909,0.0,S103

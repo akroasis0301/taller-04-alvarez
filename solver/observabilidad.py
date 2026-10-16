@@ -175,6 +175,25 @@ def corrida(nombre: str, *, entrada: Any = None, metadata: dict | None = None,
             yield raiz
 
 
+_prompts: dict = {}
+
+
+def prompt_langfuse(nombre: str, version: str):
+    """El prompt registrado en Langfuse con la etiqueta `version` (scripts/registrar_prompts.py),
+    para ligar cada generation a su versión. None si no hay Langfuse o no se registró: el solver
+    usa igual el texto de solver/prompts.py, que es la fuente de verdad."""
+    c = cliente()
+    if c is None:
+        return None
+    clave = (nombre, version)
+    if clave not in _prompts:
+        try:
+            _prompts[clave] = c.get_prompt(nombre, label=version, cache_ttl_seconds=3600)
+        except Exception:                                     # no registrado: no se liga
+            _prompts[clave] = None
+    return _prompts[clave]
+
+
 def traza_id() -> str | None:
     """El id de la traza actual (dentro de la raíz), para ir de una fila del CSV a sus spans."""
     c = cliente()

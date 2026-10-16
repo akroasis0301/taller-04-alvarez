@@ -1,0 +1,19 @@
+seq,span,que,medida,error,respuesta
+2,guardrail,entrada_inyeccion,,,ok
+3,guardrail,entrada_pii,,,ok
+32,decisión,investigador: grafo+capa2,,,"citas: ['Preámbulo', 'Tarea 4', 's3-agentes § 3. Patrones de Agentes … 3.3 Reflexion', 'comunidad 2']"
+33,llm,programador · intento 1,3264+32768 · 207.85 s · fin=length,contenido vacío (fin=length),(vacío)
+34,llm,programador · intento 2,3264+51452 · 339.38 s · fin=stop,—,"```python # -*- coding: utf-8 -*- """""" T4 · Construir un resumen por servidor ======================================= Agrupa el DataFrame de T3 por `server` y co…"
+35,herramienta,sandbox · intento 1,returncode=0 · 0.82 s,—,
+36,llm,critico · intento 1,9005+1661 · 16.72 s · fin=stop,—,"{""aprobado"": true, ""problemas"": []}"
+37,decisión,critico: aprobado,,,
+38,decisión,investigador: grafo+capa2,,,"citas: ['Preámbulo', 'Tarea 5', 'Tarea 3']"
+39,llm,programador · intento 1,2661+32768 · 365.46 s · fin=length,contenido vacío (fin=length),(vacío)
+40,llm,programador · intento 2,2661+38021 · 245.61 s · fin=stop,—,"```python # -*- coding: utf-8 -*- """""" T5 — Guardar y verificar el resultado. Guarda el DataFrame analizado de T3 en output/server_analysis.parquet mediante PyAr…"
+41,herramienta,sandbox · intento 1,returncode=0 · 2.45 s,—,
+42,llm,critico · intento 1,7166+4707 · 30.58 s · fin=stop,—,"{""aprobado"": false, ""problemas"": [{""cita"": ""Guardar el DataFrame analizado de la Tarea 3 en output/server_analysis.parquet mediante PyArrow, sin el índice."", ""p…"
+43,decisión,critico: rechazado,,,"- el enunciado dice «Guardar el DataFrame analizado de la Tarea 3 en output/server_analysis.parquet mediante PyArrow, sin el índice.»: El DataFrame guardado no es el de T3: al no encontrar un parquet previo, el script re…"
+44,llm,programador · intento 1,7471+16945 · 107.77 s · fin=stop,—,"```python # -*- coding: utf-8 -*- """""" T5 — Guardar y verificar el resultado. Guarda el DataFrame analizado de la Tarea 3 en output/server_analysis.parquet media…"
+45,herramienta,sandbox · intento 2,returncode=0 · 0.32 s,—,
+46,llm,critico · intento 1,7596+1491 · 9.62 s · fin=stop,—,"{""aprobado"": true, ""problemas"": []}"
+47,decisión,critico: aprobado,,,

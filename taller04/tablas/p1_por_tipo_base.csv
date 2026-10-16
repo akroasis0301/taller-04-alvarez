@@ -1,0 +1,6 @@
+tipo de span,spans,tiempo total (s),medio (ms),respecto del reloj de las corridas
+llm,87,4284.0,49241.9,106.5 %
+herramienta,29,24.3,838.2,0.6 %
+embedding,6,9.6,1599.2,0.2 %
+retriever,40,9.3,231.7,0.2 %
+guardrail,53,0.1,2.7,0.0 %

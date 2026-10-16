@@ -1,12 +1,19 @@
-# Taller 03 v2 — Solver multiagente con GraphRAG
+# Taller 04 — Evaluar, observar y proteger el solver multiagente
 
-MMIA 6013 IA Generativa y Agentes · USFQ · Jessica Ballesteros, Darlyn Ludeña, Miguel Álvarez
+MMIA 6013 IA Generativa y Agentes · USFQ · Miguel Álvarez (individual) · Opción **B** del Taller 3
 
-Un solver que recibe el enunciado de una tarea en PDF, lo descompone en subtareas, recupera el
-contexto de cada una con un grafo de conocimiento (el enunciado y las notas del curso), escribe y
-ejecuta código en un sandbox, lo critica, reintenta y redacta el entregable en el formato que pide el
-enunciado: Markdown, PDF con límite de páginas o notebook ejecutado. Ninguna cifra se publica si no
-salió de una ejecución.
+El sistema es el **solver multiagente con GraphRAG del Taller 03 v2** (ocho agentes en LangGraph: recibe
+el enunciado de una tarea en PDF y entrega el reporte, PDF o notebook que pide, sin publicar una cifra
+que no salió de una ejecución). Este taller lo deja listo para operar:
+
+- **observable**: cada corrida deja en **Langfuse** un árbol de spans —la corrida, un `agent` por rol,
+  cada llamada al modelo (`generation`), cada herramienta y cada guardrail— que se exporta a archivo;
+- **evaluado**: un golden set de 58 comprobaciones sobre 6 tareas, dos verificadores determinísticos y un
+  **juez de otra familia** calibrado contra ellos y contra etiquetas humanas;
+- **protegido**: guardrails de inyección (por intención), datos personales y el sandbox, medidos como
+  clasificadores y demostrados en el golden.
+
+La historia de git conserva el Taller 03; su README original está en `docs/README_taller03.md`.
 
 ---
 
@@ -14,163 +21,98 @@ salió de una ejecución.
 
 | Qué | Para qué |
 |---|---|
-| [uv](https://docs.astral.sh/uv/) | entorno e instalación (descarga Python 3.12 si falta) |
-| VPN GlobalProtect de la USFQ | el LLM (vLLM, puerto 12555) y los embeddings bge-m3 (Ollama, 11434) de la H200 |
+| [uv](https://docs.astral.sh/uv/) | entorno e instalación (Python 3.12) |
+| VPN GlobalProtect de la USFQ | el agente (vLLM de la H200, puerto 12555), el juez y los embeddings (Ollama, 11434) |
+| Docker Desktop | Langfuse autoalojado (servidor 4.53.0, `localhost:3000`) |
 | macOS o Linux | el sandbox mata al grupo de procesos con `killpg` |
 
-Sin VPN solo corren las pruebas, los frenos (Parte 3) y lo que no llama al modelo.
+Modelos, leídos del servidor el 2026-10-15 (`taller04/modelos/`): **agente** `zai-org/GLM-5.3-Flash`
+(vLLM) y **juez** `gemma3:27b` (Ollama), de otra familia (Zheng et al., 2023, §3.3). Costo real: cero
+(H200). Costo de referencia: fila `propietario_economico` (gpt-4o-mini, 0,15/0,60 USD por 1M,
+verificada el 2026-08-26), transcrita del anexo del enunciado en `fuentes/modelos/modelos-2026-1.json`.
 
-## 2. Instalación
-
-```bash
-git clone https://github.com/akroasis0301/taller-03-opcional-alvarez-ballesteros-lude-a.git
-cd taller-03-opcional-alvarez-ballesteros-lude-a
-uv sync                          # crea .venv con lo fijado en uv.lock
-cp .env.example .env             # no lleva claves: la H200 no pide una
-```
-
-`.env` (fuera de git) define la ruta a la H200 y los frenos. Los valores de `.env.example` son
-los usados en las corridas: presupuesto 500 000 tokens con 50 000 de reserva para el redactor,
-3 intentos por subtarea, 120 s por script. El id del modelo **no** se escribe: se lee de `/v1/models`.
-
-Opcional: `uv sync --extra ocr` (PDF escaneados) y `uv sync --extra torch` (la tarea real de la
-semana 3, que no está en el golden).
-
-## 3. Verificar el entorno
+## 2. Instalación y configuración
 
 ```bash
-uv run pytest -q                                  # 101 pruebas, sin red ni H200
-uv run python scripts/verificar_entorno.py        # librerías, LLM y embeddings de la H200 (con VPN)
+git clone https://github.com/akroasis0301/taller-04-alvarez.git && cd taller-04-alvarez
+uv sync                          # o: pip install -r requirements.txt
+cp .env.example .env             # y completar el bloque «Taller 04»
+uv run python scripts/generar_enunciados_t4.py   # PDF de las tareas H y P del golden
 ```
 
-## 4. Resolver una tarea
-
-**Siempre desde la raíz del repositorio.**
+**Langfuse.** Cualquier Langfuse 4.x sirve. El kit trae `taller-04-llmops/langfuse/levantar_langfuse.sh`
+(Docker, versión fijada, proyecto y claves sin pasar por la interfaz); en este taller se usó el servidor
+de la clase (`docker compose up -d` en el repositorio de Langfuse, imagen `langfuse:4` → 4.53.0) con un
+proyecto propio, `taller-04-alvarez`. Sus claves van en `.env` (`LANGFUSE_PUBLIC_KEY`,
+`LANGFUSE_SECRET_KEY`, `LANGFUSE_BASE_URL`); **un solo `.env`** en la raíz sirve al solver y a las
+herramientas del kit. Sin claves (o con `SOLVER_LANGFUSE=0`) la instrumentación no hace nada.
 
 ```bash
-uv run python scripts/correr.py solver-v2/enunciados/tarea-a-generativo-discriminativo.pdf
-uv run python scripts/correr.py tareas/reales/semana2/enunciado.pdf --salida corridas/prueba/semana2
-uv run python scripts/correr.py <pdf> --variante sin_grafo           # la ablación de la 2.b
+uv run python -c "from dotenv import load_dotenv; load_dotenv(); from langfuse import get_client; print(get_client().auth_check())"
+uv run pytest -q                 # ≈160 pruebas, sin red ni H200
 ```
 
-Tarda de 2 a 25 minutos por tarea: el modelo razona en cada llamada. La primera vez se construye
-además el índice de las notas del curso (≈6 min, una sola vez; queda en `cache/graphrag/`). Se puede
-construir antes con `uv run python scripts/indexar_notas.py`.
+## 3. Reproducir el taller, paso a paso
 
-Desde Python, el contrato que pide el enunciado:
+Todo desde la raíz, con la VPN y Langfuse arriba. `scripts/corridas_t4.sh` deja cada versión en su
+sesión de Langfuse (`t4-<versión>`), su carpeta (`corridas/t4/<versión>/`) y sus CSV (`resultados/t4/`).
 
-```python
-from solver.orquestador import Solver
-r = Solver().solve("ruta/enunciado.pdf", "corridas/prueba/x")   # status, entregables, subtareas, usage, model, trace
-r = Solver().run("ruta/enunciado.pdf")                          # answer, trace, status, model, usage (Taller 4)
-```
-
-### Qué deja una corrida
-
-```
-corridas/<carpeta>/tarea-X/
-├── reporte.md | reporte.pdf | solucion.ipynb   el entregable, en el formato del enunciado
-├── output/                    archivos que el enunciado exige con ruta (copiados de una ejecución aprobada)
-├── figuras/                   las figuras que cita el entregable
-├── traza.jsonl                cada llamada, ejecución y decisión (C6)
-├── plan.json                  el plan validado (C1)
-├── grafo.json, grafo.png      el grafo del enunciado; grafo_entidades.png: la capa 2 (C2)
-├── subtareas/T1/intento-N/    script.py, stdout, stderr, resultados.json de cada intento aprobado
-└── cache_solver/              contextos del programador, intentos rechazados, borradores
-```
-
-Para leer una traza sin abrir JSON:
-
-```bash
-uv run python scripts/evidencia.py corridas/<carpeta>/tarea-X                 # panorama
-uv run python scripts/evidencia.py corridas/<carpeta>/tarea-X --subtarea T3   # historia de una subtarea
-```
-
-## 5. Reproducir el taller, paso a paso
-
-Todo desde la raíz, con la VPN conectada salvo donde se indica. `scripts/corridas_2b.sh` deja cada
-corrida en su carpeta (`corridas/final/<variante>-r<n>/`) y su CSV crudo en `resultados/final/`;
-nada se sobrescribe.
-
-| # | Parte | Comando | Tiempo |
+| # | Parte | Orden | Tiempo |
 |---|---|---|---|
-| 1 | 0 | `cd solver-v2 && uv run python parte0/a_llm_sin_ejecutar.py` (también `b_rag_plano.py` y `c_exit_cero.py`, sin VPN) | 2 min |
-| 2 | 1, 2.b | `bash scripts/corridas_2b.sh completo 1` y `bash scripts/corridas_2b.sh completo 2` | ≈1 h c/u |
-| 3 | 2.b | `bash scripts/corridas_2b.sh sin_grafo 1` y `bash scripts/corridas_2b.sh sin_grafo 2` | ≈45 min c/u |
-| 4 | 2.b | `bash scripts/corridas_2b.sh tablas` → `resultados/final/tablas_2b/` | segundos |
-| 5 | 3 | `bash scripts/corridas_2b.sh frenos` → `corridas/frenos/` (modelo de guion, **sin VPN**) | 1 min |
-| 6 | 4 | `bash scripts/corridas_2b.sh juez` → `resultados/final/juez/` (gemma3 en el Ollama de la H200) | ≈30 min |
-| 7 | 4 | `uv run python scripts/juez_adversarial.py` y los dos comandos de su docstring → `resultados/final/juez_adversarial/` | 2 min |
-| 8 | informe | `uv run python scripts/diagrama_png.py` y `uv run python scripts/informe_word.py` → `informe/Informe_Taller03_Ballesteros_Alvarez_Ludena.docx` y `.pdf` (formato del Taller 02; el PDF requiere LibreOffice, si no se exporta desde Word) | segundos |
+| 1 | 0 | `cd taller-04-llmops/Lab-04-LLMOps && uv run python guion.py ceros\|guardrails\|traza` (sin VPN) | 1 min |
+| 2 | 1, 2.b | `bash scripts/corridas_t4.sh base` — solver sobre el golden, prohibidos, export de spans | ≈60 min |
+| 3 | 2.b | `bash scripts/corridas_t4.sh reevaluar base` — con el golden corregido, sin volver a correr | seg. |
+| 4 | 2.b | `bash scripts/corridas_t4.sh juez base` — juez + calibración contra el verificador y `etiquetas.csv` | ≈50 min |
+| 5 | 2.c | `uv run python scripts/registrar_prompts.py` — v1 y v2 del prompt del programador en Langfuse | seg. |
+| 6 | 2.c | `bash scripts/corridas_t4.sh mejora && bash scripts/corridas_t4.sh juez mejora` | ≈110 min |
+| 7 | 3 | `probar_guardrails.py` con `--entrada solver.guardrails:validar_entrada --salida solver.guardrails:validar_salida` sobre `taller04/parte3/ataques.json` y `fuera_del_banco.json`, y sin argumentos para los del ejemplo | seg. |
+| 8 | todas | `uv run python scripts/tablas_t4.py` → `taller04/tablas/tablas.md` y un CSV por tabla | seg. |
+| 9 | — | `uv run python scripts/verificar_prohibidos.py --corridas corridas/t4/<v>` antes de cada commit | seg. |
 
-Para guardar también lo que se ve en pantalla:
+Un ensayo que no ensucia las sesiones que se entregan: `TAREAS="H P" bash scripts/corridas_t4.sh prueba`
+(`corridas/t4/prueba/` está en `.gitignore`).
 
-```bash
-bash scripts/corridas_2b.sh completo 1 2>&1 | tee resultados/final/salida_completo_r1.txt
-```
+## 4. Qué se entrega y dónde está
 
-Durante una corrida larga: la VPN conectada y la computadora despierta (`corridas_2b.sh` usa
-`caffeinate` en macOS). Una corrida cortada se repite con el mismo comando: la carpeta anterior se
-aparta como `tarea-X.anterior-<fecha>`, no se borra.
-
-### El golden set (Parte 2.a)
-
-```bash
-uv run python golden/verdades_reales.py                                    # las verdades de S1 y S2
-uv run python solver-v2/evaluar_solver.py --golden golden/golden_tareas.json \
-  --solo-evaluar corridas/final/completo-r1 --salida resultados/reevaluacion.csv   # re-evaluar sin correr
-```
-
-`golden/golden_tareas.json` tiene 47 comprobaciones: las 25 del kit (tareas A, B, C), A09 y dos
-tareas reales (S1, S2). Cada una lleva su `_por_que`; `golden/README.md` las lista.
-
-## 6. Arquitectura
-
-![Orquestador](resultados/orquestador.png)
-
-| # | Agente | Hace | Corrección |
-|---|---|---|---|
-| 1 | Lector | PDF → secciones, tablas y restricciones (formato, límites, archivos exigidos) | — |
-| 2 | Indexador | esqueleto `depende_de` por regla + capa 2: entidades, notas del curso, bge-m3, comunidades | C2 |
-| 3 | Planificador | subtareas en un DAG validado por código | C1 |
-| 4 | Investigador | sección literal + dependencias + búsqueda local y global, con citas | C2 |
-| 5 | Programador | un script por subtarea de cálculo, con `resultados.json` | C4 |
-| 6 | Ejecutor | corre el script en el sandbox: guarda AST, entorno vacío, `killpg` | C3 |
-| 7 | Crítico | comprobaciones de código primero, LLM después | C4 |
-| 8 | Redactor | entregable en el formato del enunciado; procedencia de cada cifra | C5 |
-
-Transversal: la traza en todo camino (C6) y los cuatro frenos (`solver/frenos.py` dice dónde vive
-cada uno). El detalle interno está en `docs/interfaces.md`.
-
-## 7. Estructura del repositorio
-
-```
-solver/          el solver: orquestador, agentes/, sandbox/, graphrag.py, procedencia.py, traza.py
-solver-v2/       kit del profesor, intacto: enunciados A-C, parte0/, golden del kit, evaluar_solver.py, h200.py
-golden/          nuestro golden set (2.a): golden_tareas.json, verdades_reales.py, README.md
-conocimiento/    notas teóricas del curso (s1-s4): la base del GraphRAG
-tareas/reales/   tareas reales (Matemáticas y Programación para IA, semanas 1-3) con sus datos
-scripts/         correr, corridas_2b.sh, tablas_2b, evidencia, forzar_frenos, juez, juez_adversarial, diagrama_png, informe_word
-corridas/        final/ (las medidas), frenos/ (Parte 3), desarrollo/ y anteriores (evidencia de la 2.c)
-resultados/      CSV crudos (final/), Entregables_Parte_0/, orquestador.png
-informe/         informe.md → Informe_Taller03_…docx y .pdf, evidencia/, usfq_logo.png
-docs/            interfaces.md: configuración, eventos de la traza, cambios
-tests/           101 pruebas (sin red)
-```
-
-## 8. Problemas frecuentes
-
-| Síntoma | Causa y salida |
+| Pide el enunciado | Archivo |
 |---|---|
-| `Sin respuesta de la H200. ¿Está GlobalProtect conectada?` | VPN desconectada |
-| `Connection refused` en el 12555 | el vLLM está caído: para desarrollar, `H200_PUERTO=11434` y `H200_MODELO=qwen3:32b` en `.env` (no para las corridas medidas: un solo modelo) |
-| `embeddings_lexicos` en la traza | el Ollama de embeddings no respondió; el solver siguió con un respaldo léxico |
-| status `parcial` | presupuesto agotado, una subtarea fallida o cifras marcadas: la traza dice cuál (`scripts/evidencia.py`) |
-| una corrida tarda más de 20 min | normal en tareas grandes (S2): el modelo razona hasta 65 k tokens por llamada |
+| Parte 0: las tres salidas y su análisis | `taller04/parte0/` |
+| Agente instrumentado | `solver/observabilidad.py` (el único punto de contacto con Langfuse), `orquestador.py`, `cliente_llm.py`, `agentes/ejecutor.py`, `graphrag.py` |
+| Spans exportados de Langfuse | `taller04/parte1/spans_base.jsonl`, `spans_mejora.jsonl` (y su `resumen_*.txt` de `resumir_trazas.py`) |
+| Golden set (2.a) | `golden/golden_t4.json` (A, B, C, S1, H, P; correcciones en los campos `_correccion`) |
+| Verificador automático (opción B) | `resultados/t4/resultados_solver_*.csv`, `resumen_solver_*.csv` (`evaluar_solver.py` del kit) |
+| Tercer verificador: lo que no puede aparecer | `scripts/verificar_prohibidos.py` → `resultados/t4/prohibidos_*.csv` |
+| Juez y calibración (2.b) | `resultados/t4/juez_solver_*.csv`, `salida_juez_*.txt`, `taller04/parte2/etiquetas.csv` |
+| Peores casos y mejora (2.c) | `solver/prompts.py` (v1, v2 y changelog), sección 2.c de `taller04/tablas/tablas.md` |
+| Guardrails (3) | `solver/guardrails.py`; `taller04/parte3/ataques.json`, `guardrails_nuestros.csv`, `guardrails_ejemplo.csv`, `fuera_del_banco.json`, `guardrails_fuera_del_banco.csv` |
+| Ajuste fino y alertas (4) | `taller04/parte4/parte4.md` |
+| Carpetas de corridas | `corridas/t4/base/`, `corridas/t4/mejora/` |
+| Todas las tablas del informe | `taller04/tablas/` (generadas por `scripts/tablas_t4.py`) |
 
-## 9. Credenciales y uso honesto
+## 5. Arquitectura y spans
 
-Ninguna clave en el código, las trazas, los scripts generados ni el repositorio: `.env` está fuera de
-git y los scripts que escribe el modelo corren con el entorno vacío. Las tareas reales de
-`tareas/reales/` se usan solo como banco de prueba del solver, con permiso de quien las escribió;
-el informe declara cómo se usó el solver y un asistente de IA.
+| # | Agente | Hace | Span |
+|---|---|---|---|
+| 1 | Lector | PDF → secciones, tablas y restricciones | `agent` + `tool leer_pdf` |
+| 2 | Indexador | esqueleto del grafo + GraphRAG capa 2 (entidades, notas del curso, bge-m3) | `agent` + `generation` (en hilos) + `embedding` |
+| 3 | Planificador | subtareas en un DAG validado por código | `agent` + `generation` |
+| 4 | Investigador | sección literal, dependencias y búsqueda local/global | `agent` + `retriever` |
+| 5 | Programador | un script por subtarea (prompt versionado: `solver/prompts.py`) | `agent` + `generation` ligada a su versión |
+| 6 | Ejecutor | sandbox: guarda AST, entorno vacío, `killpg` | `agent` + `guardrail guarda_ast` + `tool sandbox` |
+| 7 | Crítico | comprobaciones de código y LLM | `agent` + `generation` |
+| 8 | Redactor | entregable en el formato del enunciado | `agent` + `generation` |
+
+Guardrails de entrada (`entrada_inyeccion`, `entrada_pii`) y de salida (`salida_secretos`, `salida_pii`)
+son hijos de la raíz `corrida`. Las tres correcciones de la Parte 0.c: cada span es un `with` (existe
+aunque el código falle, en nivel ERROR); la raíz se abre antes que los guardrails; y la máscara
+(`Langfuse(mask=…)`, que recorre tuplas, más el `status_message`, que la máscara del SDK no cubre)
+redacta secretos y datos personales antes de que nada salga del proceso.
+
+## 6. Credenciales y datos personales
+
+Ninguna clave en el código, las trazas, los scripts generados ni el repositorio (público): `.env` está
+fuera de git y los scripts del sandbox corren con el entorno vacío. Los datos personales de la tarea P
+son **sintéticos**; `verificar_prohibidos.py` comprueba que no aparezcan en el entregable, la traza local,
+la carpeta de la corrida ni Langfuse. Los ensayos anteriores a la regla de nombres no se versionan.
+El informe declara el uso de un asistente de IA (redacción de código y de las etiquetas, revisadas por
+el autor).

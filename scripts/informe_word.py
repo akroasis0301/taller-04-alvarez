@@ -1,6 +1,6 @@
 """Arma el informe con el formato del Taller 02: informe/informe.md → Word (.docx) y PDF.
 
-    uv run python scripts/informe_word.py              # → informe/Informe_Taller03_Ballesteros_Alvarez_Ludena.docx y .pdf
+    uv run python scripts/informe_word.py              # → informe/Informe_Taller04_Alvarez.docx y .pdf
     uv run python scripts/informe_word.py --revisar    # solo lista lo PENDIENTE y lo que falta incluir
 
 El formato es el del informe entregado en el Taller 02: portada con el escudo de la USFQ, Calibri 11 justificado,
@@ -48,10 +48,10 @@ def armar(md: str):
     finally:
         informe_pdf.bajar_titulos = original
 
-TITULO = "Taller 3 v2—Un solver multiagente con GraphRAG: del enunciado en PDF al reporte medido."
-AUTORES = "Jessica Ballesteros, Miguel Álvarez, Darlyn Ludeña"
-REPO = "Repositorio: github.com/akroasis0301/taller-03-opcional-alvarez-ballesteros-lude-a"
-NOMBRE = "Informe_Taller03_Ballesteros_Alvarez_Ludena"
+TITULO = "Taller 04 — Evaluar, observar y proteger el solver multiagente (opción B del Taller 3)."
+AUTORES = "Miguel Álvarez"
+REPO = "Repositorio: github.com/akroasis0301/taller-04-alvarez"
+NOMBRE = "Informe_Taller04_Alvarez"
 MESES = ["enero", "febrero", "marzo", "abril", "mayo", "junio", "julio", "agosto", "septiembre", "octubre",
          "noviembre", "diciembre"]
 

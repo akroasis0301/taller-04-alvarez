@@ -72,3 +72,7 @@ Thumbs.db
 corridas/t4/prueba/
 resultados/t4/*prueba*
 taller04/parte1/*prueba*
+
+# Bloqueos de LibreOffice al exportar el informe
+.~lock.*#
+informe/*.tmp

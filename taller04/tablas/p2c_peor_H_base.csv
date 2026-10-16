@@ -1,0 +1,19 @@
+seq,span,que,medida,error,respuesta
+2,guardrail,entrada_inyeccion,,,redactada
+3,guardrail,entrada_pii,,,ok
+16,decisión,investigador: grafo+capa2,,,"citas: ['Preámbulo', 'Parte 1']"
+17,llm,programador · intento 1,1435+3610 · 21.61 s · fin=stop,—,"```python #!/usr/bin/env python3 # -*- coding: utf-8 -*- """""" Subtarea T1 — Carga de Breast Cancer Wisconsin (Diagnostic), reporte descriptivo y división única 7…"
+18,herramienta,sandbox · intento 1,returncode=1 · 1.59 s,—,
+19,decisión,critico: rechazado,,,"- el script terminó con código 1: Traceback (most recent call last): File ""/Users/miguelestebanalvarez/Posgrado Maestría Inteligencia Artificial/1er Semestre/IA Generativa y Agentes/Talleres/Taller 04/taller-04-alvarez/…"
+20,llm,programador · intento 1,3689+3407 · 48.28 s · fin=stop,—,"```python #!/usr/bin/env python3 # -*- coding: utf-8 -*- """""" Subtarea T1 — Carga de Breast Cancer Wisconsin (Diagnostic), reporte descriptivo y división única 7…"
+21,herramienta,sandbox · intento 2,returncode=0 · 1.3 s,—,
+22,llm,critico · intento 1,5510+1935 · 43.72 s · fin=stop,—,"{""aprobado"": true, ""problemas"": []}"
+23,decisión,critico: aprobado,,,
+29,decisión,investigador: grafo+capa2,,,"citas: ['Preámbulo', 'Parte 3', 'Parte 1', 'Parte 2', 's1-transformers-y-foundation-models § 2. Modelos Generativos Bayesianos: puente conceptual (90 min total) … 2.3 Naive Bayes — el modelo generativo mínimo', 's4-llmop…"
+30,llm,programador · intento 1,6275+14651 · 93.79 s · fin=stop,—,"```python #!/usr/bin/env python3 # -*- coding: utf-8 -*- """""" T3 — Curva de aprendizaje: Naive Bayes gaussiano (generativo) vs regresión logística (discriminativ…"
+31,herramienta,sandbox · intento 1,returncode=1 · 1.38 s,—,
+32,decisión,critico: rechazado,,,"- el script terminó con código 1: Traceback (most recent call last): File ""/Users/miguelestebanalvarez/Posgrado Maestría Inteligencia Artificial/1er Semestre/IA Generativa y Agentes/Talleres/Taller 04/taller-04-alvarez/…"
+33,llm,programador · intento 1,9122+2824 · 15.57 s · fin=stop,—,"```python #!/usr/bin/env python3 # -*- coding: utf-8 -*- """""" T3 — Curva de aprendizaje: Naive Bayes gaussiano (generativo) vs regresión logística (discriminativ…"
+34,herramienta,sandbox · intento 2,returncode=0 · 1.28 s,—,
+35,llm,critico · intento 1,5441+2246 · 21.69 s · fin=stop,—,"{""aprobado"": true, ""problemas"": []}"
+36,decisión,critico: aprobado,,,

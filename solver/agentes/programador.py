@@ -8,8 +8,12 @@ from __future__ import annotations
 
 import re
 
+from solver import observabilidad as obs
+from solver import prompts
 from solver.cliente_llm import ClienteLLM
 
+# Taller 4 (2.c): el prompt vive en solver/prompts.py, versionado (v1 = este, v2 = la mejora). SISTEMA
+# queda como el v1 para quien lo importe; mensajes() usa la versión activa (SOLVER_PROMPT_VERSION).
 SISTEMA = """Eres el programador de un solver de tareas de una maestría en IA. Escribes UN script
 de Python 3.12 que resuelve una subtarea. Reglas obligatorias:
 - Librerías disponibles: numpy, pandas, scipy, scikit-learn, matplotlib (backend Agg), pyarrow.
@@ -34,7 +38,8 @@ def mensajes(subtarea: dict, contexto: dict, previo: str | None, correccion: str
                f"CONTEXTO DEL ENUNCIADO (citado por sección):\n{contexto['texto']}\n")
     if contexto.get("previos"):
         usuario += f"\nRESULTADOS DE LAS SUBTAREAS PREVIAS:\n{contexto['previos']}\n"
-    msgs = [{"role": "system", "content": SISTEMA}, {"role": "user", "content": usuario}]
+    msgs = [{"role": "system", "content": prompts.programador(obs.prompt_version())},
+            {"role": "user", "content": usuario}]
     if previo and correccion:
         msgs += [{"role": "assistant", "content": f"```python\n{previo}\n```"},
                  {"role": "user", "content": f"El crítico RECHAZÓ el script. Corrige esto y devuelve "
@@ -51,5 +56,6 @@ def extraer_codigo(texto: str) -> str:
 
 def programar(llm: ClienteLLM, subtarea: dict, contexto: dict, previo: str | None = None,
               correccion: str | None = None) -> str:
+    ligado = obs.prompt_langfuse(prompts.NOMBRE_LANGFUSE["programador"], obs.prompt_version())
     return extraer_codigo(llm.pedir("programador", mensajes(subtarea, contexto, previo, correccion),
-                                    subtarea=subtarea["id"]))
+                                    subtarea=subtarea["id"], prompt_lf=ligado))

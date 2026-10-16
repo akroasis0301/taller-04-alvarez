@@ -1,0 +1,9 @@
+seq,span,que,medida,error,respuesta
+2,guardrail,entrada_inyeccion,,,ok
+3,guardrail,entrada_pii,,,ok
+26,decisión,investigador: grafo+capa2,,,"citas: ['Preámbulo', 'Parte 3']"
+27,llm,programador · intento 1,6085+32768 · 264.26 s · fin=length,contenido vacío (fin=length),(vacío)
+28,llm,programador · intento 2,6085+36884 · 287.7 s · fin=stop,—,"```python # -*- coding: utf-8 -*- """""" T3 — Análisis por consulta (Tarea C · MMIA 6013). Con los rankings de TF-IDF (T1) y LSA (T2): 1) identifica en qué consult…"
+29,herramienta,sandbox · intento 1,returncode=0 · 1.52 s,—,
+30,llm,critico · intento 1,8382+2849 · 22.07 s · fin=stop,—,"{""aprobado"": true, ""problemas"": []}"
+31,decisión,critico: aprobado,,,
