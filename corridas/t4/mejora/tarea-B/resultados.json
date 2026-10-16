@@ -1,0 +1,35 @@
+{
+  "n_muestras": 10000,
+  "semilla": 0,
+  "tokens": [
+    "t0",
+    "t1",
+    "t2",
+    "t3"
+  ],
+  "probabilidades_teoricas": {
+    "t0": 0.5693760554907313,
+    "t1": 0.2094617451103304,
+    "t2": 0.12704497044632815,
+    "t3": 0.09411722895261025
+  },
+  "conteos_observados": {
+    "t0": 5682,
+    "t1": 2093,
+    "t2": 1296,
+    "t3": 929
+  },
+  "frecuencias_observadas": {
+    "t0": 0.5682,
+    "t1": 0.2093,
+    "t2": 0.1296,
+    "t3": 0.0929
+  },
+  "kl_bits_empirica_vs_teorica": 5.006898814879229e-05,
+  "figura": "parte3_frecuencias_vs_teorica.png",
+  "supuestos": [
+    "La distribución renormalizada se carga de entrada/T2/resultados.json (subtarea T2); el muestreo se realiza sobre los tokens sobrevivientes del núcleo (t0-t3) con sus probabilidades renormalizadas.",
+    "La divergencia KL se calcula como KL(empírica || teórica) = Σ q_i log2(q_i / p_i) sobre los tokens del núcleo, en bits (log base 2).",
+    "Las 'frecuencias observadas' son conteos divididos entre 10 000, de modo que son directamente comparables con las probabilidades teóricas en el gráfico de barras."
+  ]
+}

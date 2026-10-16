@@ -1,0 +1,14 @@
+=== T2: Top-p con p=0.9 sobre la distribución de T=1 ===
+Tokens ordenados (mayor a menor): ['t0', 't1', 't2', 't3', 't4', 't5']
+Probabilidades ordenadas: [0.551623, 0.202931, 0.123084, 0.091183, 0.027464, 0.003717]
+Acumulada: [0.551623, 0.754553, 0.877637, 0.96882, 0.996283, 1.0]
+Tokens sobrevivientes al núcleo: ['t0', 't1', 't2', 't3'] (k=4)
+Probabilidad acumulada del núcleo: 0.968820 (>= 0.9)
+Distribución renormalizada:
+  t0: 0.569376
+  t1: 0.209462
+  t2: 0.127045
+  t3: 0.094117
+Suma de la renormalizada: 1.000000000000
+Tokens descartados: ['t4', 't5']
+Resultados escritos en resultados.json; figura en top_p_T1.png

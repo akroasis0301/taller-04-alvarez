@@ -1,0 +1,83 @@
+{
+  "subtarea": "T3 — Curva de aprendizaje (5/10/25/50/100 % del entrenamiento, evaluación en el mismo test)",
+  "origen_division": "entrada/T1/division_train_test.parquet (columnas 'target' y 'conjunto')",
+  "n_train_total": 398,
+  "n_test": 171,
+  "fracciones": [
+    0.05,
+    0.1,
+    0.25,
+    0.5,
+    1.0
+  ],
+  "n_ejemplos_train": [
+    19,
+    39,
+    99,
+    199,
+    398
+  ],
+  "accuracy_gaussian_nb_por_tamano": [
+    0.6257309941520468,
+    0.6608187134502924,
+    0.6608187134502924,
+    0.672514619883041,
+    0.6666666666666666
+  ],
+  "accuracy_regresion_logistica_por_tamano": [
+    0.6257309941520468,
+    0.6666666666666666,
+    0.6549707602339181,
+    0.6900584795321637,
+    0.6608187134502924
+  ],
+  "tabla_curva_aprendizaje": [
+    {
+      "fraccion": 0.05,
+      "n_ejemplos_train": 19,
+      "accuracy_gaussian_nb": 0.6257309941520468,
+      "accuracy_regresion_logistica": 0.6257309941520468,
+      "f1_macro_gaussian_nb": 0.38489208633093525,
+      "f1_macro_regresion_logistica": 0.38489208633093525
+    },
+    {
+      "fraccion": 0.1,
+      "n_ejemplos_train": 39,
+      "accuracy_gaussian_nb": 0.6608187134502924,
+      "accuracy_regresion_logistica": 0.6666666666666666,
+      "f1_macro_gaussian_nb": 0.5800304878048781,
+      "f1_macro_regresion_logistica": 0.5846153846153846
+    },
+    {
+      "fraccion": 0.25,
+      "n_ejemplos_train": 99,
+      "accuracy_gaussian_nb": 0.6608187134502924,
+      "accuracy_regresion_logistica": 0.6549707602339181,
+      "f1_macro_gaussian_nb": 0.5901652892561984,
+      "f1_macro_regresion_logistica": 0.5754681253944877
+    },
+    {
+      "fraccion": 0.5,
+      "n_ejemplos_train": 199,
+      "accuracy_gaussian_nb": 0.672514619883041,
+      "accuracy_regresion_logistica": 0.6900584795321637,
+      "f1_macro_gaussian_nb": 0.5892244337680165,
+      "f1_macro_regresion_logistica": 0.5975041080072834
+    },
+    {
+      "fraccion": 1.0,
+      "n_ejemplos_train": 398,
+      "accuracy_gaussian_nb": 0.6666666666666666,
+      "accuracy_regresion_logistica": 0.6608187134502924,
+      "f1_macro_gaussian_nb": 0.5995645207674294,
+      "f1_macro_regresion_logistica": 0.5901652892561984
+    }
+  ],
+  "figura": "t3_curva_aprendizaje.png",
+  "supuestos": [
+    "La división 70/30 estratificada de T1 se carga de entrada/T1/division_train_test.parquet; si el parquet no puede interpretarse, se reconstruye de forma determinista con los parámetros documentados por T1 (test_size=0.30, stratify=y, random_state=42) y se valida contra sus conteos por clase (398/171; 148/250 en train; 64/107 en test), igual que hizo T2.",
+    "Cada submuestra se obtiene con train_test_split(train_size=fracción, stratify=y_train, random_state=42) sobre el entrenamiento completo de T1; para el 100 % se usa el entrenamiento completo.",
+    "En cada tamaño, el StandardScaler se ajusta únicamente con la submuestra de entrenamiento correspondiente y se aplica al conjunto de prueba sin reajustarlo; el conjunto de prueba es siempre el mismo y no se usa para ajustar nada (ni escaladores ni hiperparámetros).",
+    "GaussianNB usa los valores por defecto y la regresión logística los hiperparámetros por defecto con max_iter=5000, igual que en T2."
+  ]
+}

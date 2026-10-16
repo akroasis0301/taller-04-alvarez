@@ -1,0 +1,11 @@
+load_score consistente con entrada/T3/resultados.json: True
+Round trip verificado: output/server_analysis.parquet
+Filas: True
+Columnas: True
+Esquema: True
+Valores: True
+------------------------------------------------------------
+Fuente del DataFrame analizado: data/server_measurements.csv + entrada/T3/resultados.json (load_score)
+Filas: 300 | Columnas: 9
+Observaciones que requieren revisión: 49
+Parquet escrito: output/server_analysis.parquet (17629 bytes)

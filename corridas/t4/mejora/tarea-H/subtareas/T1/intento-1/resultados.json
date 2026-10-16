@@ -1,0 +1,28 @@
+{
+  "subtarea": "T1",
+  "n_ejemplos_total": 569,
+  "n_atributos": 30,
+  "conteo_por_clase": {
+    "malignant": 212,
+    "benign": 357
+  },
+  "n_train": 398,
+  "n_test": 171,
+  "proporcion_train": 0.6994727592267135,
+  "proporcion_test": 0.30052724077328646,
+  "conteo_por_clase_train": {
+    "malignant": 148,
+    "benign": 250
+  },
+  "conteo_por_clase_test": {
+    "malignant": 64,
+    "benign": 107
+  },
+  "random_state": 42,
+  "estratificado": true,
+  "archivo_division": "T1_division_indices.parquet",
+  "supuestos": [
+    "La división se guarda como índices (T1_division_indices.parquet) para que las subtareas siguientes carguen exactamente los mismos conjuntos sin recalcular.",
+    "Clase 0 = malignant, clase 1 = benign (codificación nativa de load_breast_cancer)."
+  ]
+}

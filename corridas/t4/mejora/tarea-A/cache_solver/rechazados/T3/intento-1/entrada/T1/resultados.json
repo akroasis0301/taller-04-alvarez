@@ -1,0 +1,46 @@
+{
+  "dataset": "Breast Cancer Wisconsin (Diagnostic) - sklearn.datasets.load_breast_cancer",
+  "n_ejemplos": 569,
+  "n_atributos": 30,
+  "casos_por_clase": {
+    "malignant": 212,
+    "benign": 357
+  },
+  "nombres_clases": [
+    "malignant",
+    "benign"
+  ],
+  "n_train": 398,
+  "n_test": 171,
+  "proporcion_train": 0.6994727592267135,
+  "proporcion_test": 0.30052724077328646,
+  "conteo_train_por_clase": {
+    "malignant": 148,
+    "benign": 250
+  },
+  "conteo_test_por_clase": {
+    "malignant": 64,
+    "benign": 107
+  },
+  "proporcion_clase_train": {
+    "malignant": 0.37185929648241206,
+    "benign": 0.628140703517588
+  },
+  "proporcion_clase_test": {
+    "malignant": 0.3742690058479532,
+    "benign": 0.6257309941520468
+  },
+  "parametros_division": {
+    "test_size": 0.3,
+    "estratificado_por": "target",
+    "random_state": 42
+  },
+  "archivos_generados": [
+    "division_train_test.parquet",
+    "breast_cancer_completo.parquet"
+  ],
+  "supuestos": [
+    "La división se crea una sola vez con train_test_split(test_size=0.30, stratify=y, random_state=42) y se guarda en division_train_test.parquet para que las subtareas siguientes la reutilicen sin recalcularla.",
+    "El conjunto de prueba (30%) queda reservado y no se usa para ajustar nada en ninguna subtarea."
+  ]
+}

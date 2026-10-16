@@ -1,0 +1,5 @@
+T2 — Métricas en el conjunto de prueba (división de T1):
+  Naive Bayes gaussiano    accuracy=0.9357  F1 macro=0.9307
+  Regresión logística      accuracy=0.9883  F1 macro=0.9875
+División usada: índices cargados de entrada/T1/T1_division_indices.parquet
+Archivos escritos: resultados.json, T2_metricas_prueba.png

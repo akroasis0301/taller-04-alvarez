@@ -1,0 +1,28 @@
+{
+  "subtarea": "T2",
+  "dataset": "load_breast_cancer",
+  "fuente_division": "índices cargados de entrada/T1/T1_division_indices.parquet",
+  "n_train": 398,
+  "n_test": 171,
+  "tabla_metricas_prueba": [
+    {
+      "modelo": "Naive Bayes gaussiano",
+      "accuracy_prueba": 0.935672514619883,
+      "f1_macro_prueba": 0.9306543778801843
+    },
+    {
+      "modelo": "Regresión logística",
+      "accuracy_prueba": 0.9883040935672515,
+      "f1_macro_prueba": 0.9875146028037383
+    }
+  ],
+  "accuracy_prueba_naive_bayes_gaussiano": 0.935672514619883,
+  "f1_macro_prueba_naive_bayes_gaussiano": 0.9306543778801843,
+  "accuracy_prueba_regresion_logistica": 0.9883040935672515,
+  "f1_macro_prueba_regresion_logistica": 0.9875146028037383,
+  "supuestos": [
+    "Se usa exactamente la división 70/30 estratificada con random_state=42 producida por T1 (índices de entrada/T1/T1_division_indices.parquet).",
+    "La estandarización (StandardScaler ajustado solo con el entrenamiento) se aplica a ambos modelos, incluido el Naive Bayes gaussiano, según la relación del material del curso; en todo caso las predicciones del NB gaussiano son invariantes a esta transformación afín por atributo.",
+    "La regresión logística usa los parámetros por defecto de scikit-learn (C=1.0, solver lbfgs); max_iter=5000 solo garantiza convergencia y no se ajustó ningún hiperparámetro con el conjunto de prueba."
+  ]
+}

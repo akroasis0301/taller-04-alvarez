@@ -1,0 +1,6 @@
+T3 completada.
+Filas: 300 | Columnas: ['server', 'timestamp', 'gpu_utilization', 'cpu_utilization', 'memory_gb', 'power_w', 'temperature_c', 'load_score', 'requires_review']
+Filas que requieren revisión: 49 (load_score>1.5: 9, temperature_c>80: 42)
+Fila 23: server=AI-SRV-01, timestamp=2026-08-24 09:55:00, load_score=3.136218, temperature_c=66.97, requires_review=True
+Original intacto: True
+Parquet guardado en output/server_analysis.parquet

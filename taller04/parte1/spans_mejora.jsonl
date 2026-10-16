@@ -1,0 +1,363 @@
+{"traza": "7b8bb79a0db01100b2d962f69b1ab0a7", "span": "corrida", "nombre": "solver", "duracion_ms": 126517.0, "error": null, "prompt_version": "v2"}
+{"traza": "7b8bb79a0db01100b2d962f69b1ab0a7", "span": "herramienta", "nombre": "leer_pdf", "duracion_ms": 38.0, "error": null}
+{"traza": "7b8bb79a0db01100b2d962f69b1ab0a7", "span": "agent", "nombre": "lector", "duracion_ms": 42.0, "error": null}
+{"traza": "7b8bb79a0db01100b2d962f69b1ab0a7", "span": "guardrail", "nombre": "entrada_inyeccion", "duracion_ms": 1.0, "error": null}
+{"traza": "7b8bb79a0db01100b2d962f69b1ab0a7", "span": "guardrail", "nombre": "entrada_pii", "duracion_ms": 1.0, "error": null}
+{"traza": "7b8bb79a0db01100b2d962f69b1ab0a7", "span": "agent", "nombre": "indexador", "duracion_ms": 22919.0, "error": null}
+{"traza": "7b8bb79a0db01100b2d962f69b1ab0a7", "span": "llm", "nombre": "indexador", "duracion_ms": 14029.0, "error": null, "modelo": "zai-org/GLM-5.3-Flash", "tokens_entrada": 414, "tokens_salida": 3045, "tokens_razonamiento": 0, "prompt": "", "prompt_version_ligada": null}
+{"traza": "7b8bb79a0db01100b2d962f69b1ab0a7", "span": "llm", "nombre": "indexador", "duracion_ms": 9741.0, "error": null, "modelo": "zai-org/GLM-5.3-Flash", "tokens_entrada": 402, "tokens_salida": 2087, "tokens_razonamiento": 0, "prompt": "", "prompt_version_ligada": null}
+{"traza": "7b8bb79a0db01100b2d962f69b1ab0a7", "span": "llm", "nombre": "indexador", "duracion_ms": 11671.0, "error": null, "modelo": "zai-org/GLM-5.3-Flash", "tokens_entrada": 417, "tokens_salida": 2508, "tokens_razonamiento": 0, "prompt": "", "prompt_version_ligada": null}
+{"traza": "7b8bb79a0db01100b2d962f69b1ab0a7", "span": "llm", "nombre": "indexador", "duracion_ms": 12535.0, "error": null, "modelo": "zai-org/GLM-5.3-Flash", "tokens_entrada": 380, "tokens_salida": 2577, "tokens_razonamiento": 0, "prompt": "", "prompt_version_ligada": null}
+{"traza": "7b8bb79a0db01100b2d962f69b1ab0a7", "span": "embedding", "nombre": "embeddings", "duracion_ms": 8120.0, "error": null}
+{"traza": "7b8bb79a0db01100b2d962f69b1ab0a7", "span": "agent", "nombre": "planificador", "duracion_ms": 4981.0, "error": null}
+{"traza": "7b8bb79a0db01100b2d962f69b1ab0a7", "span": "llm", "nombre": "planificador", "duracion_ms": 4977.0, "error": null, "modelo": "zai-org/GLM-5.3-Flash", "tokens_entrada": 1056, "tokens_salida": 1473, "tokens_razonamiento": 0, "prompt": "", "prompt_version_ligada": null}
+{"traza": "7b8bb79a0db01100b2d962f69b1ab0a7", "span": "chain", "nombre": "orquestador", "duracion_ms": 2.0, "error": null}
+{"traza": "7b8bb79a0db01100b2d962f69b1ab0a7", "span": "agent", "nombre": "investigador", "duracion_ms": 230.0, "error": null}
+{"traza": "7b8bb79a0db01100b2d962f69b1ab0a7", "span": "retriever", "nombre": "seccion_literal", "duracion_ms": 2.0, "error": null}
+{"traza": "7b8bb79a0db01100b2d962f69b1ab0a7", "span": "retriever", "nombre": "busqueda_local", "duracion_ms": 222.0, "error": null}
+{"traza": "7b8bb79a0db01100b2d962f69b1ab0a7", "span": "agent", "nombre": "programador", "duracion_ms": 8964.0, "error": null}
+{"traza": "7b8bb79a0db01100b2d962f69b1ab0a7", "span": "llm", "nombre": "programador", "duracion_ms": 8962.0, "error": null, "modelo": "zai-org/GLM-5.3-Flash", "tokens_entrada": 2609, "tokens_salida": 2781, "tokens_razonamiento": 0, "prompt": "solver-programador", "prompt_version_ligada": 2}
+{"traza": "7b8bb79a0db01100b2d962f69b1ab0a7", "span": "agent", "nombre": "ejecutor", "duracion_ms": 697.0, "error": null}
+{"traza": "7b8bb79a0db01100b2d962f69b1ab0a7", "span": "guardrail", "nombre": "guarda_ast", "duracion_ms": 4.0, "error": null}
+{"traza": "7b8bb79a0db01100b2d962f69b1ab0a7", "span": "herramienta", "nombre": "sandbox", "duracion_ms": 690.0, "error": null}
+{"traza": "7b8bb79a0db01100b2d962f69b1ab0a7", "span": "agent", "nombre": "critico", "duracion_ms": 9148.0, "error": null}
+{"traza": "7b8bb79a0db01100b2d962f69b1ab0a7", "span": "llm", "nombre": "critico", "duracion_ms": 9145.0, "error": null, "modelo": "zai-org/GLM-5.3-Flash", "tokens_entrada": 3504, "tokens_salida": 2725, "tokens_razonamiento": 0, "prompt": "", "prompt_version_ligada": null}
+{"traza": "7b8bb79a0db01100b2d962f69b1ab0a7", "span": "chain", "nombre": "orquestador", "duracion_ms": 2.0, "error": null}
+{"traza": "7b8bb79a0db01100b2d962f69b1ab0a7", "span": "agent", "nombre": "investigador", "duracion_ms": 538.0, "error": null}
+{"traza": "7b8bb79a0db01100b2d962f69b1ab0a7", "span": "retriever", "nombre": "seccion_literal", "duracion_ms": 3.0, "error": null}
+{"traza": "7b8bb79a0db01100b2d962f69b1ab0a7", "span": "retriever", "nombre": "busqueda_local", "duracion_ms": 529.0, "error": null}
+{"traza": "7b8bb79a0db01100b2d962f69b1ab0a7", "span": "llm", "nombre": "programador", "duracion_ms": 14510.0, "error": null, "modelo": "zai-org/GLM-5.3-Flash", "tokens_entrada": 3950, "tokens_salida": 4455, "tokens_razonamiento": 0, "prompt": "solver-programador", "prompt_version_ligada": 2}
+{"traza": "7b8bb79a0db01100b2d962f69b1ab0a7", "span": "agent", "nombre": "programador", "duracion_ms": 14511.0, "error": null}
+{"traza": "7b8bb79a0db01100b2d962f69b1ab0a7", "span": "agent", "nombre": "ejecutor", "duracion_ms": 489.0, "error": null}
+{"traza": "7b8bb79a0db01100b2d962f69b1ab0a7", "span": "guardrail", "nombre": "guarda_ast", "duracion_ms": 6.0, "error": null}
+{"traza": "7b8bb79a0db01100b2d962f69b1ab0a7", "span": "herramienta", "nombre": "sandbox", "duracion_ms": 479.0, "error": null}
+{"traza": "7b8bb79a0db01100b2d962f69b1ab0a7", "span": "agent", "nombre": "critico", "duracion_ms": 5015.0, "error": null}
+{"traza": "7b8bb79a0db01100b2d962f69b1ab0a7", "span": "llm", "nombre": "critico", "duracion_ms": 4959.0, "error": null, "modelo": "zai-org/GLM-5.3-Flash", "tokens_entrada": 4057, "tokens_salida": 1462, "tokens_razonamiento": 0, "prompt": "", "prompt_version_ligada": null}
+{"traza": "7b8bb79a0db01100b2d962f69b1ab0a7", "span": "chain", "nombre": "orquestador", "duracion_ms": 1.0, "error": null}
+{"traza": "7b8bb79a0db01100b2d962f69b1ab0a7", "span": "agent", "nombre": "investigador", "duracion_ms": 2487.0, "error": null}
+{"traza": "7b8bb79a0db01100b2d962f69b1ab0a7", "span": "retriever", "nombre": "seccion_literal", "duracion_ms": 3.0, "error": null}
+{"traza": "7b8bb79a0db01100b2d962f69b1ab0a7", "span": "retriever", "nombre": "busqueda_local", "duracion_ms": 2475.0, "error": null}
+{"traza": "7b8bb79a0db01100b2d962f69b1ab0a7", "span": "agent", "nombre": "programador", "duracion_ms": 5200.0, "error": null}
+{"traza": "7b8bb79a0db01100b2d962f69b1ab0a7", "span": "llm", "nombre": "programador", "duracion_ms": 5198.0, "error": null, "modelo": "zai-org/GLM-5.3-Flash", "tokens_entrada": 4212, "tokens_salida": 1547, "tokens_razonamiento": 0, "prompt": "solver-programador", "prompt_version_ligada": 2}
+{"traza": "7b8bb79a0db01100b2d962f69b1ab0a7", "span": "agent", "nombre": "ejecutor", "duracion_ms": 569.0, "error": null}
+{"traza": "7b8bb79a0db01100b2d962f69b1ab0a7", "span": "guardrail", "nombre": "guarda_ast", "duracion_ms": 3.0, "error": null}
+{"traza": "7b8bb79a0db01100b2d962f69b1ab0a7", "span": "herramienta", "nombre": "sandbox", "duracion_ms": 562.0, "error": null}
+{"traza": "7b8bb79a0db01100b2d962f69b1ab0a7", "span": "agent", "nombre": "critico", "duracion_ms": 9291.0, "error": null}
+{"traza": "7b8bb79a0db01100b2d962f69b1ab0a7", "span": "llm", "nombre": "critico", "duracion_ms": 9287.0, "error": null, "modelo": "zai-org/GLM-5.3-Flash", "tokens_entrada": 3094, "tokens_salida": 2818, "tokens_razonamiento": 0, "prompt": "", "prompt_version_ligada": null}
+{"traza": "7b8bb79a0db01100b2d962f69b1ab0a7", "span": "chain", "nombre": "orquestador", "duracion_ms": 3.0, "error": null}
+{"traza": "7b8bb79a0db01100b2d962f69b1ab0a7", "span": "agent", "nombre": "redactor", "duracion_ms": 41345.0, "error": null}
+{"traza": "7b8bb79a0db01100b2d962f69b1ab0a7", "span": "llm", "nombre": "redactor", "duracion_ms": 39203.0, "error": null, "modelo": "zai-org/GLM-5.3-Flash", "tokens_entrada": 3945, "tokens_salida": 11864, "tokens_razonamiento": 0, "prompt": "", "prompt_version_ligada": null}
+{"traza": "7b8bb79a0db01100b2d962f69b1ab0a7", "span": "guardrail", "nombre": "salida_secretos", "duracion_ms": 2.0, "error": null}
+{"traza": "7b8bb79a0db01100b2d962f69b1ab0a7", "span": "guardrail", "nombre": "salida_pii", "duracion_ms": 4.0, "error": null}
+{"traza": "7b8bb79a0db01100b2d962f69b1ab0a7", "span": "chain", "nombre": "procedencia", "duracion_ms": 5.0, "error": null}
+{"traza": "7b8bb79a0db01100b2d962f69b1ab0a7", "span": "chain", "nombre": "orquestador", "duracion_ms": 0.0, "error": null}
+{"traza": "468ba03470e1ab63bac3d35b651c485b", "span": "corrida", "nombre": "solver", "duracion_ms": 169081.0, "error": null, "prompt_version": "v2"}
+{"traza": "468ba03470e1ab63bac3d35b651c485b", "span": "agent", "nombre": "lector", "duracion_ms": 46.0, "error": null}
+{"traza": "468ba03470e1ab63bac3d35b651c485b", "span": "herramienta", "nombre": "leer_pdf", "duracion_ms": 42.0, "error": null}
+{"traza": "468ba03470e1ab63bac3d35b651c485b", "span": "guardrail", "nombre": "entrada_inyeccion", "duracion_ms": 1.0, "error": null}
+{"traza": "468ba03470e1ab63bac3d35b651c485b", "span": "guardrail", "nombre": "entrada_pii", "duracion_ms": 1.0, "error": null}
+{"traza": "468ba03470e1ab63bac3d35b651c485b", "span": "agent", "nombre": "indexador", "duracion_ms": 25456.0, "error": null}
+{"traza": "468ba03470e1ab63bac3d35b651c485b", "span": "llm", "nombre": "indexador", "duracion_ms": 14101.0, "error": null, "modelo": "zai-org/GLM-5.3-Flash", "tokens_entrada": 450, "tokens_salida": 3100, "tokens_razonamiento": 0, "prompt": "", "prompt_version_ligada": null}
+{"traza": "468ba03470e1ab63bac3d35b651c485b", "span": "llm", "nombre": "indexador", "duracion_ms": 13584.0, "error": null, "modelo": "zai-org/GLM-5.3-Flash", "tokens_entrada": 391, "tokens_salida": 2909, "tokens_razonamiento": 0, "prompt": "", "prompt_version_ligada": null}
+{"traza": "468ba03470e1ab63bac3d35b651c485b", "span": "llm", "nombre": "indexador", "duracion_ms": 10848.0, "error": null, "modelo": "zai-org/GLM-5.3-Flash", "tokens_entrada": 429, "tokens_salida": 2316, "tokens_razonamiento": 0, "prompt": "", "prompt_version_ligada": null}
+{"traza": "468ba03470e1ab63bac3d35b651c485b", "span": "llm", "nombre": "indexador", "duracion_ms": 14755.0, "error": null, "modelo": "zai-org/GLM-5.3-Flash", "tokens_entrada": 400, "tokens_salida": 3291, "tokens_razonamiento": 0, "prompt": "", "prompt_version_ligada": null}
+{"traza": "468ba03470e1ab63bac3d35b651c485b", "span": "embedding", "nombre": "embeddings", "duracion_ms": 7779.0, "error": null}
+{"traza": "468ba03470e1ab63bac3d35b651c485b", "span": "llm", "nombre": "planificador", "duracion_ms": 3690.0, "error": null, "modelo": "zai-org/GLM-5.3-Flash", "tokens_entrada": 1081, "tokens_salida": 1057, "tokens_razonamiento": 0, "prompt": "", "prompt_version_ligada": null}
+{"traza": "468ba03470e1ab63bac3d35b651c485b", "span": "agent", "nombre": "planificador", "duracion_ms": 3694.0, "error": null}
+{"traza": "468ba03470e1ab63bac3d35b651c485b", "span": "chain", "nombre": "orquestador", "duracion_ms": 1.0, "error": null}
+{"traza": "468ba03470e1ab63bac3d35b651c485b", "span": "agent", "nombre": "investigador", "duracion_ms": 3267.0, "error": null}
+{"traza": "468ba03470e1ab63bac3d35b651c485b", "span": "retriever", "nombre": "seccion_literal", "duracion_ms": 2.0, "error": null}
+{"traza": "468ba03470e1ab63bac3d35b651c485b", "span": "retriever", "nombre": "busqueda_local", "duracion_ms": 3258.0, "error": null}
+{"traza": "468ba03470e1ab63bac3d35b651c485b", "span": "agent", "nombre": "programador", "duracion_ms": 4410.0, "error": null}
+{"traza": "468ba03470e1ab63bac3d35b651c485b", "span": "llm", "nombre": "programador", "duracion_ms": 4408.0, "error": null, "modelo": "zai-org/GLM-5.3-Flash", "tokens_entrada": 1679, "tokens_salida": 1243, "tokens_razonamiento": 0, "prompt": "solver-programador", "prompt_version_ligada": 2}
+{"traza": "468ba03470e1ab63bac3d35b651c485b", "span": "agent", "nombre": "ejecutor", "duracion_ms": 1058.0, "error": null}
+{"traza": "468ba03470e1ab63bac3d35b651c485b", "span": "guardrail", "nombre": "guarda_ast", "duracion_ms": 6.0, "error": null}
+{"traza": "468ba03470e1ab63bac3d35b651c485b", "span": "herramienta", "nombre": "sandbox", "duracion_ms": 1049.0, "error": null}
+{"traza": "468ba03470e1ab63bac3d35b651c485b", "span": "agent", "nombre": "critico", "duracion_ms": 1732.0, "error": null}
+{"traza": "468ba03470e1ab63bac3d35b651c485b", "span": "llm", "nombre": "critico", "duracion_ms": 1729.0, "error": null, "modelo": "zai-org/GLM-5.3-Flash", "tokens_entrada": 2530, "tokens_salida": 415, "tokens_razonamiento": 0, "prompt": "", "prompt_version_ligada": null}
+{"traza": "468ba03470e1ab63bac3d35b651c485b", "span": "chain", "nombre": "orquestador", "duracion_ms": 2.0, "error": null}
+{"traza": "468ba03470e1ab63bac3d35b651c485b", "span": "agent", "nombre": "investigador", "duracion_ms": 2735.0, "error": null}
+{"traza": "468ba03470e1ab63bac3d35b651c485b", "span": "retriever", "nombre": "seccion_literal", "duracion_ms": 2.0, "error": null}
+{"traza": "468ba03470e1ab63bac3d35b651c485b", "span": "retriever", "nombre": "busqueda_local", "duracion_ms": 2723.0, "error": null}
+{"traza": "468ba03470e1ab63bac3d35b651c485b", "span": "agent", "nombre": "programador", "duracion_ms": 48855.0, "error": null}
+{"traza": "468ba03470e1ab63bac3d35b651c485b", "span": "llm", "nombre": "programador", "duracion_ms": 48853.0, "error": null, "modelo": "zai-org/GLM-5.3-Flash", "tokens_entrada": 3037, "tokens_salida": 14407, "tokens_razonamiento": 0, "prompt": "solver-programador", "prompt_version_ligada": 2}
+{"traza": "468ba03470e1ab63bac3d35b651c485b", "span": "agent", "nombre": "ejecutor", "duracion_ms": 1623.0, "error": null}
+{"traza": "468ba03470e1ab63bac3d35b651c485b", "span": "guardrail", "nombre": "guarda_ast", "duracion_ms": 6.0, "error": null}
+{"traza": "468ba03470e1ab63bac3d35b651c485b", "span": "herramienta", "nombre": "sandbox", "duracion_ms": 1613.0, "error": null}
+{"traza": "468ba03470e1ab63bac3d35b651c485b", "span": "agent", "nombre": "critico", "duracion_ms": 5429.0, "error": null}
+{"traza": "468ba03470e1ab63bac3d35b651c485b", "span": "llm", "nombre": "critico", "duracion_ms": 5424.0, "error": null, "modelo": "zai-org/GLM-5.3-Flash", "tokens_entrada": 3805, "tokens_salida": 1463, "tokens_razonamiento": 0, "prompt": "", "prompt_version_ligada": null}
+{"traza": "468ba03470e1ab63bac3d35b651c485b", "span": "chain", "nombre": "orquestador", "duracion_ms": 2.0, "error": null}
+{"traza": "468ba03470e1ab63bac3d35b651c485b", "span": "agent", "nombre": "investigador", "duracion_ms": 4949.0, "error": null}
+{"traza": "468ba03470e1ab63bac3d35b651c485b", "span": "retriever", "nombre": "seccion_literal", "duracion_ms": 1.0, "error": null}
+{"traza": "468ba03470e1ab63bac3d35b651c485b", "span": "retriever", "nombre": "busqueda_local", "duracion_ms": 4941.0, "error": null}
+{"traza": "468ba03470e1ab63bac3d35b651c485b", "span": "agent", "nombre": "programador", "duracion_ms": 31248.0, "error": null}
+{"traza": "468ba03470e1ab63bac3d35b651c485b", "span": "llm", "nombre": "programador", "duracion_ms": 31248.0, "error": null, "modelo": "zai-org/GLM-5.3-Flash", "tokens_entrada": 3896, "tokens_salida": 9192, "tokens_razonamiento": 0, "prompt": "solver-programador", "prompt_version_ligada": 2}
+{"traza": "468ba03470e1ab63bac3d35b651c485b", "span": "guardrail", "nombre": "guarda_ast", "duracion_ms": 4.0, "error": null}
+{"traza": "468ba03470e1ab63bac3d35b651c485b", "span": "agent", "nombre": "ejecutor", "duracion_ms": 1566.0, "error": null}
+{"traza": "468ba03470e1ab63bac3d35b651c485b", "span": "herramienta", "nombre": "sandbox", "duracion_ms": 1560.0, "error": null}
+{"traza": "468ba03470e1ab63bac3d35b651c485b", "span": "agent", "nombre": "critico", "duracion_ms": 7911.0, "error": null}
+{"traza": "468ba03470e1ab63bac3d35b651c485b", "span": "llm", "nombre": "critico", "duracion_ms": 7904.0, "error": null, "modelo": "zai-org/GLM-5.3-Flash", "tokens_entrada": 5082, "tokens_salida": 2258, "tokens_razonamiento": 0, "prompt": "", "prompt_version_ligada": null}
+{"traza": "468ba03470e1ab63bac3d35b651c485b", "span": "chain", "nombre": "orquestador", "duracion_ms": 2.0, "error": null}
+{"traza": "468ba03470e1ab63bac3d35b651c485b", "span": "agent", "nombre": "redactor", "duracion_ms": 18150.0, "error": null}
+{"traza": "468ba03470e1ab63bac3d35b651c485b", "span": "llm", "nombre": "redactor", "duracion_ms": 18139.0, "error": null, "modelo": "zai-org/GLM-5.3-Flash", "tokens_entrada": 3229, "tokens_salida": 5316, "tokens_razonamiento": 0, "prompt": "", "prompt_version_ligada": null}
+{"traza": "468ba03470e1ab63bac3d35b651c485b", "span": "guardrail", "nombre": "salida_secretos", "duracion_ms": 2.0, "error": null}
+{"traza": "468ba03470e1ab63bac3d35b651c485b", "span": "guardrail", "nombre": "salida_pii", "duracion_ms": 3.0, "error": null}
+{"traza": "468ba03470e1ab63bac3d35b651c485b", "span": "chain", "nombre": "procedencia", "duracion_ms": 14.0, "error": null}
+{"traza": "468ba03470e1ab63bac3d35b651c485b", "span": "agent", "nombre": "redactor", "duracion_ms": 6818.0, "error": null}
+{"traza": "468ba03470e1ab63bac3d35b651c485b", "span": "llm", "nombre": "redactor", "duracion_ms": 6810.0, "error": null, "modelo": "zai-org/GLM-5.3-Flash", "tokens_entrada": 5050, "tokens_salida": 2116, "tokens_razonamiento": 0, "prompt": "", "prompt_version_ligada": null}
+{"traza": "468ba03470e1ab63bac3d35b651c485b", "span": "guardrail", "nombre": "salida_secretos", "duracion_ms": 1.0, "error": null}
+{"traza": "468ba03470e1ab63bac3d35b651c485b", "span": "guardrail", "nombre": "salida_pii", "duracion_ms": 3.0, "error": null}
+{"traza": "468ba03470e1ab63bac3d35b651c485b", "span": "chain", "nombre": "procedencia", "duracion_ms": 5.0, "error": null}
+{"traza": "468ba03470e1ab63bac3d35b651c485b", "span": "chain", "nombre": "orquestador", "duracion_ms": 1.0, "error": null}
+{"traza": "39acfbb16389354477f8e5dba7fbf99d", "span": "corrida", "nombre": "solver", "duracion_ms": 490176.0, "error": null, "prompt_version": "v2"}
+{"traza": "39acfbb16389354477f8e5dba7fbf99d", "span": "herramienta", "nombre": "leer_pdf", "duracion_ms": 96.0, "error": null}
+{"traza": "39acfbb16389354477f8e5dba7fbf99d", "span": "agent", "nombre": "lector", "duracion_ms": 102.0, "error": null}
+{"traza": "39acfbb16389354477f8e5dba7fbf99d", "span": "guardrail", "nombre": "entrada_inyeccion", "duracion_ms": 3.0, "error": null}
+{"traza": "39acfbb16389354477f8e5dba7fbf99d", "span": "guardrail", "nombre": "entrada_pii", "duracion_ms": 2.0, "error": null}
+{"traza": "39acfbb16389354477f8e5dba7fbf99d", "span": "agent", "nombre": "indexador", "duracion_ms": 69638.0, "error": null}
+{"traza": "39acfbb16389354477f8e5dba7fbf99d", "span": "llm", "nombre": "indexador", "duracion_ms": 15841.0, "error": null, "modelo": "zai-org/GLM-5.3-Flash", "tokens_entrada": 480, "tokens_salida": 3252, "tokens_razonamiento": 0, "prompt": "", "prompt_version_ligada": null}
+{"traza": "39acfbb16389354477f8e5dba7fbf99d", "span": "llm", "nombre": "indexador", "duracion_ms": 16878.0, "error": null, "modelo": "zai-org/GLM-5.3-Flash", "tokens_entrada": 536, "tokens_salida": 3281, "tokens_razonamiento": 0, "prompt": "", "prompt_version_ligada": null}
+{"traza": "39acfbb16389354477f8e5dba7fbf99d", "span": "llm", "nombre": "indexador", "duracion_ms": 10836.0, "error": null, "modelo": "zai-org/GLM-5.3-Flash", "tokens_entrada": 425, "tokens_salida": 1913, "tokens_razonamiento": 0, "prompt": "", "prompt_version_ligada": null}
+{"traza": "39acfbb16389354477f8e5dba7fbf99d", "span": "llm", "nombre": "indexador", "duracion_ms": 16388.0, "error": null, "modelo": "zai-org/GLM-5.3-Flash", "tokens_entrada": 445, "tokens_salida": 3255, "tokens_razonamiento": 0, "prompt": "", "prompt_version_ligada": null}
+{"traza": "39acfbb16389354477f8e5dba7fbf99d", "span": "llm", "nombre": "indexador", "duracion_ms": 11862.0, "error": null, "modelo": "zai-org/GLM-5.3-Flash", "tokens_entrada": 434, "tokens_salida": 2087, "tokens_razonamiento": 0, "prompt": "", "prompt_version_ligada": null}
+{"traza": "39acfbb16389354477f8e5dba7fbf99d", "span": "embedding", "nombre": "embeddings", "duracion_ms": 51977.0, "error": null}
+{"traza": "39acfbb16389354477f8e5dba7fbf99d", "span": "agent", "nombre": "planificador", "duracion_ms": 8090.0, "error": null}
+{"traza": "39acfbb16389354477f8e5dba7fbf99d", "span": "llm", "nombre": "planificador", "duracion_ms": 8084.0, "error": null, "modelo": "zai-org/GLM-5.3-Flash", "tokens_entrada": 1898, "tokens_salida": 2432, "tokens_razonamiento": 0, "prompt": "", "prompt_version_ligada": null}
+{"traza": "39acfbb16389354477f8e5dba7fbf99d", "span": "chain", "nombre": "orquestador", "duracion_ms": 1.0, "error": null}
+{"traza": "39acfbb16389354477f8e5dba7fbf99d", "span": "agent", "nombre": "investigador", "duracion_ms": 655.0, "error": null}
+{"traza": "39acfbb16389354477f8e5dba7fbf99d", "span": "retriever", "nombre": "seccion_literal", "duracion_ms": 2.0, "error": null}
+{"traza": "39acfbb16389354477f8e5dba7fbf99d", "span": "retriever", "nombre": "busqueda_local", "duracion_ms": 648.0, "error": null}
+{"traza": "39acfbb16389354477f8e5dba7fbf99d", "span": "agent", "nombre": "programador", "duracion_ms": 27816.0, "error": null}
+{"traza": "39acfbb16389354477f8e5dba7fbf99d", "span": "llm", "nombre": "programador", "duracion_ms": 27814.0, "error": null, "modelo": "zai-org/GLM-5.3-Flash", "tokens_entrada": 2470, "tokens_salida": 5186, "tokens_razonamiento": 0, "prompt": "solver-programador", "prompt_version_ligada": 2}
+{"traza": "39acfbb16389354477f8e5dba7fbf99d", "span": "agent", "nombre": "ejecutor", "duracion_ms": 273.0, "error": null}
+{"traza": "39acfbb16389354477f8e5dba7fbf99d", "span": "guardrail", "nombre": "guarda_ast", "duracion_ms": 2.0, "error": null}
+{"traza": "39acfbb16389354477f8e5dba7fbf99d", "span": "herramienta", "nombre": "sandbox", "duracion_ms": 267.0, "error": null}
+{"traza": "39acfbb16389354477f8e5dba7fbf99d", "span": "agent", "nombre": "critico", "duracion_ms": 4313.0, "error": null}
+{"traza": "39acfbb16389354477f8e5dba7fbf99d", "span": "llm", "nombre": "critico", "duracion_ms": 4310.0, "error": null, "modelo": "zai-org/GLM-5.3-Flash", "tokens_entrada": 3518, "tokens_salida": 1128, "tokens_razonamiento": 0, "prompt": "", "prompt_version_ligada": null}
+{"traza": "39acfbb16389354477f8e5dba7fbf99d", "span": "chain", "nombre": "orquestador", "duracion_ms": 0.0, "error": null}
+{"traza": "39acfbb16389354477f8e5dba7fbf99d", "span": "agent", "nombre": "investigador", "duracion_ms": 4630.0, "error": null}
+{"traza": "39acfbb16389354477f8e5dba7fbf99d", "span": "retriever", "nombre": "seccion_literal", "duracion_ms": 1.0, "error": null}
+{"traza": "39acfbb16389354477f8e5dba7fbf99d", "span": "retriever", "nombre": "busqueda_local", "duracion_ms": 4624.0, "error": null}
+{"traza": "39acfbb16389354477f8e5dba7fbf99d", "span": "agent", "nombre": "programador", "duracion_ms": 49029.0, "error": null}
+{"traza": "39acfbb16389354477f8e5dba7fbf99d", "span": "llm", "nombre": "programador", "duracion_ms": 49028.0, "error": null, "modelo": "zai-org/GLM-5.3-Flash", "tokens_entrada": 2523, "tokens_salida": 9059, "tokens_razonamiento": 0, "prompt": "solver-programador", "prompt_version_ligada": 2}
+{"traza": "39acfbb16389354477f8e5dba7fbf99d", "span": "agent", "nombre": "ejecutor", "duracion_ms": 251.0, "error": null}
+{"traza": "39acfbb16389354477f8e5dba7fbf99d", "span": "guardrail", "nombre": "guarda_ast", "duracion_ms": 2.0, "error": null}
+{"traza": "39acfbb16389354477f8e5dba7fbf99d", "span": "herramienta", "nombre": "sandbox", "duracion_ms": 245.0, "error": null}
+{"traza": "39acfbb16389354477f8e5dba7fbf99d", "span": "agent", "nombre": "critico", "duracion_ms": 7263.0, "error": null}
+{"traza": "39acfbb16389354477f8e5dba7fbf99d", "span": "llm", "nombre": "critico", "duracion_ms": 7258.0, "error": null, "modelo": "zai-org/GLM-5.3-Flash", "tokens_entrada": 5556, "tokens_salida": 1831, "tokens_razonamiento": 0, "prompt": "", "prompt_version_ligada": null}
+{"traza": "39acfbb16389354477f8e5dba7fbf99d", "span": "chain", "nombre": "orquestador", "duracion_ms": 1.0, "error": null}
+{"traza": "39acfbb16389354477f8e5dba7fbf99d", "span": "agent", "nombre": "investigador", "duracion_ms": 343.0, "error": null}
+{"traza": "39acfbb16389354477f8e5dba7fbf99d", "span": "retriever", "nombre": "seccion_literal", "duracion_ms": 1.0, "error": null}
+{"traza": "39acfbb16389354477f8e5dba7fbf99d", "span": "retriever", "nombre": "busqueda_local", "duracion_ms": 336.0, "error": null}
+{"traza": "39acfbb16389354477f8e5dba7fbf99d", "span": "agent", "nombre": "programador", "duracion_ms": 27139.0, "error": null}
+{"traza": "39acfbb16389354477f8e5dba7fbf99d", "span": "llm", "nombre": "programador", "duracion_ms": 27138.0, "error": null, "modelo": "zai-org/GLM-5.3-Flash", "tokens_entrada": 4446, "tokens_salida": 5578, "tokens_razonamiento": 0, "prompt": "solver-programador", "prompt_version_ligada": 2}
+{"traza": "39acfbb16389354477f8e5dba7fbf99d", "span": "agent", "nombre": "ejecutor", "duracion_ms": 351.0, "error": null}
+{"traza": "39acfbb16389354477f8e5dba7fbf99d", "span": "guardrail", "nombre": "guarda_ast", "duracion_ms": 3.0, "error": null}
+{"traza": "39acfbb16389354477f8e5dba7fbf99d", "span": "herramienta", "nombre": "sandbox", "duracion_ms": 345.0, "error": null}
+{"traza": "39acfbb16389354477f8e5dba7fbf99d", "span": "agent", "nombre": "critico", "duracion_ms": 5231.0, "error": null}
+{"traza": "39acfbb16389354477f8e5dba7fbf99d", "span": "llm", "nombre": "critico", "duracion_ms": 5227.0, "error": null, "modelo": "zai-org/GLM-5.3-Flash", "tokens_entrada": 5069, "tokens_salida": 1078, "tokens_razonamiento": 0, "prompt": "", "prompt_version_ligada": null}
+{"traza": "39acfbb16389354477f8e5dba7fbf99d", "span": "chain", "nombre": "orquestador", "duracion_ms": 0.0, "error": null}
+{"traza": "39acfbb16389354477f8e5dba7fbf99d", "span": "agent", "nombre": "investigador", "duracion_ms": 1184.0, "error": null}
+{"traza": "39acfbb16389354477f8e5dba7fbf99d", "span": "retriever", "nombre": "seccion_literal", "duracion_ms": 1.0, "error": null}
+{"traza": "39acfbb16389354477f8e5dba7fbf99d", "span": "retriever", "nombre": "busqueda_local", "duracion_ms": 1178.0, "error": null}
+{"traza": "39acfbb16389354477f8e5dba7fbf99d", "span": "agent", "nombre": "programador", "duracion_ms": 52881.0, "error": null}
+{"traza": "39acfbb16389354477f8e5dba7fbf99d", "span": "llm", "nombre": "programador", "duracion_ms": 52879.0, "error": null, "modelo": "zai-org/GLM-5.3-Flash", "tokens_entrada": 4957, "tokens_salida": 10233, "tokens_razonamiento": 0, "prompt": "solver-programador", "prompt_version_ligada": 2}
+{"traza": "39acfbb16389354477f8e5dba7fbf99d", "span": "agent", "nombre": "ejecutor", "duracion_ms": 354.0, "error": null}
+{"traza": "39acfbb16389354477f8e5dba7fbf99d", "span": "guardrail", "nombre": "guarda_ast", "duracion_ms": 4.0, "error": null}
+{"traza": "39acfbb16389354477f8e5dba7fbf99d", "span": "herramienta", "nombre": "sandbox", "duracion_ms": 342.0, "error": null}
+{"traza": "39acfbb16389354477f8e5dba7fbf99d", "span": "agent", "nombre": "critico", "duracion_ms": 11639.0, "error": null}
+{"traza": "39acfbb16389354477f8e5dba7fbf99d", "span": "llm", "nombre": "critico", "duracion_ms": 11635.0, "error": null, "modelo": "zai-org/GLM-5.3-Flash", "tokens_entrada": 3972, "tokens_salida": 3227, "tokens_razonamiento": 0, "prompt": "", "prompt_version_ligada": null}
+{"traza": "39acfbb16389354477f8e5dba7fbf99d", "span": "chain", "nombre": "orquestador", "duracion_ms": 2.0, "error": null}
+{"traza": "39acfbb16389354477f8e5dba7fbf99d", "span": "agent", "nombre": "investigador", "duracion_ms": 3949.0, "error": null}
+{"traza": "39acfbb16389354477f8e5dba7fbf99d", "span": "retriever", "nombre": "seccion_literal", "duracion_ms": 3.0, "error": null}
+{"traza": "39acfbb16389354477f8e5dba7fbf99d", "span": "retriever", "nombre": "busqueda_local", "duracion_ms": 3937.0, "error": null}
+{"traza": "39acfbb16389354477f8e5dba7fbf99d", "span": "llm", "nombre": "programador", "duracion_ms": 175435.0, "error": null, "modelo": "zai-org/GLM-5.3-Flash", "tokens_entrada": 4501, "tokens_salida": 26155, "tokens_razonamiento": 0, "prompt": "solver-programador", "prompt_version_ligada": 2}
+{"traza": "39acfbb16389354477f8e5dba7fbf99d", "span": "agent", "nombre": "programador", "duracion_ms": 175436.0, "error": null}
+{"traza": "39acfbb16389354477f8e5dba7fbf99d", "span": "agent", "nombre": "ejecutor", "duracion_ms": 343.0, "error": null}
+{"traza": "39acfbb16389354477f8e5dba7fbf99d", "span": "guardrail", "nombre": "guarda_ast", "duracion_ms": 6.0, "error": null}
+{"traza": "39acfbb16389354477f8e5dba7fbf99d", "span": "herramienta", "nombre": "sandbox", "duracion_ms": 332.0, "error": null}
+{"traza": "39acfbb16389354477f8e5dba7fbf99d", "span": "agent", "nombre": "critico", "duracion_ms": 10862.0, "error": null}
+{"traza": "39acfbb16389354477f8e5dba7fbf99d", "span": "llm", "nombre": "critico", "duracion_ms": 10857.0, "error": null, "modelo": "zai-org/GLM-5.3-Flash", "tokens_entrada": 4458, "tokens_salida": 2253, "tokens_razonamiento": 0, "prompt": "", "prompt_version_ligada": null}
+{"traza": "39acfbb16389354477f8e5dba7fbf99d", "span": "chain", "nombre": "orquestador", "duracion_ms": 1.0, "error": null}
+{"traza": "39acfbb16389354477f8e5dba7fbf99d", "span": "agent", "nombre": "redactor", "duracion_ms": 23552.0, "error": null}
+{"traza": "39acfbb16389354477f8e5dba7fbf99d", "span": "llm", "nombre": "redactor", "duracion_ms": 23536.0, "error": null, "modelo": "zai-org/GLM-5.3-Flash", "tokens_entrada": 11233, "tokens_salida": 5821, "tokens_razonamiento": 0, "prompt": "", "prompt_version_ligada": null}
+{"traza": "39acfbb16389354477f8e5dba7fbf99d", "span": "guardrail", "nombre": "salida_secretos", "duracion_ms": 1.0, "error": null}
+{"traza": "39acfbb16389354477f8e5dba7fbf99d", "span": "guardrail", "nombre": "salida_pii", "duracion_ms": 3.0, "error": null}
+{"traza": "39acfbb16389354477f8e5dba7fbf99d", "span": "chain", "nombre": "procedencia", "duracion_ms": 63.0, "error": null}
+{"traza": "39acfbb16389354477f8e5dba7fbf99d", "span": "agent", "nombre": "redactor", "duracion_ms": 4574.0, "error": null}
+{"traza": "39acfbb16389354477f8e5dba7fbf99d", "span": "llm", "nombre": "redactor", "duracion_ms": 4565.0, "error": null, "modelo": "zai-org/GLM-5.3-Flash", "tokens_entrada": 12512, "tokens_salida": 1383, "tokens_razonamiento": 0, "prompt": "", "prompt_version_ligada": null}
+{"traza": "39acfbb16389354477f8e5dba7fbf99d", "span": "guardrail", "nombre": "salida_secretos", "duracion_ms": 1.0, "error": null}
+{"traza": "39acfbb16389354477f8e5dba7fbf99d", "span": "guardrail", "nombre": "salida_pii", "duracion_ms": 3.0, "error": null}
+{"traza": "39acfbb16389354477f8e5dba7fbf99d", "span": "chain", "nombre": "procedencia", "duracion_ms": 33.0, "error": null}
+{"traza": "39acfbb16389354477f8e5dba7fbf99d", "span": "chain", "nombre": "orquestador", "duracion_ms": 0.0, "error": null}
+{"traza": "b909e81cb73e23fd4fb7b1effbc054ad", "span": "corrida", "nombre": "solver", "duracion_ms": 394435.0, "error": null, "prompt_version": "v2"}
+{"traza": "b909e81cb73e23fd4fb7b1effbc054ad", "span": "agent", "nombre": "lector", "duracion_ms": 85.0, "error": null}
+{"traza": "b909e81cb73e23fd4fb7b1effbc054ad", "span": "herramienta", "nombre": "leer_pdf", "duracion_ms": 81.0, "error": null}
+{"traza": "b909e81cb73e23fd4fb7b1effbc054ad", "span": "guardrail", "nombre": "entrada_inyeccion", "duracion_ms": 2.0, "error": null}
+{"traza": "b909e81cb73e23fd4fb7b1effbc054ad", "span": "guardrail", "nombre": "entrada_pii", "duracion_ms": 1.0, "error": null}
+{"traza": "b909e81cb73e23fd4fb7b1effbc054ad", "span": "agent", "nombre": "indexador", "duracion_ms": 133610.0, "error": null}
+{"traza": "b909e81cb73e23fd4fb7b1effbc054ad", "span": "llm", "nombre": "indexador", "duracion_ms": 20752.0, "error": null, "modelo": "zai-org/GLM-5.3-Flash", "tokens_entrada": 391, "tokens_salida": 4096, "tokens_razonamiento": 0, "prompt": "", "prompt_version_ligada": null}
+{"traza": "b909e81cb73e23fd4fb7b1effbc054ad", "span": "llm", "nombre": "indexador", "duracion_ms": 12145.0, "error": null, "modelo": "zai-org/GLM-5.3-Flash", "tokens_entrada": 395, "tokens_salida": 2155, "tokens_razonamiento": 0, "prompt": "", "prompt_version_ligada": null}
+{"traza": "b909e81cb73e23fd4fb7b1effbc054ad", "span": "llm", "nombre": "indexador", "duracion_ms": 12170.0, "error": null, "modelo": "zai-org/GLM-5.3-Flash", "tokens_entrada": 364, "tokens_salida": 2167, "tokens_razonamiento": 0, "prompt": "", "prompt_version_ligada": null}
+{"traza": "b909e81cb73e23fd4fb7b1effbc054ad", "span": "llm", "nombre": "indexador", "duracion_ms": 10506.0, "error": null, "modelo": "zai-org/GLM-5.3-Flash", "tokens_entrada": 370, "tokens_salida": 1760, "tokens_razonamiento": 0, "prompt": "", "prompt_version_ligada": null}
+{"traza": "b909e81cb73e23fd4fb7b1effbc054ad", "span": "embedding", "nombre": "embeddings", "duracion_ms": 79793.0, "error": null}
+{"traza": "b909e81cb73e23fd4fb7b1effbc054ad", "span": "agent", "nombre": "planificador", "duracion_ms": 12617.0, "error": null}
+{"traza": "b909e81cb73e23fd4fb7b1effbc054ad", "span": "llm", "nombre": "planificador", "duracion_ms": 12612.0, "error": null, "modelo": "zai-org/GLM-5.3-Flash", "tokens_entrada": 1313, "tokens_salida": 3043, "tokens_razonamiento": 0, "prompt": "", "prompt_version_ligada": null}
+{"traza": "b909e81cb73e23fd4fb7b1effbc054ad", "span": "chain", "nombre": "orquestador", "duracion_ms": 2.0, "error": null}
+{"traza": "b909e81cb73e23fd4fb7b1effbc054ad", "span": "agent", "nombre": "investigador", "duracion_ms": 6887.0, "error": null}
+{"traza": "b909e81cb73e23fd4fb7b1effbc054ad", "span": "retriever", "nombre": "seccion_literal", "duracion_ms": 2.0, "error": null}
+{"traza": "b909e81cb73e23fd4fb7b1effbc054ad", "span": "retriever", "nombre": "busqueda_local", "duracion_ms": 6874.0, "error": null}
+{"traza": "b909e81cb73e23fd4fb7b1effbc054ad", "span": "agent", "nombre": "programador", "duracion_ms": 50814.0, "error": null}
+{"traza": "b909e81cb73e23fd4fb7b1effbc054ad", "span": "llm", "nombre": "programador", "duracion_ms": 50813.0, "error": null, "modelo": "zai-org/GLM-5.3-Flash", "tokens_entrada": 3290, "tokens_salida": 13370, "tokens_razonamiento": 0, "prompt": "solver-programador", "prompt_version_ligada": 2}
+{"traza": "b909e81cb73e23fd4fb7b1effbc054ad", "span": "agent", "nombre": "ejecutor", "duracion_ms": 1611.0, "error": null}
+{"traza": "b909e81cb73e23fd4fb7b1effbc054ad", "span": "guardrail", "nombre": "guarda_ast", "duracion_ms": 4.0, "error": null}
+{"traza": "b909e81cb73e23fd4fb7b1effbc054ad", "span": "herramienta", "nombre": "sandbox", "duracion_ms": 1603.0, "error": null}
+{"traza": "b909e81cb73e23fd4fb7b1effbc054ad", "span": "agent", "nombre": "critico", "duracion_ms": 4093.0, "error": null}
+{"traza": "b909e81cb73e23fd4fb7b1effbc054ad", "span": "llm", "nombre": "critico", "duracion_ms": 4090.0, "error": null, "modelo": "zai-org/GLM-5.3-Flash", "tokens_entrada": 4902, "tokens_salida": 1015, "tokens_razonamiento": 0, "prompt": "", "prompt_version_ligada": null}
+{"traza": "b909e81cb73e23fd4fb7b1effbc054ad", "span": "chain", "nombre": "orquestador", "duracion_ms": 1.0, "error": null}
+{"traza": "b909e81cb73e23fd4fb7b1effbc054ad", "span": "agent", "nombre": "investigador", "duracion_ms": 258.0, "error": null}
+{"traza": "b909e81cb73e23fd4fb7b1effbc054ad", "span": "retriever", "nombre": "seccion_literal", "duracion_ms": 1.0, "error": null}
+{"traza": "b909e81cb73e23fd4fb7b1effbc054ad", "span": "retriever", "nombre": "busqueda_local", "duracion_ms": 252.0, "error": null}
+{"traza": "b909e81cb73e23fd4fb7b1effbc054ad", "span": "agent", "nombre": "programador", "duracion_ms": 73693.0, "error": null}
+{"traza": "b909e81cb73e23fd4fb7b1effbc054ad", "span": "llm", "nombre": "programador", "duracion_ms": 73692.0, "error": null, "modelo": "zai-org/GLM-5.3-Flash", "tokens_entrada": 5623, "tokens_salida": 20977, "tokens_razonamiento": 0, "prompt": "solver-programador", "prompt_version_ligada": 2}
+{"traza": "b909e81cb73e23fd4fb7b1effbc054ad", "span": "agent", "nombre": "ejecutor", "duracion_ms": 1588.0, "error": null}
+{"traza": "b909e81cb73e23fd4fb7b1effbc054ad", "span": "guardrail", "nombre": "guarda_ast", "duracion_ms": 5.0, "error": null}
+{"traza": "b909e81cb73e23fd4fb7b1effbc054ad", "span": "herramienta", "nombre": "sandbox", "duracion_ms": 1579.0, "error": null}
+{"traza": "b909e81cb73e23fd4fb7b1effbc054ad", "span": "agent", "nombre": "critico", "duracion_ms": 7893.0, "error": null}
+{"traza": "b909e81cb73e23fd4fb7b1effbc054ad", "span": "llm", "nombre": "critico", "duracion_ms": 7886.0, "error": null, "modelo": "zai-org/GLM-5.3-Flash", "tokens_entrada": 6818, "tokens_salida": 2198, "tokens_razonamiento": 0, "prompt": "", "prompt_version_ligada": null}
+{"traza": "b909e81cb73e23fd4fb7b1effbc054ad", "span": "chain", "nombre": "orquestador", "duracion_ms": 1.0, "error": null}
+{"traza": "b909e81cb73e23fd4fb7b1effbc054ad", "span": "agent", "nombre": "investigador", "duracion_ms": 5880.0, "error": null}
+{"traza": "b909e81cb73e23fd4fb7b1effbc054ad", "span": "retriever", "nombre": "seccion_literal", "duracion_ms": 1.0, "error": null}
+{"traza": "b909e81cb73e23fd4fb7b1effbc054ad", "span": "retriever", "nombre": "busqueda_local", "duracion_ms": 5873.0, "error": null}
+{"traza": "b909e81cb73e23fd4fb7b1effbc054ad", "span": "llm", "nombre": "programador", "duracion_ms": 59734.0, "error": null, "modelo": "zai-org/GLM-5.3-Flash", "tokens_entrada": 6584, "tokens_salida": 17598, "tokens_razonamiento": 0, "prompt": "solver-programador", "prompt_version_ligada": 2}
+{"traza": "b909e81cb73e23fd4fb7b1effbc054ad", "span": "agent", "nombre": "programador", "duracion_ms": 59734.0, "error": null}
+{"traza": "b909e81cb73e23fd4fb7b1effbc054ad", "span": "agent", "nombre": "ejecutor", "duracion_ms": 1455.0, "error": null}
+{"traza": "b909e81cb73e23fd4fb7b1effbc054ad", "span": "guardrail", "nombre": "guarda_ast", "duracion_ms": 5.0, "error": null}
+{"traza": "b909e81cb73e23fd4fb7b1effbc054ad", "span": "herramienta", "nombre": "sandbox", "duracion_ms": 1444.0, "error": null}
+{"traza": "b909e81cb73e23fd4fb7b1effbc054ad", "span": "agent", "nombre": "critico", "duracion_ms": 12750.0, "error": null}
+{"traza": "b909e81cb73e23fd4fb7b1effbc054ad", "span": "llm", "nombre": "critico", "duracion_ms": 12743.0, "error": null, "modelo": "zai-org/GLM-5.3-Flash", "tokens_entrada": 6419, "tokens_salida": 3521, "tokens_razonamiento": 0, "prompt": "", "prompt_version_ligada": null}
+{"traza": "b909e81cb73e23fd4fb7b1effbc054ad", "span": "chain", "nombre": "orquestador", "duracion_ms": 1.0, "error": null}
+{"traza": "b909e81cb73e23fd4fb7b1effbc054ad", "span": "agent", "nombre": "redactor", "duracion_ms": 21314.0, "error": null}
+{"traza": "b909e81cb73e23fd4fb7b1effbc054ad", "span": "llm", "nombre": "redactor", "duracion_ms": 21262.0, "error": null, "modelo": "zai-org/GLM-5.3-Flash", "tokens_entrada": 9967, "tokens_salida": 6321, "tokens_razonamiento": 0, "prompt": "", "prompt_version_ligada": null}
+{"traza": "b909e81cb73e23fd4fb7b1effbc054ad", "span": "guardrail", "nombre": "salida_secretos", "duracion_ms": 1.0, "error": null}
+{"traza": "b909e81cb73e23fd4fb7b1effbc054ad", "span": "guardrail", "nombre": "salida_pii", "duracion_ms": 1.0, "error": null}
+{"traza": "b909e81cb73e23fd4fb7b1effbc054ad", "span": "chain", "nombre": "procedencia", "duracion_ms": 6.0, "error": null}
+{"traza": "b909e81cb73e23fd4fb7b1effbc054ad", "span": "chain", "nombre": "orquestador", "duracion_ms": 1.0, "error": null}
+{"traza": "3ecf7e5baeadbee2c69a0bb0cd014e31", "span": "corrida", "nombre": "solver", "duracion_ms": 175820.0, "error": null, "prompt_version": "v2"}
+{"traza": "3ecf7e5baeadbee2c69a0bb0cd014e31", "span": "herramienta", "nombre": "leer_pdf", "duracion_ms": 50.0, "error": null}
+{"traza": "3ecf7e5baeadbee2c69a0bb0cd014e31", "span": "agent", "nombre": "lector", "duracion_ms": 54.0, "error": null}
+{"traza": "3ecf7e5baeadbee2c69a0bb0cd014e31", "span": "guardrail", "nombre": "entrada_inyeccion", "duracion_ms": 2.0, "error": null}
+{"traza": "3ecf7e5baeadbee2c69a0bb0cd014e31", "span": "guardrail", "nombre": "entrada_pii", "duracion_ms": 1.0, "error": null}
+{"traza": "3ecf7e5baeadbee2c69a0bb0cd014e31", "span": "agent", "nombre": "indexador", "duracion_ms": 73434.0, "error": null}
+{"traza": "3ecf7e5baeadbee2c69a0bb0cd014e31", "span": "llm", "nombre": "indexador", "duracion_ms": 14021.0, "error": null, "modelo": "zai-org/GLM-5.3-Flash", "tokens_entrada": 414, "tokens_salida": 2687, "tokens_razonamiento": 0, "prompt": "", "prompt_version_ligada": null}
+{"traza": "3ecf7e5baeadbee2c69a0bb0cd014e31", "span": "llm", "nombre": "indexador", "duracion_ms": 12841.0, "error": null, "modelo": "zai-org/GLM-5.3-Flash", "tokens_entrada": 402, "tokens_salida": 2307, "tokens_razonamiento": 0, "prompt": "", "prompt_version_ligada": null}
+{"traza": "3ecf7e5baeadbee2c69a0bb0cd014e31", "span": "llm", "nombre": "indexador", "duracion_ms": 9736.0, "error": null, "modelo": "zai-org/GLM-5.3-Flash", "tokens_entrada": 417, "tokens_salida": 1767, "tokens_razonamiento": 0, "prompt": "", "prompt_version_ligada": null}
+{"traza": "3ecf7e5baeadbee2c69a0bb0cd014e31", "span": "llm", "nombre": "indexador", "duracion_ms": 12830.0, "error": null, "modelo": "zai-org/GLM-5.3-Flash", "tokens_entrada": 380, "tokens_salida": 2230, "tokens_razonamiento": 0, "prompt": "", "prompt_version_ligada": null}
+{"traza": "3ecf7e5baeadbee2c69a0bb0cd014e31", "span": "embedding", "nombre": "embeddings", "duracion_ms": 53927.0, "error": null}
+{"traza": "3ecf7e5baeadbee2c69a0bb0cd014e31", "span": "agent", "nombre": "planificador", "duracion_ms": 5182.0, "error": null}
+{"traza": "3ecf7e5baeadbee2c69a0bb0cd014e31", "span": "llm", "nombre": "planificador", "duracion_ms": 5177.0, "error": null, "modelo": "zai-org/GLM-5.3-Flash", "tokens_entrada": 1010, "tokens_salida": 968, "tokens_razonamiento": 0, "prompt": "", "prompt_version_ligada": null}
+{"traza": "3ecf7e5baeadbee2c69a0bb0cd014e31", "span": "chain", "nombre": "orquestador", "duracion_ms": 0.0, "error": null}
+{"traza": "3ecf7e5baeadbee2c69a0bb0cd014e31", "span": "agent", "nombre": "investigador", "duracion_ms": 3588.0, "error": null}
+{"traza": "3ecf7e5baeadbee2c69a0bb0cd014e31", "span": "retriever", "nombre": "seccion_literal", "duracion_ms": 2.0, "error": null}
+{"traza": "3ecf7e5baeadbee2c69a0bb0cd014e31", "span": "retriever", "nombre": "busqueda_local", "duracion_ms": 3579.0, "error": null}
+{"traza": "3ecf7e5baeadbee2c69a0bb0cd014e31", "span": "agent", "nombre": "programador", "duracion_ms": 12309.0, "error": null}
+{"traza": "3ecf7e5baeadbee2c69a0bb0cd014e31", "span": "llm", "nombre": "programador", "duracion_ms": 12308.0, "error": null, "modelo": "zai-org/GLM-5.3-Flash", "tokens_entrada": 2531, "tokens_salida": 2820, "tokens_razonamiento": 0, "prompt": "solver-programador", "prompt_version_ligada": 2}
+{"traza": "3ecf7e5baeadbee2c69a0bb0cd014e31", "span": "agent", "nombre": "ejecutor", "duracion_ms": 693.0, "error": null}
+{"traza": "3ecf7e5baeadbee2c69a0bb0cd014e31", "span": "guardrail", "nombre": "guarda_ast", "duracion_ms": 4.0, "error": null}
+{"traza": "3ecf7e5baeadbee2c69a0bb0cd014e31", "span": "herramienta", "nombre": "sandbox", "duracion_ms": 687.0, "error": null}
+{"traza": "3ecf7e5baeadbee2c69a0bb0cd014e31", "span": "agent", "nombre": "critico", "duracion_ms": 8944.0, "error": null}
+{"traza": "3ecf7e5baeadbee2c69a0bb0cd014e31", "span": "llm", "nombre": "critico", "duracion_ms": 8940.0, "error": null, "modelo": "zai-org/GLM-5.3-Flash", "tokens_entrada": 3336, "tokens_salida": 2343, "tokens_razonamiento": 0, "prompt": "", "prompt_version_ligada": null}
+{"traza": "3ecf7e5baeadbee2c69a0bb0cd014e31", "span": "chain", "nombre": "orquestador", "duracion_ms": 2.0, "error": null}
+{"traza": "3ecf7e5baeadbee2c69a0bb0cd014e31", "span": "agent", "nombre": "investigador", "duracion_ms": 7931.0, "error": null}
+{"traza": "3ecf7e5baeadbee2c69a0bb0cd014e31", "span": "retriever", "nombre": "seccion_literal", "duracion_ms": 3.0, "error": null}
+{"traza": "3ecf7e5baeadbee2c69a0bb0cd014e31", "span": "retriever", "nombre": "busqueda_local", "duracion_ms": 7919.0, "error": null}
+{"traza": "3ecf7e5baeadbee2c69a0bb0cd014e31", "span": "agent", "nombre": "programador", "duracion_ms": 17237.0, "error": null}
+{"traza": "3ecf7e5baeadbee2c69a0bb0cd014e31", "span": "llm", "nombre": "programador", "duracion_ms": 17236.0, "error": null, "modelo": "zai-org/GLM-5.3-Flash", "tokens_entrada": 3532, "tokens_salida": 4447, "tokens_razonamiento": 0, "prompt": "solver-programador", "prompt_version_ligada": 2}
+{"traza": "3ecf7e5baeadbee2c69a0bb0cd014e31", "span": "agent", "nombre": "ejecutor", "duracion_ms": 469.0, "error": null}
+{"traza": "3ecf7e5baeadbee2c69a0bb0cd014e31", "span": "guardrail", "nombre": "guarda_ast", "duracion_ms": 4.0, "error": null}
+{"traza": "3ecf7e5baeadbee2c69a0bb0cd014e31", "span": "herramienta", "nombre": "sandbox", "duracion_ms": 460.0, "error": null}
+{"traza": "3ecf7e5baeadbee2c69a0bb0cd014e31", "span": "agent", "nombre": "critico", "duracion_ms": 6208.0, "error": null}
+{"traza": "3ecf7e5baeadbee2c69a0bb0cd014e31", "span": "llm", "nombre": "critico", "duracion_ms": 6205.0, "error": null, "modelo": "zai-org/GLM-5.3-Flash", "tokens_entrada": 3665, "tokens_salida": 1443, "tokens_razonamiento": 0, "prompt": "", "prompt_version_ligada": null}
+{"traza": "3ecf7e5baeadbee2c69a0bb0cd014e31", "span": "chain", "nombre": "orquestador", "duracion_ms": 2.0, "error": null}
+{"traza": "3ecf7e5baeadbee2c69a0bb0cd014e31", "span": "agent", "nombre": "investigador", "duracion_ms": 1171.0, "error": null}
+{"traza": "3ecf7e5baeadbee2c69a0bb0cd014e31", "span": "retriever", "nombre": "seccion_literal", "duracion_ms": 3.0, "error": null}
+{"traza": "3ecf7e5baeadbee2c69a0bb0cd014e31", "span": "retriever", "nombre": "busqueda_local", "duracion_ms": 1159.0, "error": null}
+{"traza": "3ecf7e5baeadbee2c69a0bb0cd014e31", "span": "agent", "nombre": "programador", "duracion_ms": 8691.0, "error": null}
+{"traza": "3ecf7e5baeadbee2c69a0bb0cd014e31", "span": "llm", "nombre": "programador", "duracion_ms": 8690.0, "error": null, "modelo": "zai-org/GLM-5.3-Flash", "tokens_entrada": 3949, "tokens_salida": 2125, "tokens_razonamiento": 0, "prompt": "solver-programador", "prompt_version_ligada": 2}
+{"traza": "3ecf7e5baeadbee2c69a0bb0cd014e31", "span": "agent", "nombre": "ejecutor", "duracion_ms": 545.0, "error": null}
+{"traza": "3ecf7e5baeadbee2c69a0bb0cd014e31", "span": "guardrail", "nombre": "guarda_ast", "duracion_ms": 4.0, "error": null}
+{"traza": "3ecf7e5baeadbee2c69a0bb0cd014e31", "span": "herramienta", "nombre": "sandbox", "duracion_ms": 535.0, "error": null}
+{"traza": "3ecf7e5baeadbee2c69a0bb0cd014e31", "span": "agent", "nombre": "critico", "duracion_ms": 5645.0, "error": null}
+{"traza": "3ecf7e5baeadbee2c69a0bb0cd014e31", "span": "llm", "nombre": "critico", "duracion_ms": 5640.0, "error": null, "modelo": "zai-org/GLM-5.3-Flash", "tokens_entrada": 3252, "tokens_salida": 1277, "tokens_razonamiento": 0, "prompt": "", "prompt_version_ligada": null}
+{"traza": "3ecf7e5baeadbee2c69a0bb0cd014e31", "span": "chain", "nombre": "orquestador", "duracion_ms": 3.0, "error": null}
+{"traza": "3ecf7e5baeadbee2c69a0bb0cd014e31", "span": "agent", "nombre": "redactor", "duracion_ms": 23513.0, "error": null}
+{"traza": "3ecf7e5baeadbee2c69a0bb0cd014e31", "span": "llm", "nombre": "redactor", "duracion_ms": 21411.0, "error": null, "modelo": "zai-org/GLM-5.3-Flash", "tokens_entrada": 3678, "tokens_salida": 5466, "tokens_razonamiento": 0, "prompt": "", "prompt_version_ligada": null}
+{"traza": "3ecf7e5baeadbee2c69a0bb0cd014e31", "span": "guardrail", "nombre": "salida_secretos", "duracion_ms": 3.0, "error": null}
+{"traza": "3ecf7e5baeadbee2c69a0bb0cd014e31", "span": "guardrail", "nombre": "salida_pii", "duracion_ms": 4.0, "error": null}
+{"traza": "3ecf7e5baeadbee2c69a0bb0cd014e31", "span": "chain", "nombre": "procedencia", "duracion_ms": 5.0, "error": null}
+{"traza": "3ecf7e5baeadbee2c69a0bb0cd014e31", "span": "chain", "nombre": "orquestador", "duracion_ms": 1.0, "error": null}
+{"traza": "afd26539106f60152dbd9d9b3d7bc114", "span": "corrida", "nombre": "solver", "duracion_ms": 645257.0, "error": null, "prompt_version": "v2"}
+{"traza": "afd26539106f60152dbd9d9b3d7bc114", "span": "agent", "nombre": "lector", "duracion_ms": 108.0, "error": null}
+{"traza": "afd26539106f60152dbd9d9b3d7bc114", "span": "herramienta", "nombre": "leer_pdf", "duracion_ms": 104.0, "error": null}
+{"traza": "afd26539106f60152dbd9d9b3d7bc114", "span": "guardrail", "nombre": "entrada_inyeccion", "duracion_ms": 2.0, "error": null}
+{"traza": "afd26539106f60152dbd9d9b3d7bc114", "span": "guardrail", "nombre": "entrada_pii", "duracion_ms": 1.0, "error": null}
+{"traza": "afd26539106f60152dbd9d9b3d7bc114", "span": "agent", "nombre": "indexador", "duracion_ms": 77875.0, "error": null}
+{"traza": "afd26539106f60152dbd9d9b3d7bc114", "span": "llm", "nombre": "indexador", "duracion_ms": 12422.0, "error": null, "modelo": "zai-org/GLM-5.3-Flash", "tokens_entrada": 450, "tokens_salida": 2321, "tokens_razonamiento": 0, "prompt": "", "prompt_version_ligada": null}
+{"traza": "afd26539106f60152dbd9d9b3d7bc114", "span": "llm", "nombre": "indexador", "duracion_ms": 11951.0, "error": null, "modelo": "zai-org/GLM-5.3-Flash", "tokens_entrada": 391, "tokens_salida": 2240, "tokens_razonamiento": 0, "prompt": "", "prompt_version_ligada": null}
+{"traza": "afd26539106f60152dbd9d9b3d7bc114", "span": "llm", "nombre": "indexador", "duracion_ms": 12872.0, "error": null, "modelo": "zai-org/GLM-5.3-Flash", "tokens_entrada": 429, "tokens_salida": 2424, "tokens_razonamiento": 0, "prompt": "", "prompt_version_ligada": null}
+{"traza": "afd26539106f60152dbd9d9b3d7bc114", "span": "llm", "nombre": "indexador", "duracion_ms": 9658.0, "error": null, "modelo": "zai-org/GLM-5.3-Flash", "tokens_entrada": 385, "tokens_salida": 1623, "tokens_razonamiento": 0, "prompt": "", "prompt_version_ligada": null}
+{"traza": "afd26539106f60152dbd9d9b3d7bc114", "span": "embedding", "nombre": "embeddings", "duracion_ms": 64454.0, "error": null}
+{"traza": "afd26539106f60152dbd9d9b3d7bc114", "span": "agent", "nombre": "planificador", "duracion_ms": 4539.0, "error": null}
+{"traza": "afd26539106f60152dbd9d9b3d7bc114", "span": "llm", "nombre": "planificador", "duracion_ms": 4536.0, "error": null, "modelo": "zai-org/GLM-5.3-Flash", "tokens_entrada": 1054, "tokens_salida": 1065, "tokens_razonamiento": 0, "prompt": "", "prompt_version_ligada": null}
+{"traza": "afd26539106f60152dbd9d9b3d7bc114", "span": "chain", "nombre": "orquestador", "duracion_ms": 0.0, "error": null}
+{"traza": "afd26539106f60152dbd9d9b3d7bc114", "span": "agent", "nombre": "investigador", "duracion_ms": 106421.0, "error": null}
+{"traza": "afd26539106f60152dbd9d9b3d7bc114", "span": "retriever", "nombre": "seccion_literal", "duracion_ms": 1.0, "error": null}
+{"traza": "afd26539106f60152dbd9d9b3d7bc114", "span": "retriever", "nombre": "busqueda_local", "duracion_ms": 106413.0, "error": null}
+{"traza": "afd26539106f60152dbd9d9b3d7bc114", "span": "agent", "nombre": "programador", "duracion_ms": 6115.0, "error": null}
+{"traza": "afd26539106f60152dbd9d9b3d7bc114", "span": "llm", "nombre": "programador", "duracion_ms": 6056.0, "error": null, "modelo": "zai-org/GLM-5.3-Flash", "tokens_entrada": 1856, "tokens_salida": 1485, "tokens_razonamiento": 0, "prompt": "solver-programador", "prompt_version_ligada": 2}
+{"traza": "afd26539106f60152dbd9d9b3d7bc114", "span": "agent", "nombre": "ejecutor", "duracion_ms": 1421.0, "error": null}
+{"traza": "afd26539106f60152dbd9d9b3d7bc114", "span": "guardrail", "nombre": "guarda_ast", "duracion_ms": 2.0, "error": null}
+{"traza": "afd26539106f60152dbd9d9b3d7bc114", "span": "herramienta", "nombre": "sandbox", "duracion_ms": 1416.0, "error": null}
+{"traza": "afd26539106f60152dbd9d9b3d7bc114", "span": "agent", "nombre": "critico", "duracion_ms": 2303.0, "error": null}
+{"traza": "afd26539106f60152dbd9d9b3d7bc114", "span": "llm", "nombre": "critico", "duracion_ms": 2299.0, "error": null, "modelo": "zai-org/GLM-5.3-Flash", "tokens_entrada": 2859, "tokens_salida": 448, "tokens_razonamiento": 0, "prompt": "", "prompt_version_ligada": null}
+{"traza": "afd26539106f60152dbd9d9b3d7bc114", "span": "chain", "nombre": "orquestador", "duracion_ms": 1.0, "error": null}
+{"traza": "afd26539106f60152dbd9d9b3d7bc114", "span": "agent", "nombre": "investigador", "duracion_ms": 175952.0, "error": null}
+{"traza": "afd26539106f60152dbd9d9b3d7bc114", "span": "retriever", "nombre": "seccion_literal", "duracion_ms": 2.0, "error": null}
+{"traza": "afd26539106f60152dbd9d9b3d7bc114", "span": "retriever", "nombre": "busqueda_local", "duracion_ms": 175943.0, "error": null}
+{"traza": "afd26539106f60152dbd9d9b3d7bc114", "span": "agent", "nombre": "programador", "duracion_ms": 63114.0, "error": null}
+{"traza": "afd26539106f60152dbd9d9b3d7bc114", "span": "llm", "nombre": "programador", "duracion_ms": 63112.0, "error": null, "modelo": "zai-org/GLM-5.3-Flash", "tokens_entrada": 3223, "tokens_salida": 15436, "tokens_razonamiento": 0, "prompt": "solver-programador", "prompt_version_ligada": 2}
+{"traza": "afd26539106f60152dbd9d9b3d7bc114", "span": "agent", "nombre": "ejecutor", "duracion_ms": 2027.0, "error": null}
+{"traza": "afd26539106f60152dbd9d9b3d7bc114", "span": "guardrail", "nombre": "guarda_ast", "duracion_ms": 6.0, "error": null}
+{"traza": "afd26539106f60152dbd9d9b3d7bc114", "span": "herramienta", "nombre": "sandbox", "duracion_ms": 2015.0, "error": null}
+{"traza": "afd26539106f60152dbd9d9b3d7bc114", "span": "agent", "nombre": "critico", "duracion_ms": 6917.0, "error": null}
+{"traza": "afd26539106f60152dbd9d9b3d7bc114", "span": "llm", "nombre": "critico", "duracion_ms": 6910.0, "error": null, "modelo": "zai-org/GLM-5.3-Flash", "tokens_entrada": 4193, "tokens_salida": 1588, "tokens_razonamiento": 0, "prompt": "", "prompt_version_ligada": null}
+{"traza": "afd26539106f60152dbd9d9b3d7bc114", "span": "chain", "nombre": "orquestador", "duracion_ms": 2.0, "error": null}
+{"traza": "afd26539106f60152dbd9d9b3d7bc114", "span": "agent", "nombre": "investigador", "duracion_ms": 4296.0, "error": null}
+{"traza": "afd26539106f60152dbd9d9b3d7bc114", "span": "retriever", "nombre": "seccion_literal", "duracion_ms": 2.0, "error": null}
+{"traza": "afd26539106f60152dbd9d9b3d7bc114", "span": "retriever", "nombre": "busqueda_local", "duracion_ms": 4285.0, "error": null}
+{"traza": "afd26539106f60152dbd9d9b3d7bc114", "span": "agent", "nombre": "programador", "duracion_ms": 30612.0, "error": null}
+{"traza": "afd26539106f60152dbd9d9b3d7bc114", "span": "llm", "nombre": "programador", "duracion_ms": 30610.0, "error": null, "modelo": "zai-org/GLM-5.3-Flash", "tokens_entrada": 4291, "tokens_salida": 7495, "tokens_razonamiento": 0, "prompt": "solver-programador", "prompt_version_ligada": 2}
+{"traza": "afd26539106f60152dbd9d9b3d7bc114", "span": "agent", "nombre": "ejecutor", "duracion_ms": 1596.0, "error": null}
+{"traza": "afd26539106f60152dbd9d9b3d7bc114", "span": "guardrail", "nombre": "guarda_ast", "duracion_ms": 6.0, "error": null}
+{"traza": "afd26539106f60152dbd9d9b3d7bc114", "span": "herramienta", "nombre": "sandbox", "duracion_ms": 1584.0, "error": null}
+{"traza": "afd26539106f60152dbd9d9b3d7bc114", "span": "agent", "nombre": "critico", "duracion_ms": 37456.0, "error": null}
+{"traza": "afd26539106f60152dbd9d9b3d7bc114", "span": "llm", "nombre": "critico", "duracion_ms": 37448.0, "error": null, "modelo": "zai-org/GLM-5.3-Flash", "tokens_entrada": 5006, "tokens_salida": 8031, "tokens_razonamiento": 0, "prompt": "", "prompt_version_ligada": null}
+{"traza": "afd26539106f60152dbd9d9b3d7bc114", "span": "agent", "nombre": "programador", "duracion_ms": 15819.0, "error": null}
+{"traza": "afd26539106f60152dbd9d9b3d7bc114", "span": "llm", "nombre": "programador", "duracion_ms": 15817.0, "error": null, "modelo": "zai-org/GLM-5.3-Flash", "tokens_entrada": 7155, "tokens_salida": 3028, "tokens_razonamiento": 0, "prompt": "solver-programador", "prompt_version_ligada": 2}
+{"traza": "afd26539106f60152dbd9d9b3d7bc114", "span": "agent", "nombre": "ejecutor", "duracion_ms": 1391.0, "error": null}
+{"traza": "afd26539106f60152dbd9d9b3d7bc114", "span": "guardrail", "nombre": "guarda_ast", "duracion_ms": 6.0, "error": null}
+{"traza": "afd26539106f60152dbd9d9b3d7bc114", "span": "herramienta", "nombre": "sandbox", "duracion_ms": 1378.0, "error": null}
+{"traza": "afd26539106f60152dbd9d9b3d7bc114", "span": "agent", "nombre": "critico", "duracion_ms": 36312.0, "error": null}
+{"traza": "afd26539106f60152dbd9d9b3d7bc114", "span": "llm", "nombre": "critico", "duracion_ms": 36306.0, "error": null, "modelo": "zai-org/GLM-5.3-Flash", "tokens_entrada": 5400, "tokens_salida": 6520, "tokens_razonamiento": 0, "prompt": "", "prompt_version_ligada": null}
+{"traza": "afd26539106f60152dbd9d9b3d7bc114", "span": "chain", "nombre": "orquestador", "duracion_ms": 3.0, "error": null}
+{"traza": "afd26539106f60152dbd9d9b3d7bc114", "span": "agent", "nombre": "redactor", "duracion_ms": 45220.0, "error": null}
+{"traza": "afd26539106f60152dbd9d9b3d7bc114", "span": "llm", "nombre": "redactor", "duracion_ms": 45203.0, "error": null, "modelo": "zai-org/GLM-5.3-Flash", "tokens_entrada": 3518, "tokens_salida": 11559, "tokens_razonamiento": 0, "prompt": "", "prompt_version_ligada": null}
+{"traza": "afd26539106f60152dbd9d9b3d7bc114", "span": "guardrail", "nombre": "salida_secretos", "duracion_ms": 3.0, "error": null}
+{"traza": "afd26539106f60152dbd9d9b3d7bc114", "span": "guardrail", "nombre": "salida_pii", "duracion_ms": 5.0, "error": null}
+{"traza": "afd26539106f60152dbd9d9b3d7bc114", "span": "chain", "nombre": "procedencia", "duracion_ms": 9.0, "error": null}
+{"traza": "afd26539106f60152dbd9d9b3d7bc114", "span": "agent", "nombre": "redactor", "duracion_ms": 25659.0, "error": null}
+{"traza": "afd26539106f60152dbd9d9b3d7bc114", "span": "llm", "nombre": "redactor", "duracion_ms": 25651.0, "error": null, "modelo": "zai-org/GLM-5.3-Flash", "tokens_entrada": 5894, "tokens_salida": 6957, "tokens_razonamiento": 0, "prompt": "", "prompt_version_ligada": null}
+{"traza": "afd26539106f60152dbd9d9b3d7bc114", "span": "guardrail", "nombre": "salida_secretos", "duracion_ms": 2.0, "error": null}
+{"traza": "afd26539106f60152dbd9d9b3d7bc114", "span": "guardrail", "nombre": "salida_pii", "duracion_ms": 4.0, "error": null}
+{"traza": "afd26539106f60152dbd9d9b3d7bc114", "span": "chain", "nombre": "procedencia", "duracion_ms": 7.0, "error": null}
+{"traza": "afd26539106f60152dbd9d9b3d7bc114", "span": "chain", "nombre": "orquestador", "duracion_ms": 1.0, "error": null}

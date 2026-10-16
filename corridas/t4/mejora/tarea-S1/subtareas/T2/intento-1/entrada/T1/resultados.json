@@ -1,0 +1,45 @@
+{
+  "repr": "ServerMeasurements(shape=(300, 3), features=('gpu_utilization', 'cpu_utilization', 'memory_gb'))",
+  "shape": [
+    300,
+    3
+  ],
+  "feature_names": [
+    "gpu_utilization",
+    "cpu_utilization",
+    "memory_gb"
+  ],
+  "dtype": "float64",
+  "n_filas": 300,
+  "n_columnas": 3,
+  "validaciones_valueerror": {
+    "no_bidimensional_lanza_valueerror": true,
+    "columnas_distintas_de_nombres_lanza_valueerror": true,
+    "no_numericos_lanza_valueerror": true
+  },
+  "estadisticas_descriptivas": {
+    "gpu_utilization": {
+      "media": 57.993133333333326,
+      "desv_std": 14.43011728465465,
+      "min": 22.31,
+      "max": 97.82
+    },
+    "cpu_utilization": {
+      "media": 50.54163333333333,
+      "desv_std": 12.69846348968602,
+      "min": 19.09,
+      "max": 93.0
+    },
+    "memory_gb": {
+      "media": 29.455333333333336,
+      "desv_std": 6.536801834400537,
+      "min": 13.59,
+      "max": 55.0
+    }
+  },
+  "supuestos": [
+    "La validación de datos numéricos se hace sobre el dtype de la matriz (np.issubdtype(dtype, np.number)); un array de dtype object se rechaza.",
+    "El CSV se lee con parse_dates=['timestamp']; la columna timestamp no forma parte de la matriz de características.",
+    "output/server_analysis.parquet es entregable de una subtarea posterior (tabla_resumen_servidores) y no se genera en T1."
+  ]
+}

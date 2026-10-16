@@ -1,0 +1,75 @@
+{
+  "subtarea": "T4",
+  "supuestos": [
+    "El DataFrame analizado se carga del parquet producido por la T3 (entrada/T3/server_analysis.parquet o, en su defecto, output/server_analysis.parquet); no se recalcula ni se reconstruye.",
+    "mean_load es la media de load_score por servidor y review_count el conteo de filas con requires_review=True por servidor.",
+    "Los servidores se ordenan alfabeticamente (AI-SRV-01 ... AI-SRV-06) mediante groupby con sort=True."
+  ],
+  "columnas": [
+    "server",
+    "observations",
+    "mean_power_w",
+    "max_temperature_c",
+    "mean_load",
+    "review_count"
+  ],
+  "n_filas_tabla": 6,
+  "tabla": [
+    {
+      "server": "AI-SRV-01",
+      "observations": 50,
+      "mean_power_w": 363.45980000000003,
+      "max_temperature_c": 86.5,
+      "mean_load": -0.6145273545959999,
+      "review_count": 2
+    },
+    {
+      "server": "AI-SRV-02",
+      "observations": 50,
+      "mean_power_w": 390.499,
+      "max_temperature_c": 76.47,
+      "mean_load": -0.4177297003125984,
+      "review_count": 1
+    },
+    {
+      "server": "AI-SRV-03",
+      "observations": 50,
+      "mean_power_w": 416.6088,
+      "max_temperature_c": 86.5,
+      "mean_load": -0.08588446470318914,
+      "review_count": 2
+    },
+    {
+      "server": "AI-SRV-04",
+      "observations": 50,
+      "mean_power_w": 434.86840000000007,
+      "max_temperature_c": 80.86,
+      "mean_load": -0.0030414730046210894,
+      "review_count": 5
+    },
+    {
+      "server": "AI-SRV-05",
+      "observations": 50,
+      "mean_power_w": 471.18080000000003,
+      "max_temperature_c": 86.5,
+      "mean_load": 0.4535829868000993,
+      "review_count": 12
+    },
+    {
+      "server": "AI-SRV-06",
+      "observations": 50,
+      "mean_power_w": 495.7276,
+      "max_temperature_c": 88.01,
+      "mean_load": 0.6676000058163108,
+      "review_count": 27
+    }
+  ],
+  "AI-SRV-01": {
+    "server": "AI-SRV-01",
+    "observations": 50,
+    "mean_power_w": 363.45980000000003,
+    "max_temperature_c": 86.5,
+    "mean_load": -0.6145273545959999,
+    "review_count": 2
+  }
+}

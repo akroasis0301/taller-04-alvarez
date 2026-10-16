@@ -1,0 +1,12 @@
+T3 — Análisis de fallos por consulta (criterio: relevante fuera del top 3)
+Fallos TF-IDF: ['q5']  |  Fallos LSA: ['q5']
+Rankings cargados desde: {'tfidf': 'entrada/T1/resultados.json', 'lsa': 'entrada/T2/resultados.json'}  |  TF-IDF recalculado coincide con T1: True
+q1 -> d04 (rank tfidf=1, lsa=1) | compartidos (8): ['de', 'frecuencia', 'función', 'la', 'léxica', 'pondera', 'ranking', 'términos'] | contenido: ['frecuencia', 'función', 'léxica', 'pondera', 'ranking', 'términos']
+q2 -> d03 (rank tfidf=1, lsa=1) | compartidos (3): ['al', 'fragmentos', 'prompt'] | contenido: ['fragmentos', 'prompt']
+q3 -> d08 (rank tfidf=1, lsa=1) | compartidos (5): ['bajo', 'de', 'entrena', 'matrices', 'rango'] | contenido: ['bajo', 'entrena', 'matrices', 'rango']
+q4 -> d05 (rank tfidf=1, lsa=3) | compartidos (4): ['compara', 'la', 'orientación', 'vectores'] | contenido: ['compara', 'orientación', 'vectores']
+q5 -> d09 (rank tfidf=6, lsa=6) | compartidos (1): ['la'] | contenido: []
+q6 -> d02 (rank tfidf=1, lsa=1) | compartidos (5): ['autoatención', 'capas', 'con', 'feed', 'forward'] | contenido: ['autoatención', 'capas', 'feed', 'forward']
+Degradados sin fallo: {'tfidf': {}, 'lsa': {'q4': 3}}
+Hit@1 verificado: {'tfidf': 0.8333333333333334, 'lsa': 0.6666666666666666} | Hit@3 verificado: {'tfidf': 0.8333333333333334, 'lsa': 0.8333333333333334}
+Salidas: resultados.json, T3_terminos_compartidos.png

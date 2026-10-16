@@ -1,0 +1,8 @@
+means = [57.99313333 50.54163333 29.45533333]
+zscores.shape = (300, 3)
+load_score.shape = (300,)
+stds = [14.43011728 12.69846349  6.53680183]
+media de zscores por columna = [ 5.68434189e-16  2.36847579e-16 -3.31586610e-16]
+std de zscores por columna   = [1. 1. 1.]
+load_score resumen: media=0.0000000000 std=0.8024072918 min=-1.955650 max=3.136218
+resultados.json escrito. Verificaciones: media0=True, std1=True, producto_ok=True

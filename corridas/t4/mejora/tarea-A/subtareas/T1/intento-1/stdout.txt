@@ -1,0 +1,8 @@
+=== T1: Breast Cancer Wisconsin (Diagnostic) ===
+Ejemplos totales : 569
+Atributos        : 30
+Clase malignant : 212 casos
+Clase benign    : 357 casos
+Train (70%)      : 398  -> {'malignant': 0.37185929648241206, 'benign': 0.628140703517588}
+Test  (30%)      : 171  -> {'malignant': 0.3742690058479532, 'benign': 0.6257309941520468}
+División guardada en division_train_test.parquet; resultados en resultados.json

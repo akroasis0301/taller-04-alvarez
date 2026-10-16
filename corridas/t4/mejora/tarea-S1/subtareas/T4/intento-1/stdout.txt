@@ -1,0 +1,11 @@
+Tabla resumen por servidor:
+   server  observations  mean_power_w  max_temperature_c  mean_load  review_count
+AI-SRV-01            50      363.4598              86.50  -0.614527             2
+AI-SRV-02            50      390.4990              76.47  -0.417730             1
+AI-SRV-03            50      416.6088              86.50  -0.085884             2
+AI-SRV-04            50      434.8684              80.86  -0.003041             5
+AI-SRV-05            50      471.1808              86.50   0.453583            12
+AI-SRV-06            50      495.7276              88.01   0.667600            27
+
+Fila AI-SRV-01: {'server': 'AI-SRV-01', 'observations': 50, 'mean_power_w': 363.45980000000003, 'max_temperature_c': 86.5, 'mean_load': -0.6145273545959999, 'review_count': 2}
+Salidas: resultados.json, output/tabla_resumen_servidores.parquet

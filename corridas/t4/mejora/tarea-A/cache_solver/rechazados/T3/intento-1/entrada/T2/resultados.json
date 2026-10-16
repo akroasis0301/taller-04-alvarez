@@ -1,0 +1,34 @@
+{
+  "subtarea": "T2 — GaussianNB y regresión logística sobre la división 70/30 de T1",
+  "dataset": "Breast Cancer Wisconsin (Diagnostic) - sklearn.datasets.load_breast_cancer",
+  "origen_division": "reconstrucción determinista de la división de T1 con sus parámetros documentados (test_size=0.30, stratify=y, random_state=42)",
+  "n_train": 398,
+  "n_test": 171,
+  "escalador": "StandardScaler ajustado únicamente con el conjunto de entrenamiento",
+  "tabla_prueba": [
+    {
+      "modelo": "GaussianNB (generativo)",
+      "accuracy_prueba": 0.935672514619883,
+      "f1_macro_prueba": 0.9306543778801843
+    },
+    {
+      "modelo": "Regresión logística (discriminativo)",
+      "accuracy_prueba": 0.9883040935672515,
+      "f1_macro_prueba": 0.9875146028037383
+    }
+  ],
+  "accuracy_gaussian_nb": 0.935672514619883,
+  "f1_macro_gaussian_nb": 0.9306543778801843,
+  "accuracy_regresion_logistica": 0.9883040935672515,
+  "f1_macro_regresion_logistica": 0.9875146028037383,
+  "tabla_prueba_markdown": "| modelo | accuracy (prueba) | F1 macro (prueba) |\n|---|---|---|\n| GaussianNB (generativo) | 0.935673 | 0.930654 |\n| Regresión logística (discriminativo) | 0.988304 | 0.987515 |",
+  "archivos_generados": [
+    "t2_metricas_prueba.png",
+    "t2_tabla_metricas.csv"
+  ],
+  "supuestos": [
+    "La división 70/30 estratificada (random_state=42) se toma de entrada/T1; si el parquet de la división no contiene los atributos, se reconstruye de forma determinista con los parámetros exactos documentados por T1, lo que reproduce la misma partición (verificada contra los conteos por clase reportados por T1).",
+    "Los atributos se estandarizan para AMBOS modelos (GaussianNB y regresión logística), según la relación del material del curso; el StandardScaler se ajusta solo con el entrenamiento y se aplica al conjunto de prueba sin reajustarlo.",
+    "La regresión logística usa los hiperparámetros por defecto de scikit-learn (solver lbfgs, C=1.0) con max_iter=5000 para garantizar convergencia; nada se ajusta con el conjunto de prueba."
+  ]
+}

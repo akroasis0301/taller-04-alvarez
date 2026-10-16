@@ -1,0 +1,8 @@
+=== T1: Carga y división de Breast Cancer Wisconsin ===
+Ejemplos totales: 569
+Atributos: 30
+Conteo por clase: {'malignant': 212, 'benign': 357}
+Train: 398 (0.6995) | Test: 171 (0.3005)
+Train por clase: {'malignant': 148, 'benign': 250}
+Test por clase:  {'malignant': 64, 'benign': 107}
+División guardada en T1_division_indices.parquet; cifras en resultados.json

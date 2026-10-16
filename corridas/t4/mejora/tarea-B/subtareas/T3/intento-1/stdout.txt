@@ -1,0 +1,9 @@
+=== SUBTAREA T3: comprobación empírica (top-p p=0.9, T=1) ===
+Muestras: 10000 | Semilla: 0 | Tokens del núcleo: ['t0', 't1', 't2', 't3']
+  t0: conteo=  5682  freq_obs=0.568200  p_teorica=0.569376
+  t1: conteo=  2093  freq_obs=0.209300  p_teorica=0.209462
+  t2: conteo=  1296  freq_obs=0.129600  p_teorica=0.127045
+  t3: conteo=   929  freq_obs=0.092900  p_teorica=0.094117
+Divergencia KL(empírica || teórica) = 0.000050 bits
+Figura guardada: parte3_frecuencias_vs_teorica.png
+Resultados escritos en resultados.json

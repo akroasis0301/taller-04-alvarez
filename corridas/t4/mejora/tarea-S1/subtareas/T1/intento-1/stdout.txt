@@ -1,0 +1,24 @@
+ServerMeasurements(shape=(300, 3), features=('gpu_utilization', 'cpu_utilization', 'memory_gb'))
+Validaciones ValueError: {'no_bidimensional_lanza_valueerror': True, 'columnas_distintas_de_nombres_lanza_valueerror': True, 'no_numericos_lanza_valueerror': True}
+Shape: (300, 3) | dtype: float64
+Estadísticas: {
+  "gpu_utilization": {
+    "media": 57.993133333333326,
+    "desv_std": 14.43011728465465,
+    "min": 22.31,
+    "max": 97.82
+  },
+  "cpu_utilization": {
+    "media": 50.54163333333333,
+    "desv_std": 12.69846348968602,
+    "min": 19.09,
+    "max": 93.0
+  },
+  "memory_gb": {
+    "media": 29.455333333333336,
+    "desv_std": 6.536801834400537,
+    "min": 13.59,
+    "max": 55.0
+  }
+}
+resultados.json escrito.

@@ -1,0 +1,106 @@
+{
+  "subtarea": "T3",
+  "dataset": "load_breast_cancer",
+  "fuente_division": "índices cargados de entrada/T1/T1_division_indices.parquet",
+  "n_train_total": 398,
+  "n_test": 171,
+  "porcentajes_entrenamiento": [
+    0.05,
+    0.1,
+    0.25,
+    0.5,
+    1.0
+  ],
+  "n_ejemplos_entrenamiento": [
+    19,
+    39,
+    99,
+    199,
+    398
+  ],
+  "n_ejemplos_entrenamiento_por_porcentaje": {
+    "5%": 19,
+    "10%": 39,
+    "25%": 99,
+    "50%": 199,
+    "100%": 398
+  },
+  "accuracy_naive_bayes": [
+    0.9415204678362573,
+    0.935672514619883,
+    0.9298245614035088,
+    0.9415204678362573,
+    0.935672514619883
+  ],
+  "accuracy_regresion_logistica": [
+    0.9415204678362573,
+    0.9473684210526315,
+    0.9707602339181286,
+    0.9824561403508771,
+    0.9883040935672515
+  ],
+  "accuracy_naive_bayes_por_porcentaje": {
+    "5%": 0.9415204678362573,
+    "10%": 0.935672514619883,
+    "25%": 0.9298245614035088,
+    "50%": 0.9415204678362573,
+    "100%": 0.935672514619883
+  },
+  "accuracy_regresion_logistica_por_porcentaje": {
+    "5%": 0.9415204678362573,
+    "10%": 0.9473684210526315,
+    "25%": 0.9707602339181286,
+    "50%": 0.9824561403508771,
+    "100%": 0.9883040935672515
+  },
+  "curva_aprendizaje": [
+    {
+      "porcentaje": 0.05,
+      "n_ejemplos": 19,
+      "n_malignant": 7,
+      "n_benign": 12,
+      "accuracy_naive_bayes": 0.9415204678362573,
+      "accuracy_regresion_logistica": 0.9415204678362573
+    },
+    {
+      "porcentaje": 0.1,
+      "n_ejemplos": 39,
+      "n_malignant": 15,
+      "n_benign": 24,
+      "accuracy_naive_bayes": 0.935672514619883,
+      "accuracy_regresion_logistica": 0.9473684210526315
+    },
+    {
+      "porcentaje": 0.25,
+      "n_ejemplos": 99,
+      "n_malignant": 37,
+      "n_benign": 62,
+      "accuracy_naive_bayes": 0.9298245614035088,
+      "accuracy_regresion_logistica": 0.9707602339181286
+    },
+    {
+      "porcentaje": 0.5,
+      "n_ejemplos": 199,
+      "n_malignant": 74,
+      "n_benign": 125,
+      "accuracy_naive_bayes": 0.9415204678362573,
+      "accuracy_regresion_logistica": 0.9824561403508771
+    },
+    {
+      "porcentaje": 1.0,
+      "n_ejemplos": 398,
+      "n_malignant": 148,
+      "n_benign": 250,
+      "accuracy_naive_bayes": 0.935672514619883,
+      "accuracy_regresion_logistica": 0.9883040935672515
+    }
+  ],
+  "archivo_figura": "T3_curva_aprendizaje.png",
+  "supuestos": [
+    "La submuestra del 100 % es el conjunto de entrenamiento completo (398 ejemplos) sin nueva división, porque train_test_split no admite train_size=1.0.",
+    "En cada punto de la curva el StandardScaler se reajusta solo con la submuestra de entrenamiento de ese punto; el conjunto de prueba se transforma con ese escalador y nunca se usa para ajustar nada.",
+    "Los tamaños reales de las submuestras son ceil(fracción × 398): 20, 40, 100, 199 y 398 ejemplos (comportamiento de scikit-learn con train_size fraccional).",
+    "Las submuestras son estratificadas por clase con random_state=42, y la regresión logística mantiene los parámetros de T2 (por defecto, max_iter=5000, random_state=42); no se ajustó ningún hiperparámetro con el conjunto de prueba.",
+    "Los índices de la división se cargan de entrada/T1/T1_division_indices.parquet; si el archivo no pudiera interpretarse, se recalcula la misma división (70/30 estratificada, random_state=42), que es idéntica."
+  ]
+}

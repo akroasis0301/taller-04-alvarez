@@ -1,0 +1,307 @@
+{
+  "subtarea": "T3_analisis_fallos_por_consulta",
+  "criterio_de_fallo": "el documento relevante queda fuera del top 3 (posición >= 4 en el ranking de 10 documentos)",
+  "fuente_rankings": {
+    "tfidf": "entrada/T1/resultados.json",
+    "lsa": "entrada/T2/resultados.json"
+  },
+  "fallos_tfidf": [
+    "q5"
+  ],
+  "fallos_lsa": [
+    "q5"
+  ],
+  "num_fallos_tfidf": 1,
+  "num_fallos_lsa": 1,
+  "rank_del_relevante_por_consulta": {
+    "q1": {
+      "tfidf": 1,
+      "lsa": 1
+    },
+    "q2": {
+      "tfidf": 1,
+      "lsa": 1
+    },
+    "q3": {
+      "tfidf": 1,
+      "lsa": 1
+    },
+    "q4": {
+      "tfidf": 1,
+      "lsa": 3
+    },
+    "q5": {
+      "tfidf": 6,
+      "lsa": 6
+    },
+    "q6": {
+      "tfidf": 1,
+      "lsa": 1
+    }
+  },
+  "hit_at_1_verificado_desde_ranks": {
+    "tfidf": 0.8333333333333334,
+    "lsa": 0.6666666666666666
+  },
+  "hit_at_3_verificado_desde_ranks": {
+    "tfidf": 0.8333333333333334,
+    "lsa": 0.8333333333333334
+  },
+  "verificacion_tfidf_vs_T1_rankings_iguales": true,
+  "terminos_compartidos_q1_a_q6": {
+    "q1": {
+      "consulta": "¿Qué función de ranking léxica pondera la frecuencia de términos?",
+      "relevante": "d04",
+      "terminos_compartidos": [
+        "de",
+        "frecuencia",
+        "función",
+        "la",
+        "léxica",
+        "pondera",
+        "ranking",
+        "términos"
+      ],
+      "n_terminos_compartidos": 8,
+      "terminos_de_contenido": [
+        "frecuencia",
+        "función",
+        "léxica",
+        "pondera",
+        "ranking",
+        "términos"
+      ],
+      "n_terminos_de_contenido": 6,
+      "peso_tfidf_en_relevante": {
+        "de": 0.31423567671878266,
+        "frecuencia": 0.2645879461839569,
+        "función": 0.22492392700544242,
+        "la": 0.2840765562480844,
+        "léxica": 0.2645879461839569,
+        "pondera": 0.22492392700544242,
+        "ranking": 0.2645879461839569,
+        "términos": 0.2645879461839569
+      },
+      "peso_tfidf_en_consulta": {
+        "de": 0.41616626604586404,
+        "frecuencia": 0.3504139910334365,
+        "función": 0.29788390619311367,
+        "la": 0.1881121216397302,
+        "léxica": 0.3504139910334365,
+        "pondera": 0.29788390619311367,
+        "ranking": 0.3504139910334365,
+        "términos": 0.3504139910334365
+      }
+    },
+    "q2": {
+      "consulta": "¿Cómo se añaden fragmentos recuperados al prompt?",
+      "relevante": "d03",
+      "terminos_compartidos": [
+        "al",
+        "fragmentos",
+        "prompt"
+      ],
+      "n_terminos_compartidos": 3,
+      "terminos_de_contenido": [
+        "fragmentos",
+        "prompt"
+      ],
+      "n_terminos_de_contenido": 2,
+      "peso_tfidf_en_relevante": {
+        "al": 0.29874339395570315,
+        "fragmentos": 0.29874339395570315,
+        "prompt": 0.29874339395570315
+      },
+      "peso_tfidf_en_consulta": {
+        "al": 0.5773502691896257,
+        "fragmentos": 0.5773502691896257,
+        "prompt": 0.5773502691896257
+      }
+    },
+    "q3": {
+      "consulta": "¿Qué técnica entrena matrices de bajo rango?",
+      "relevante": "d08",
+      "terminos_compartidos": [
+        "bajo",
+        "de",
+        "entrena",
+        "matrices",
+        "rango"
+      ],
+      "n_terminos_compartidos": 5,
+      "terminos_de_contenido": [
+        "bajo",
+        "entrena",
+        "matrices",
+        "rango"
+      ],
+      "n_terminos_de_contenido": 4,
+      "peso_tfidf_en_relevante": {
+        "bajo": 0.29788804547336384,
+        "de": 0.17689213153095973,
+        "entrena": 0.29788804547336384,
+        "matrices": 0.29788804547336384,
+        "rango": 0.29788804547336384
+      },
+      "peso_tfidf_en_consulta": {
+        "bajo": 0.43223174876056586,
+        "de": 0.2566682232316953,
+        "entrena": 0.43223174876056586,
+        "matrices": 0.43223174876056586,
+        "rango": 0.43223174876056586
+      }
+    },
+    "q4": {
+      "consulta": "¿Cómo se compara la orientación de dos vectores de texto?",
+      "relevante": "d05",
+      "terminos_compartidos": [
+        "compara",
+        "la",
+        "orientación",
+        "vectores"
+      ],
+      "n_terminos_compartidos": 4,
+      "terminos_de_contenido": [
+        "compara",
+        "orientación",
+        "vectores"
+      ],
+      "n_terminos_de_contenido": 3,
+      "peso_tfidf_en_relevante": {
+        "compara": 0.30121466100132,
+        "la": 0.161700532512538,
+        "orientación": 0.30121466100132,
+        "vectores": 0.30121466100132
+      },
+      "peso_tfidf_en_consulta": {
+        "compara": 0.4613305217177221,
+        "la": 0.24765524618908155,
+        "orientación": 0.4613305217177221,
+        "vectores": 0.4613305217177221
+      }
+    },
+    "q5": {
+      "consulta": "¿Qué hace que el modelo sea más determinista al elegir la siguiente palabra?",
+      "relevante": "d09",
+      "terminos_compartidos": [
+        "la"
+      ],
+      "n_terminos_compartidos": 1,
+      "terminos_de_contenido": [],
+      "n_terminos_de_contenido": 0,
+      "peso_tfidf_en_relevante": {
+        "la": 0.32380709577396377
+      },
+      "peso_tfidf_en_consulta": {
+        "la": 0.24397961091537643
+      }
+    },
+    "q6": {
+      "consulta": "¿Qué arquitectura combina autoatención con capas feed-forward?",
+      "relevante": "d02",
+      "terminos_compartidos": [
+        "autoatención",
+        "capas",
+        "con",
+        "feed",
+        "forward"
+      ],
+      "n_terminos_compartidos": 5,
+      "terminos_de_contenido": [
+        "autoatención",
+        "capas",
+        "feed",
+        "forward"
+      ],
+      "n_terminos_de_contenido": 4,
+      "peso_tfidf_en_relevante": {
+        "autoatención": 0.30160141425178877,
+        "capas": 0.30160141425178877,
+        "con": 0.1790972073248953,
+        "feed": 0.30160141425178877,
+        "forward": 0.30160141425178877
+      },
+      "peso_tfidf_en_consulta": {
+        "autoatención": 0.43223174876056586,
+        "capas": 0.43223174876056586,
+        "con": 0.2566682232316953,
+        "feed": 0.43223174876056586,
+        "forward": 0.43223174876056586
+      }
+    }
+  },
+  "detalle_fallos": {
+    "tfidf": {
+      "q5": {
+        "rank_relevante": 6,
+        "relevante": "d09",
+        "top3_recuperado": [
+          "d03",
+          "d06",
+          "d04"
+        ],
+        "terminos_compartidos_con_relevante": [
+          "la"
+        ],
+        "terminos_compartidos_con_top3": {
+          "d03": [
+            "al",
+            "la",
+            "modelo"
+          ],
+          "d06": [
+            "el",
+            "qué"
+          ],
+          "d04": [
+            "la",
+            "que"
+          ]
+        }
+      }
+    },
+    "lsa": {
+      "q5": {
+        "rank_relevante": 6,
+        "relevante": "d09",
+        "top3_recuperado": [
+          "d04",
+          "d01",
+          "d03"
+        ],
+        "terminos_compartidos_con_relevante": [
+          "la"
+        ],
+        "terminos_compartidos_con_top3": {
+          "d04": [
+            "la",
+            "que"
+          ],
+          "d01": [
+            "el",
+            "la"
+          ],
+          "d03": [
+            "al",
+            "la",
+            "modelo"
+          ]
+        }
+      }
+    }
+  },
+  "consultas_degradadas_sin_fallo": {
+    "tfidf": {},
+    "lsa": {
+      "q4": 3
+    }
+  },
+  "supuestos": [
+    "Fallo = posición del relevante >= 4 (fuera del top 3), según el enunciado de la Parte 3.",
+    "Los rankings por consulta se cargan de entrada/T1/resultados.json (TF-IDF) y entrada/T2/resultados.json (LSA); solo si no estuvieran disponibles se recalculan con los mismos parámetros (TfidfVectorizer por defecto; TruncatedSVD k=4, random_state=0).",
+    "T1 no exportó el vocabulario, así que se reconstruye con TfidfVectorizer por defecto ajustado solo sobre los 10 documentos (misma convención 'fit sobre documentos' de T1/T2) para tokenizar y obtener los pesos.",
+    "La intersección de términos usa el tokenizador del propio TfidfVectorizer (minúsculas, sin stopwords, sin stemming, patrón por defecto) filtrada por el vocabulario TF-IDF.",
+    "La separación entre 'términos de contenido' y palabras funcionales usa una lista manual mínima de palabras funcionales del español; la lista completa de términos compartidos se reporta sin filtrar.",
+    "q4 en LSA queda en el puesto 3: no es un fallo (dentro del top 3) aunque pierde Hit@1; se reporta en 'consultas_degradadas_sin_fallo'."
+  ]
+}

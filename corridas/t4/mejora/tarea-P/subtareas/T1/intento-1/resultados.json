@@ -1,0 +1,129 @@
+{
+  "subtarea": "T1: softmax con temperatura y entropía en bits",
+  "celda_inicial_notebook": {
+    "nombre": "[NOMBRE]",
+    "correo": "[CORREO]",
+    "cedula": "[CEDULA]",
+    "telefono": "[TELEFONO]"
+  },
+  "tokens": [
+    "t0",
+    "t1",
+    "t2",
+    "t3",
+    "t4",
+    "t5"
+  ],
+  "logits": [
+    2.0,
+    1.0,
+    0.5,
+    0.2,
+    -1.0,
+    -3.0
+  ],
+  "temperaturas": [
+    0.5,
+    1.0,
+    2.0
+  ],
+  "distribuciones": {
+    "T=0.5": [
+      0.8230654368889799,
+      0.11138979402363647,
+      0.04097801517761745,
+      0.022489211553514077,
+      0.002040175243227406,
+      3.73671130246886e-05
+    ],
+    "T=1.0": [
+      0.5516226378718239,
+      0.2029306277578035,
+      0.12308364752983937,
+      0.09118260875807133,
+      0.02746367398498595,
+      0.003716804097476065
+    ],
+    "T=2.0": [
+      0.3583353420072876,
+      0.2173413713860323,
+      0.16926563022925498,
+      0.14568827807293414,
+      0.07995542224892846,
+      0.02941395605556251
+    ]
+  },
+  "suma_distribuciones": {
+    "T=0.5": 1.0,
+    "T=1.0": 1.0,
+    "T=2.0": 1.0
+  },
+  "entropias_bits": {
+    "T=0.5": 0.9146817686293975,
+    "T=1.0": 1.7998355411039506,
+    "T=2.0": 2.288826165842212
+  },
+  "tabla_4_decimales": {
+    "filas": [
+      "t0",
+      "t1",
+      "t2",
+      "t3",
+      "t4",
+      "t5"
+    ],
+    "columnas": [
+      "logit",
+      "p_T=0.5",
+      "p_T=1.0",
+      "p_T=2.0"
+    ],
+    "valores": [
+      [
+        2.0,
+        0.8231,
+        0.5516,
+        0.3583
+      ],
+      [
+        1.0,
+        0.1114,
+        0.2029,
+        0.2173
+      ],
+      [
+        0.5,
+        0.041,
+        0.1231,
+        0.1693
+      ],
+      [
+        0.2,
+        0.0225,
+        0.0912,
+        0.1457
+      ],
+      [
+        -1.0,
+        0.002,
+        0.0275,
+        0.08
+      ],
+      [
+        -3.0,
+        0.0,
+        0.0037,
+        0.0294
+      ]
+    ],
+    "entropias_bits_4dec": {
+      "T=0.5": 0.9147,
+      "T=1.0": 1.7998,
+      "T=2.0": 2.2888
+    }
+  },
+  "supuestos": [
+    "Los datos personales de la primera celda se dejan con los marcadores [NOMBRE], [CORREO], [CEDULA], [TELEFONO] del enunciado, pues el script no conoce los datos reales del estudiante.",
+    "La entropía se calcula en bits (log2) sobre la distribución completa; los seis tokens tienen probabilidad positiva para las tres temperaturas."
+  ]
+}

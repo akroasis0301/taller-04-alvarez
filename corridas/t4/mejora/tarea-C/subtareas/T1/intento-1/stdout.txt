@@ -1,0 +1,9 @@
+T1 - Línea base TF-IDF (TfidfVectorizer por defecto + similitud coseno)
+q1: relevante=d04 rank=1 top3=['d04', 'd01', 'd06'] hit@1=1 hit@3=1 RR=1.0000
+q2: relevante=d03 rank=1 top3=['d03', 'd01', 'd02'] hit@1=1 hit@3=1 RR=1.0000
+q3: relevante=d08 rank=1 top3=['d08', 'd06', 'd04'] hit@1=1 hit@3=1 RR=1.0000
+q4: relevante=d05 rank=1 top3=['d05', 'd01', 'd04'] hit@1=1 hit@3=1 RR=1.0000
+q5: relevante=d09 rank=6 top3=['d03', 'd06', 'd04'] hit@1=0 hit@3=0 RR=0.1667
+q6: relevante=d02 rank=1 top3=['d02', 'd06', 'd03'] hit@1=1 hit@3=1 RR=1.0000
+Agregado: Hit@1=0.8333  Hit@3=0.8333  MRR=0.8611
+Salidas: resultados.json, t1_similitud_coseno.png

@@ -1,0 +1,89 @@
+{
+  "p": 0.9,
+  "temperatura": 1.0,
+  "distribucion_T1_ordenada": {
+    "t0": 0.5516226378718239,
+    "t1": 0.2029306277578035,
+    "t2": 0.12308364752983937,
+    "t3": 0.09118260875807133,
+    "t4": 0.02746367398498595,
+    "t5": 0.003716804097476065
+  },
+  "probabilidades_acumuladas_ordenadas": {
+    "t0": 0.5516226378718239,
+    "t1": 0.7545532656296273,
+    "t2": 0.8776369131594667,
+    "t3": 0.968819521917538,
+    "t4": 0.9962831959025239,
+    "t5": 1.0
+  },
+  "tokens_sobrevivientes": [
+    "t0",
+    "t1",
+    "t2",
+    "t3"
+  ],
+  "num_tokens_conservados": 4,
+  "probabilidad_acumulada_nucleo": 0.968819521917538,
+  "distribucion_renormalizada": {
+    "t0": 0.5693760554907313,
+    "t1": 0.2094617451103304,
+    "t2": 0.12704497044632815,
+    "t3": 0.09411722895261025
+  },
+  "suma_distribucion_renormalizada": 1.0,
+  "tokens_descartados": [
+    "t4",
+    "t5"
+  ],
+  "masa_descartada": 0.031180478082462017,
+  "tabla": [
+    {
+      "token": "t0",
+      "prob_original_T1": 0.5516226378718239,
+      "prob_acumulada": 0.5516226378718239,
+      "conservado": true,
+      "prob_renormalizada": 0.5693760554907313
+    },
+    {
+      "token": "t1",
+      "prob_original_T1": 0.2029306277578035,
+      "prob_acumulada": 0.7545532656296273,
+      "conservado": true,
+      "prob_renormalizada": 0.2094617451103304
+    },
+    {
+      "token": "t2",
+      "prob_original_T1": 0.12308364752983937,
+      "prob_acumulada": 0.8776369131594667,
+      "conservado": true,
+      "prob_renormalizada": 0.12704497044632815
+    },
+    {
+      "token": "t3",
+      "prob_original_T1": 0.09118260875807133,
+      "prob_acumulada": 0.968819521917538,
+      "conservado": true,
+      "prob_renormalizada": 0.09411722895261025
+    },
+    {
+      "token": "t4",
+      "prob_original_T1": 0.02746367398498595,
+      "prob_acumulada": 0.9962831959025239,
+      "conservado": false,
+      "prob_renormalizada": null
+    },
+    {
+      "token": "t5",
+      "prob_original_T1": 0.003716804097476065,
+      "prob_acumulada": 1.0,
+      "conservado": false,
+      "prob_renormalizada": null
+    }
+  ],
+  "supuestos": [
+    "El conjunto mínimo se define incluyendo el primer token (en orden descendente) cuya probabilidad acumulada alcanza o supera p=0.9; los tokens posteriores se descartan, aunque la masa del núcleo quede por encima de 0.9.",
+    "La distribución de T=1 se carga de entrada/T1/resultados.json (subtarea T1) y no se recalcula.",
+    "La renormalización divide cada probabilidad conservada entre la masa total del núcleo, de modo que las probabilidades resultantes suman exactamente 1.0."
+  ]
+}

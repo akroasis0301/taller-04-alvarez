@@ -1,0 +1,7 @@
+tarea,status,model,aprobadas,total,subtareas,intentos_codigo,tokens_entrada,tokens_salida,duracion_s,error
+A,completado,zai-org/GLM-5.3-Flash,8,11,4,4,46104,72220,645.4,
+B,completado,zai-org/GLM-5.3-Flash,9,10,4,3,26566,29880,175.8,
+C,completado,zai-org/GLM-5.3-Flash,8,9,4,3,46436,78221,394.5,
+S1,completado,zai-org/GLM-5.3-Flash,9,9,5,5,69433,89152,490.2,
+H,completado,zai-org/GLM-5.3-Flash,8,10,4,3,31059,49083,169.1,
+P,completado,zai-org/GLM-5.3-Flash,9,9,4,3,28040,39342,126.5,

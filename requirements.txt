@@ -8,6 +8,7 @@ anyio==4.15.1
     #   httpx
     #   httpx2
     #   langsmith
+    #   openai
 appnope==1.0.0 ; sys_platform == 'darwin'
     # via ipykernel
 asttokens==3.0.2
@@ -16,6 +17,8 @@ attrs==26.1.0
     # via
     #   jsonschema
     #   referencing
+backoff==2.2.1
+    # via langfuse
 beautifulsoup4==4.15.0
     # via nbconvert
 bleach==6.4.0
@@ -56,7 +59,9 @@ fonttools==4.66.1
     #   fpdf2
     #   matplotlib
 fpdf2==2.8.9
-    # via taller-03-opcional-alvarez-ballesteros-ludena
+    # via taller-04-alvarez
+googleapis-common-protos==1.75.5
+    # via opentelemetry-exporter-otlp-proto-http
 h11==0.16.0
     # via
     #   httpcore
@@ -68,9 +73,12 @@ httpcore2==2.13.1 ; sys_platform != 'emscripten'
 httpx==0.28.1
     # via
     #   langchain-core
+    #   langfuse
     #   langgraph-sdk
 httpx2==2.13.1
-    # via langsmith
+    # via
+    #   langsmith
+    #   openai
 httpx2-jsfetch==1.0 ; sys_platform == 'emscripten'
     # via httpx2
 idna==3.20
@@ -80,7 +88,7 @@ idna==3.20
     #   httpx2
     #   requests
 ipykernel==7.4.0
-    # via taller-03-opcional-alvarez-ballesteros-ludena
+    # via taller-04-alvarez
 ipython==9.17.1
     # via ipykernel
 ipython-pygments-lexers==1.1.1
@@ -89,6 +97,8 @@ jedi==0.20.0
     # via ipython
 jinja2==3.1.6
     # via nbconvert
+jiter==0.17.0
+    # via openai
 joblib==1.6.0
     # via scikit-learn
 jsonpatch==1.33
@@ -124,8 +134,10 @@ langchain-protocol==0.0.19
     # via
     #   langchain-core
     #   langgraph-sdk
+langfuse==4.17.0
+    # via taller-04-alvarez
 langgraph==1.2.12
-    # via taller-03-opcional-alvarez-ballesteros-ludena
+    # via taller-04-alvarez
 langgraph-checkpoint==4.2.0
     # via
     #   langgraph
@@ -137,15 +149,15 @@ langgraph-sdk==0.4.5
 langsmith==0.14.4
     # via langchain-core
 markdown==3.11
-    # via taller-03-opcional-alvarez-ballesteros-ludena
+    # via taller-04-alvarez
 markdown-it-py==4.2.0
-    # via taller-03-opcional-alvarez-ballesteros-ludena
+    # via taller-04-alvarez
 markupsafe==3.0.4
     # via
     #   jinja2
     #   nbconvert
 matplotlib==3.11.2
-    # via taller-03-opcional-alvarez-ballesteros-ludena
+    # via taller-04-alvarez
 matplotlib-inline==0.2.2
     # via
     #   ipykernel
@@ -159,18 +171,18 @@ narwhals==2.26.0
 nbclient==0.11.0
     # via
     #   nbconvert
-    #   taller-03-opcional-alvarez-ballesteros-ludena
+    #   taller-04-alvarez
 nbconvert==7.17.1
-    # via taller-03-opcional-alvarez-ballesteros-ludena
+    # via taller-04-alvarez
 nbformat==5.11.1
     # via
     #   nbclient
     #   nbconvert
-    #   taller-03-opcional-alvarez-ballesteros-ludena
+    #   taller-04-alvarez
 nest-asyncio2==1.7.3
     # via ipykernel
 networkx==3.7
-    # via taller-03-opcional-alvarez-ballesteros-ludena
+    # via taller-04-alvarez
 numpy==2.5.3
     # via
     #   contourpy
@@ -178,7 +190,35 @@ numpy==2.5.3
     #   pandas
     #   scikit-learn
     #   scipy
-    #   taller-03-opcional-alvarez-ballesteros-ludena
+    #   taller-04-alvarez
+openai==3.22.1
+    # via taller-04-alvarez
+opentelemetry-api==1.45.1
+    # via
+    #   langfuse
+    #   opentelemetry-exporter-http-transport
+    #   opentelemetry-exporter-otlp-proto-http
+    #   opentelemetry-sdk
+    #   opentelemetry-semantic-conventions
+opentelemetry-exporter-http-transport==0.66b1
+    # via opentelemetry-exporter-otlp-proto-http
+opentelemetry-exporter-otlp-common==0.66b1
+    # via opentelemetry-exporter-otlp-proto-http
+opentelemetry-exporter-otlp-proto-common==1.45.1
+    # via opentelemetry-exporter-otlp-proto-http
+opentelemetry-exporter-otlp-proto-http==1.45.1
+    # via langfuse
+opentelemetry-proto==1.45.1
+    # via
+    #   opentelemetry-exporter-otlp-proto-common
+    #   opentelemetry-exporter-otlp-proto-http
+opentelemetry-sdk==1.45.1
+    # via
+    #   langfuse
+    #   opentelemetry-exporter-otlp-common
+    #   opentelemetry-exporter-otlp-proto-http
+opentelemetry-semantic-conventions==0.66b1
+    # via opentelemetry-sdk
 orjson==3.12.0
     # via
     #   langgraph-sdk
@@ -189,11 +229,12 @@ packaging==26.3
     # via
     #   ipykernel
     #   langchain-core
+    #   langfuse
     #   langsmith
     #   matplotlib
     #   nbconvert
 pandas==3.0.6
-    # via taller-03-opcional-alvarez-ballesteros-ludena
+    # via taller-04-alvarez
 pandocfilters==1.5.1
     # via nbconvert
 parso==0.8.7
@@ -208,6 +249,10 @@ platformdirs==4.12.2
     # via jupyter-core
 prompt-toolkit==3.0.53
     # via ipython
+protobuf==7.36.2
+    # via
+    #   googleapis-common-protos
+    #   opentelemetry-proto
 psutil==7.2.2 ; sys_platform != 'cygwin' and sys_platform != 'emscripten'
     # via ipython
 ptyprocess==0.7.0 ; sys_platform != 'emscripten' and sys_platform != 'win32'
@@ -215,15 +260,17 @@ ptyprocess==0.7.0 ; sys_platform != 'emscripten' and sys_platform != 'win32'
 pure-eval==0.2.4
     # via stack-data
 pyarrow==25.0.1
-    # via taller-03-opcional-alvarez-ballesteros-ludena
+    # via taller-04-alvarez
 pycparser==3.0 ; implementation_name == 'pypy'
     # via cffi
 pydantic==2.13.5
     # via
     #   langchain-core
+    #   langfuse
     #   langgraph
     #   langsmith
-    #   taller-03-opcional-alvarez-ballesteros-ludena
+    #   openai
+    #   taller-04-alvarez
 pydantic-core==2.46.5
     # via pydantic
 pygments==2.21.0
@@ -232,18 +279,18 @@ pygments==2.21.0
     #   ipython-pygments-lexers
     #   nbconvert
 pymupdf==1.28.2
-    # via taller-03-opcional-alvarez-ballesteros-ludena
+    # via taller-04-alvarez
 pyparsing==3.3.3
     # via matplotlib
 pypdf==6.19.0
-    # via taller-03-opcional-alvarez-ballesteros-ludena
+    # via taller-04-alvarez
 python-dateutil==2.9.0.post0
     # via
     #   jupyter-client
     #   matplotlib
     #   pandas
 python-dotenv==1.2.4
-    # via taller-03-opcional-alvarez-ballesteros-ludena
+    # via taller-04-alvarez
 pyyaml==6.0.3
     # via langchain-core
 pyzmq==27.2.0
@@ -257,6 +304,8 @@ referencing==0.37.0
 requests==2.34.2
     # via
     #   langsmith
+    #   opentelemetry-exporter-http-transport
+    #   opentelemetry-exporter-otlp-proto-http
     #   requests-toolbelt
 requests-toolbelt==1.0.0
     # via langsmith
@@ -265,15 +314,17 @@ rpds-py==2026.6.3
     #   jsonschema
     #   referencing
 scikit-learn==1.9.1
-    # via taller-03-opcional-alvarez-ballesteros-ludena
+    # via taller-04-alvarez
 scipy==1.18.1
     # via
     #   scikit-learn
-    #   taller-03-opcional-alvarez-ballesteros-ludena
+    #   taller-04-alvarez
 six==1.17.0
     # via python-dateutil
 sniffio==1.3.1
-    # via langsmith
+    # via
+    #   langsmith
+    #   openai
 soupsieve==2.10
     # via beautifulsoup4
 stack-data==0.6.3
@@ -310,7 +361,13 @@ typing-extensions==4.16.0
     #   jupyter-client
     #   langchain-core
     #   langchain-protocol
+    #   langfuse
     #   langsmith
+    #   openai
+    #   opentelemetry-api
+    #   opentelemetry-exporter-otlp-proto-http
+    #   opentelemetry-sdk
+    #   opentelemetry-semantic-conventions
     #   pydantic
     #   pydantic-core
     #   referencing
@@ -335,6 +392,8 @@ websockets==16.1.1
     # via
     #   langgraph-sdk
     #   langsmith
+wrapt==2.5.1
+    # via langfuse
 xxhash==4.0.1
     # via
     #   langgraph

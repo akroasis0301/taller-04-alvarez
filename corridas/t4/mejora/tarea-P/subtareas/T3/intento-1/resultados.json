@@ -1,0 +1,37 @@
+{
+  "subtarea": "T3: comprobación empírica del muestreo top-p (10 000 muestras, default_rng(0))",
+  "semilla": 0,
+  "generador": "numpy.random.default_rng(0)",
+  "n_muestras": 10000,
+  "tokens": [
+    "t0",
+    "t1",
+    "t2",
+    "t3"
+  ],
+  "probabilidades_teoricas": {
+    "t0": 0.5693760554907313,
+    "t1": 0.2094617451103304,
+    "t2": 0.12704497044632815,
+    "t3": 0.09411722895261025
+  },
+  "conteos_observados": {
+    "t0": 5682,
+    "t1": 2093,
+    "t2": 1296,
+    "t3": 929
+  },
+  "frecuencias_observadas": {
+    "t0": 0.5682,
+    "t1": 0.2093,
+    "t2": 0.1296,
+    "t3": 0.0929
+  },
+  "divergencia_KL_bits": 5.006898814879229e-05,
+  "figura": "T3_frecuencias_vs_teoricas.png",
+  "supuestos": [
+    "La distribución renormalizada se carga de entrada/T2/resultados.json (subtarea T2) sin recalcularla.",
+    "El muestreo usa rng.choice sobre los 4 tokens del núcleo con las probabilidades renormalizadas de T2.",
+    "La KL se calcula como KL(empírica || teórica) = Σ q_i log2(q_i / p_i); los tokens con frecuencia empírica 0 aportan 0 (aquí todos los tokens del núcleo aparecen en las muestras)."
+  ]
+}

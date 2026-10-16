@@ -1,0 +1,110 @@
+{
+  "subtarea": "T2: muestreo de núcleo (top-p, p=0.9) sobre la distribución de T=1",
+  "p": 0.9,
+  "temperatura": 1.0,
+  "distribucion_T1_original": {
+    "t0": 0.5516226378718239,
+    "t1": 0.2029306277578035,
+    "t2": 0.12308364752983937,
+    "t3": 0.09118260875807133,
+    "t4": 0.02746367398498595,
+    "t5": 0.003716804097476065
+  },
+  "tokens_ordenados_desc": [
+    "t0",
+    "t1",
+    "t2",
+    "t3",
+    "t4",
+    "t5"
+  ],
+  "probs_ordenadas_desc": [
+    0.5516226378718239,
+    0.2029306277578035,
+    0.12308364752983937,
+    0.09118260875807133,
+    0.02746367398498595,
+    0.003716804097476065
+  ],
+  "acumulada_ordenada": [
+    0.5516226378718239,
+    0.7545532656296273,
+    0.8776369131594667,
+    0.968819521917538,
+    0.9962831959025239,
+    1.0
+  ],
+  "tokens_sobrevivientes": [
+    "t0",
+    "t1",
+    "t2",
+    "t3"
+  ],
+  "probs_nucleo_sin_renormalizar": [
+    0.5516226378718239,
+    0.2029306277578035,
+    0.12308364752983937,
+    0.09118260875807133
+  ],
+  "probabilidad_acumulada_nucleo": 0.968819521917538,
+  "distribucion_renormalizada": {
+    "t0": 0.5693760554907313,
+    "t1": 0.2094617451103304,
+    "t2": 0.12704497044632815,
+    "t3": 0.09411722895261025
+  },
+  "tokens_descartados": [
+    "t4",
+    "t5"
+  ],
+  "suma_distribucion_renormalizada": 1.0,
+  "tabla_completa": [
+    {
+      "token": "t0",
+      "p_T1_original": 0.5516226378718239,
+      "acumulada": 0.5516226378718239,
+      "en_nucleo": true,
+      "p_renormalizada": 0.5693760554907313
+    },
+    {
+      "token": "t1",
+      "p_T1_original": 0.2029306277578035,
+      "acumulada": 0.7545532656296273,
+      "en_nucleo": true,
+      "p_renormalizada": 0.2094617451103304
+    },
+    {
+      "token": "t2",
+      "p_T1_original": 0.12308364752983937,
+      "acumulada": 0.8776369131594667,
+      "en_nucleo": true,
+      "p_renormalizada": 0.12704497044632815
+    },
+    {
+      "token": "t3",
+      "p_T1_original": 0.09118260875807133,
+      "acumulada": 0.968819521917538,
+      "en_nucleo": true,
+      "p_renormalizada": 0.09411722895261025
+    },
+    {
+      "token": "t4",
+      "p_T1_original": 0.02746367398498595,
+      "acumulada": 0.9962831959025239,
+      "en_nucleo": false,
+      "p_renormalizada": null
+    },
+    {
+      "token": "t5",
+      "p_T1_original": 0.003716804097476065,
+      "acumulada": 1.0,
+      "en_nucleo": false,
+      "p_renormalizada": null
+    }
+  ],
+  "supuestos": [
+    "La distribución de T=1 se carga de entrada/T1/resultados.json (subtarea T1) sin recalcularla.",
+    "El conjunto mínimo se construye conservando tokens en orden decreciente de probabilidad hasta que la suma alcance o supere p=0.9 por primera vez; el último token incluido puede hacer que la acumulada supere ligeramente 0.9 (aquí 0.9688).",
+    "Los tokens fuera del núcleo (t4, t5) se descartan y no participan en la renormalización."
+  ]
+}

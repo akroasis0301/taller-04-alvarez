@@ -1,0 +1,72 @@
+{
+  "subtarea": "T5",
+  "supuestos": [
+    "El DataFrame analizado de la T3 se carga de entrada/T3/ (o de output/server_analysis.parquet si la T3 ya lo dejó ahí); si no existe ningún archivo con el esquema completo, se reconstruye con data/server_measurements.csv y el load_score guardado en entrada/T3/resultados.json.",
+    "El parquet se escribe con PyArrow (pa.Table.from_pandas + pq.write_table) sin incluir el índice (preserve_index=False).",
+    "El esquema se compara con Schema.equals de PyArrow sin metadatos de pandas; los valores se comparan columna a columna con igualdad exacta (NaN cuenta como igual a NaN)."
+  ],
+  "ruta_parquet": "output/server_analysis.parquet",
+  "fuente_dataframe": "data/server_measurements.csv + entrada/T3/resultados.json (load_score)",
+  "n_filas_antes": 300,
+  "n_filas_despues": 300,
+  "columnas_antes": [
+    "server",
+    "timestamp",
+    "gpu_utilization",
+    "cpu_utilization",
+    "memory_gb",
+    "power_w",
+    "temperature_c",
+    "load_score",
+    "requires_review"
+  ],
+  "columnas_despues": [
+    "server",
+    "timestamp",
+    "gpu_utilization",
+    "cpu_utilization",
+    "memory_gb",
+    "power_w",
+    "temperature_c",
+    "load_score",
+    "requires_review"
+  ],
+  "esquema_antes": [
+    "server: large_string",
+    "timestamp: timestamp[us]",
+    "gpu_utilization: double",
+    "cpu_utilization: double",
+    "memory_gb: double",
+    "power_w: double",
+    "temperature_c: double",
+    "load_score: double",
+    "requires_review: bool"
+  ],
+  "esquema_despues": [
+    "server: large_string",
+    "timestamp: timestamp[us]",
+    "gpu_utilization: double",
+    "cpu_utilization: double",
+    "memory_gb: double",
+    "power_w: double",
+    "temperature_c: double",
+    "load_score: double",
+    "requires_review: bool"
+  ],
+  "verificacion": {
+    "filas": true,
+    "columnas": true,
+    "esquema": true,
+    "valores": true
+  },
+  "round_trip_verificado": true,
+  "n_requires_review": 49,
+  "fila_ejemplo_requires_review": {
+    "indice": 23,
+    "server": "AI-SRV-01",
+    "timestamp": "2026-08-24T09:55:00",
+    "load_score": 3.136217861183744,
+    "temperature_c": 66.97,
+    "requires_review": true
+  }
+}

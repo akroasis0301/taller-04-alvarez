@@ -1,0 +1,11 @@
+T3 — Curva de aprendizaje (evaluación siempre sobre el mismo test de T1)
+Origen de la división: entrada/T1/division_train_test.parquet (columnas 'target' y 'conjunto')
+ fracción  n_train    acc NB    acc LR
+       5%       19    0.6257    0.6257
+      10%       39    0.6608    0.6667
+      25%       99    0.6608    0.6550
+      50%      199    0.6725    0.6901
+     100%      398    0.6667    0.6608
+Eje Y de la figura: [0.576, 1.000] (ajustado al rango real de los datos)
+Figura guardada: t3_curva_aprendizaje.png
+Resultados escritos en resultados.json

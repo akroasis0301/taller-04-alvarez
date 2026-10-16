@@ -1,0 +1,15 @@
+    5%  n= 19  acc NB=0.9415  acc LR=0.9415
+   10%  n= 39  acc NB=0.9357  acc LR=0.9474
+   25%  n= 99  acc NB=0.9298  acc LR=0.9708
+   50%  n=199  acc NB=0.9415  acc LR=0.9825
+  100%  n=398  acc NB=0.9357  acc LR=0.9883
+
+Resumen T3 (exactitud en el mismo conjunto de prueba de 171 ejemplos):
+ porcentaje  n_ejemplos  accuracy_naive_bayes  accuracy_regresion_logistica
+       0.05          19              0.941520                      0.941520
+       0.10          39              0.935673                      0.947368
+       0.25          99              0.929825                      0.970760
+       0.50         199              0.941520                      0.982456
+       1.00         398              0.935673                      0.988304
+
+Figura guardada en T3_curva_aprendizaje.png y cifras en resultados.json
