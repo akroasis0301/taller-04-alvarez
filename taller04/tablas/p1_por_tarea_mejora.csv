@@ -1,0 +1,7 @@
+tarea,duración (s),llamadas al modelo,tokens entrada,tokens salida,status,traza_id
+A,645.3,15,46104,72220,completado,afd26539106f
+B,175.8,12,26566,29880,completado,3ecf7e5baead
+C,394.4,12,46436,78221,completado,b909e81cb73e
+S1,490.2,18,69433,89152,completado,39acfbb16389
+H,169.1,13,31059,49083,completado,468ba03470e1
+P,126.5,12,28040,39342,completado,7b8bb79a0db0

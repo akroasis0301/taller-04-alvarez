@@ -1,0 +1,6 @@
+guardrail,spans,ms_medio,ms_max,decisiones
+entrada_inyeccion,6,1.83,3.0,ok: 5; redactada: 1
+entrada_pii,6,1.17,2.0,ok: 5; redactada: 1
+guarda_ast,21,4.38,6.0,—
+salida_pii,9,3.33,5.0,ok
+salida_secretos,9,1.78,3.0,ok

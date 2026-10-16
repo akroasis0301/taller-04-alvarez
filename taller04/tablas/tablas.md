@@ -54,6 +54,58 @@ Suma de los spans de agente: 4,022.3 s; suma de las corridas: 4,023.5 s (los age
 
 Los `llm` pueden sumar más que el reloj: el indexador llama al modelo en paralelo (8 hilos).
 
+### Resumen (mejora)
+
+| métrica | valor |
+|---|---|
+| corridas | 6 |
+| corridas sin span «corrida» | 0 |
+| tokens de entrada | 247638 |
+| tokens de salida (incluye razonamiento) | 357898 |
+| costo real (H200) | 0 USD |
+| costo de referencia | 0.2519 USD — fila propietario_economico (gpt-4o-mini), verificada el 2026-08-26 |
+| latencia p50 por corrida | 285.1 s |
+| latencia p95 por corrida | 606.5 s |
+| spans con error (sin la raíz) | 0 |
+
+### Por corrida (mejora)
+
+| tarea | duración (s) | llamadas al modelo | tokens entrada | tokens salida | status | traza_id |
+|---|---|---|---|---|---|---|
+| A | 645.3 | 15 | 46104 | 72220 | completado | afd26539106f |
+| B | 175.8 | 12 | 26566 | 29880 | completado | 3ecf7e5baead |
+| C | 394.4 | 12 | 46436 | 78221 | completado | b909e81cb73e |
+| S1 | 490.2 | 18 | 69433 | 89152 | completado | 39acfbb16389 |
+| H | 169.1 | 13 | 31059 | 49083 | completado | 468ba03470e1 |
+| P | 126.5 | 12 | 28040 | 39342 | completado | 7b8bb79a0db0 |
+
+### Por agente (mejora) — el cuello de botella es el de mayor TIEMPO TOTAL
+
+| agente | spans | tiempo total (s) | parte del tiempo | tiempo medio (s) | llamadas | tokens entrada | tokens salida | parte de los tokens |
+|---|---|---|---|---|---|---|---|---|
+| programador | 21 | 783.6 | 39.2 % | 37.3 | 21 | 80314 | 178617 | 42.8 % |
+| indexador | 6 | 402.9 | 20.1 % | 67.2 | 25 | 10391 | 63398 | 12.2 % |
+| investigador | 20 | 337.4 | 16.9 % | 16.9 | 0 | 0 | 0 | 0.0 % |
+| redactor | 9 | 210.1 | 10.5 % | 23.3 | 9 | 59026 | 56803 | 19.1 % |
+| critico | 21 | 206.4 | 10.3 % | 9.8 | 21 | 90495 | 49042 | 23.0 % |
+| planificador | 6 | 39.1 | 2.0 % | 6.5 | 6 | 7412 | 10038 | 2.9 % |
+| ejecutor | 21 | 20.4 | 1.0 % | 1 | 0 | 0 | 0 | 0.0 % |
+| lector | 6 | 0.4 | 0.0 % | 0.1 | 0 | 0 | 0 | 0.0 % |
+
+Suma de los spans de agente: 2,000.3 s; suma de las corridas: 2,001.3 s (los agentes son secuenciales: deben coincidir).
+
+### Por tipo de span, dentro de los agentes (mejora)
+
+| tipo de span | spans | tiempo total (s) | medio (ms) | respecto del reloj de las corridas |
+|---|---|---|---|---|
+| llm | 82 | 1,559.6 | 19,019.2 | 77.9 % |
+| retriever | 40 | 337.2 | 8,430.1 | 16.8 % |
+| embedding | 6 | 266.1 | 44,341.7 | 13.3 % |
+| herramienta | 27 | 20.6 | 762.8 | 1.0 % |
+| guardrail | 51 | 0.2 | 3.1 | 0.0 % |
+
+Los `llm` pueden sumar más que el reloj: el indexador llama al modelo en paralelo (8 hilos).
+
 ## Parte 2.b — Dos verificadores y un juez
 
 ### Verificador automático por tipo de comprobación (base, golden corregido)
@@ -109,6 +161,48 @@ A06/H06: el verificador original aprobaba **por accidente** (tomaba el 0.9474 de
 | juez vs. persona (etiquetas.csv) | 16 | 1 | indefinido: una sola clase | — |
 | verificador (corregido) vs. persona | 11 | 1 | indefinido: una sola clase | — |
 | verificador (original) vs. persona | 11 | 0.909 | 0 | S103 |
+
+### Verificador automático por tipo de comprobación (mejora, golden corregido)
+
+| tipo | n | aprobadas | tasa |
+|---|---|---|---|
+| archivo | 11 | 11 | 100.0 % |
+| cifra | 9 | 9 | 100.0 % |
+| cifra_presente | 14 | 12 | 85.7 % |
+| contiene | 3 | 3 | 100.0 % |
+| ipynb_ejecutado | 2 | 2 | 100.0 % |
+| paginas_max | 1 | 1 | 100.0 % |
+| palabras_max | 3 | 3 | 100.0 % |
+| procedencia | 6 | 6 | 100.0 % |
+| secciones | 4 | 4 | 100.0 % |
+| **total (sin «juez»)** | 53 | 51 | 96.2 % |
+
+### Por tarea (mejora)
+
+| tarea | aprobadas | comprobaciones | prohibidos ausentes |
+|---|---|---|---|
+| A | 8 | 9 | — |
+| B | 9 | 9 | — |
+| C | 8 | 8 | — |
+| S1 | 9 | 9 | — |
+| H | 8 | 9 | 3/3 |
+| P | 9 | 9 | 16/16 |
+
+### Juez (gemma3:27b, prompt js1) por tipo (mejora)
+
+| tipo | n | aprueba | falla | sin respuesta | puntaje medio |
+|---|---|---|---|---|---|
+| cifra | 9 | 9 | 0 | 0 | 5 |
+| cifra_presente | 14 | 14 | 0 | 0 | 5 |
+| contiene | 3 | 3 | 0 | 0 | 5 |
+| juez | 5 | 5 | 0 | 0 | 5 |
+| secciones | 4 | 4 | 0 | 0 | 5 |
+
+### Calibración del juez (mejora)
+
+| calibración | pares | acuerdo | kappa | discrepancias |
+|---|---|---|---|---|
+| juez vs. verificador (golden corregido) | 30 | 0.933 | 0 | A09, H09 |
 
 ## Parte 2.c — Peores casos y mejora medida
 
@@ -177,7 +271,24 @@ traza_id en Langfuse: `e1626a32e6cb816902369d1f676cef28`
 | 35 | llm | critico · intento 1 | 5441+2246 · 21.69 s · fin=stop | — | {"aprobado": true, "problemas": []} |
 | 36 | decisión | critico: aprobado |  |  |  |
 
-_Aún no hay corrida mejorada._
+### Antes (v1, base) → después (v2, mejora): mismo golden, verificador, juez y modelo
+
+| tarea | comprobaciones | duración (s) | tokens salida | llamadas programador | tokens salida programador | vacías por longitud | rechazos del crítico | ejecuciones con error |
+|---|---|---|---|---|---|---|---|---|
+| A | 9/9 → 8/9 | 408 → 645 | 55,610 → 72,220 | 3 → 4 | 37,193 → 27,444 | 0 → 0 | 0 → 1 | 0 → 0 |
+| B | 9/9 → 9/9 | 305 → 176 | 44,553 → 29,880 | 3 → 3 | 17,643 → 9,392 | 0 → 0 | 0 → 0 | 0 → 0 |
+| C | 8/8 → 8/8 | 859 → 394 | 116,147 → 78,221 | 4 → 3 | 87,447 → 51,945 | 1 → 0 | 0 → 0 | 0 → 0 |
+| S1 | 9/9 → 9/9 | 1759 → 490 | 240,851 → 89,152 | 8 → 5 | 198,787 → 56,211 | 2 → 0 | 1 → 0 | 0 → 0 |
+| H | 9/9 → 8/9 | 530 → 169 | 60,000 → 49,083 | 5 → 3 | 32,375 → 24,842 | 0 → 0 | 2 → 0 | 0 → 0 |
+| P | 9/9 → 9/9 | 163 → 126 | 48,420 → 39,342 | 3 → 3 | 19,363 → 8,783 | 0 → 0 | 0 → 0 | 0 → 0 |
+| **total** | 53/53 → 51/53 | 4024 → 2002 | 565,581 → 357,898 | 26 → 21 | 392,808 → 178,617 | 3 → 0 | 3 → 1 | 0 → 0 |
+
+### Comprobaciones que cambiaron entre las dos corridas
+
+| comprobación | tipo | base | mejora | detalle (mejora) |
+|---|---|---|---|---|
+| A09 | cifra_presente | 1 | 0 | verdad=0.9766 ±0.0006; no hallada |
+| H09 | cifra_presente | 1 | 0 | verdad=0.9766 ±0.0006; no hallada |
 
 ## Parte 3 — Guardrails
 
@@ -199,6 +310,16 @@ _Aún no hay corrida mejorada._
 | salida_pii | 9 | 2.89 | 4 | ok |
 | salida_secretos | 9 | 1.22 | 2 | ok |
 
+### Guardrails en el agente (mejora): costo y decisiones en el golden
+
+| guardrail | spans | latencia media (ms) | máx. (ms) | decisiones distintas de ok |
+|---|---|---|---|---|
+| entrada_inyeccion | 6 | 1.83 | 3 | ok: 5; redactada: 1 |
+| entrada_pii | 6 | 1.17 | 2 | ok: 5; redactada: 1 |
+| guarda_ast | 21 | 4.38 | 6 | — |
+| salida_pii | 9 | 3.33 | 5 | ok |
+| salida_secretos | 9 | 1.78 | 3 | ok |
+
 ## Parte 4 — Datos para las alertas
 
 ### Mediciones para los umbrales de las alertas (Parte 4.b)
@@ -206,5 +327,6 @@ _Aún no hay corrida mejorada._
 | corrida | corridas | latencia p50 (s) | latencia p95 (s) | latencia máx. (s) | tokens p50 por corrida | tokens máx. por corrida | resolución (1 corrida) |
 |---|---|---|---|---|---|---|---|
 | base | 6 | 469 | 1534 | 1759 | 104,264 | 334,343 | 16.7 % |
+| mejora | 6 | 285 | 606 | 645 | 99,233 | 158,585 | 16.7 % |
 
 Con n corridas, cada una vale 100/n % de cualquier tasa: un umbral por debajo de esa resolución salta con el primer caso.

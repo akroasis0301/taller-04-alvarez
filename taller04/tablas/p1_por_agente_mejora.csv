@@ -1,0 +1,9 @@
+agente,spans,tiempo total (s),parte del tiempo,tiempo medio (s),llamadas,tokens entrada,tokens salida,parte de los tokens
+programador,21,783.6,39.2 %,37.3,21,80314,178617,42.8 %
+indexador,6,402.9,20.1 %,67.2,25,10391,63398,12.2 %
+investigador,20,337.4,16.9 %,16.9,0,0,0,0.0 %
+redactor,9,210.1,10.5 %,23.3,9,59026,56803,19.1 %
+critico,21,206.4,10.3 %,9.8,21,90495,49042,23.0 %
+planificador,6,39.1,2.0 %,6.5,6,7412,10038,2.9 %
+ejecutor,21,20.4,1.0 %,1.0,0,0,0,0.0 %
+lector,6,0.4,0.0 %,0.1,0,0,0,0.0 %

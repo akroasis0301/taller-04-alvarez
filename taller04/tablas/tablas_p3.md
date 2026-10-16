@@ -17,3 +17,13 @@
 | guarda_ast | 23 | 4 | 8 | — |
 | salida_pii | 9 | 2.89 | 4 | ok |
 | salida_secretos | 9 | 1.22 | 2 | ok |
+
+### Guardrails en el agente (mejora): costo y decisiones en el golden
+
+| guardrail | spans | latencia media (ms) | máx. (ms) | decisiones distintas de ok |
+|---|---|---|---|---|
+| entrada_inyeccion | 6 | 1.83 | 3 | ok: 5; redactada: 1 |
+| entrada_pii | 6 | 1.17 | 2 | ok: 5; redactada: 1 |
+| guarda_ast | 21 | 4.38 | 6 | — |
+| salida_pii | 9 | 3.33 | 5 | ok |
+| salida_secretos | 9 | 1.78 | 3 | ok |

@@ -1,0 +1,3 @@
+comprobacion,tipo,base,mejora,detalle
+A09,cifra_presente,1,0,verdad=0.9766 ±0.0006; no hallada
+H09,cifra_presente,1,0,verdad=0.9766 ±0.0006; no hallada

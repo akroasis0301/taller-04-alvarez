@@ -1,0 +1,10 @@
+metrica,valor
+corridas,6
+corridas sin span «corrida»,0
+tokens de entrada,247638
+tokens de salida (incluye razonamiento),357898
+costo real (H200),0 USD
+costo de referencia,"0.2519 USD — fila propietario_economico (gpt-4o-mini), verificada el 2026-08-26"
+latencia p50 por corrida,285.1 s
+latencia p95 por corrida,606.5 s
+spans con error (sin la raíz),0

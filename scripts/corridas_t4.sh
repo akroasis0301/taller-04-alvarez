@@ -49,7 +49,7 @@ case "${1:-}" in
     res="resultados/t4/resultados_solver_${v}_corregido.csv"; [[ -f "$res" ]] || res="resultados/t4/resultados_solver_$v.csv"
     etq=(); [[ -f taller04/parte2/etiquetas.csv && "$v" == base ]] && etq=(--etiquetas taller04/parte2/etiquetas.csv)
     uv run python taller-04-llmops/Lab-04-LLMOps/juez_solver.py --golden "$GOLDEN" --corridas "corridas/t4/$v" \
-      --resultados "$res" --juez "$JUEZ" "${etq[@]}" \
+      --resultados "$res" --juez "$JUEZ" ${etq[@]+"${etq[@]}"} \
       --salida "resultados/t4/juez_solver_$v.csv" | tee "resultados/t4/salida_juez_$v.txt" ;;
   *) sed -n 2,12p "$0"; exit 1 ;;
 esac

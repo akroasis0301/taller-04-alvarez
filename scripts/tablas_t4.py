@@ -424,7 +424,8 @@ def main() -> int:
     def parte(clave: str, titulo: str) -> list[str]:
         partes[clave] = [f"# {titulo}", ""]            # el informe incluye cada parte por separado
         return partes[clave]
-    datos = {v: parte1(v, parte("p1", "Parte 1 — Observabilidad"), destino) for v in versiones}
+    p1 = parte("p1", "Parte 1 — Observabilidad")        # una sola parte con todas las versiones
+    datos = {v: parte1(v, p1, destino) for v in versiones}
     parte2b(versiones, parte("p2b", "Parte 2.b — Dos verificadores y un juez"), destino)
     p2c = parte("p2c", "Parte 2.c — Peores casos y mejora medida")
     if "base" in versiones:

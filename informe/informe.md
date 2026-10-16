@@ -92,7 +92,7 @@ contiene).
 
 > **Conclusión:** los cuatro tipos de span exigidos (corrida, llm, herramienta, guardrail) más uno por
 > agente están en Langfuse y en el archivo exportado; ninguna corrida quedó sin su span raíz; el cuello de
-> botella es el programador.
+> botella es el programador (73,5 % del tiempo en la base y 39 % con el prompt v2; ver la 2.c).
 
 # 4. Parte 2.a — El golden set
 
@@ -157,7 +157,8 @@ distingue un juez exigente que encontró todo bien de uno indulgente que lo apru
 advertencia del enunciado. Lo único que muestra discriminación es S103, donde el juez no repitió al
 verificador cuando este se equivocó. Se decidió **no adulterar** entregables para fabricar casos
 negativos: se reporta que, en este golden, el agente resuelve correctamente según las tres fuentes, y que
-la capacidad del juez de detectar fallos quedó sin medir.
+la capacidad del juez de detectar fallos quedó sin medir en la base. La corrida mejorada trajo el primer
+fallo real, y el juez no lo vio (ver la 2.c).
 
 RAGAS es opcional en la opción B y no se usó: la comprobación de procedencia ya mide si cada cifra del
 entregable está respaldada por una ejecución (las 6 comprobaciones de procedencia aprueban en la base).
@@ -188,10 +189,65 @@ estandarizado sin decirlo, A06/H06). Las dos versiones están registradas en Lan
 (`solver-programador`, etiquetas `v1` y `v2`, con el changelog como `commit_message`), y cada generation
 del programador de la corrida mejorada está ligada a su versión.
 
-[PENDIENTE: interpretar la tabla antes/después cuando termine la corrida mejorada — qué buscaba la mejora
-(vacías por longitud, rechazos, tokens del programador) frente a lo que cambió por azar (el modelo
-muestrea; con 6 tareas y una sola repetición por versión, una diferencia de una llamada o de unos minutos
-no es concluyente).]
+**Lo que la mejora buscaba, y logró.** Las llamadas vacías por longitud pasaron de 3 a 0, y los tokens
+de salida del programador, de 392 808 a 178 617 (−55 %). Bajaron **en las seis tareas**, no solo en
+promedio. El tiempo total de las seis corridas bajó de 4 024 a 2 002 s (−50 %), el p95 de 1 534 a 606 s y el
+costo de referencia de 0,385 a 0,252 USD. El programador pasó del 73,5 % al 39 % del tiempo de los
+agentes: sigue siendo el cuello de botella, pero ahora el indexador (20 %) también pesa. Los rechazos
+bajaron de 3 a 1. La T5 de S1 ya usa el parquet de la T3, y los scripts de H corren al primer intento.
+Además, los 20 `resultados.json` de la corrida declaran sus supuestos (regla 4).
+
+**Lo que se rompió: 53/53 → 51/53.** Son dos fallas de naturaleza distinta:
+
+1. **A09 es una regresión real: un error que no da error.** Por la regla 2 («carga lo que ya produjo una
+   subtarea previa»), la T3 de A cargó `division_train_test.parquet`. Ese archivo de la T1 solo tiene la
+   etiqueta y el conjunto; los 30 atributos estaban en `breast_cancer_completo.parquet`. La T3 usó como
+   atributos «las demás columnas», que no tienen información. Su curva quedó entre 0,626 y 0,690, que
+   es la proporción de la clase mayoritaria (107/171 = 0,626). Mientras tanto, la Parte 2 del mismo
+   reporte, con los mismos 398 ejemplos, da 0,936 y 0,988. **Ninguna pieza del sistema lo detuvo:**
+   - Los `assert` del script revisaban conteos de filas y de clases, que estaban bien.
+   - El crítico vio esas cifras y rechazó la figura, pero porque el eje Y las recortaba: pidió ajustar
+     el eje, no revisar los datos.
+   - La procedencia aprobó, porque las cifras sí salieron de una ejecución.
+   - El redactor escribió que el F1 de 0,38 es «compatible con predecir solo la clase mayoritaria» y lo
+     atribuyó a tener pocos datos, incluso con 398 ejemplos.
+
+   Lo detectó el **verificador determinístico**, porque A09 fija la cifra (0,9766). Esto muestra por qué
+   se compara antes y después con el mismo golden.
+2. **H09 es un falso negativo del golden, no un error del solver.** La T3 de H cargó los índices de la
+   división de la T1 y los **ordenó** antes de submuestrear. Con la misma semilla, `train_test_split`
+   elige otros ejemplos si cambia el orden de las filas. La curva de H está estandarizada y es válida
+   (regresión logística: 0,9415, 0,9474, 0,9708, 0,9825, 0,9883), y se reproduce exactamente al ordenar los
+   índices (se comprobó aparte con scikit-learn). La verdad de H09 supone un orden de filas que el
+   enunciado no fija: es una comprobación más exigente que el enunciado, como S103. **No se corrigió el
+   golden** después de ver la mejora, porque eso sería ajustar la vara a lo medido; queda declarado.
+
+**El juez frente al primer fallo real.** El juez aprobó A09 y H09 con puntaje 5 (acuerdo 0,933 con el
+verificador, kappa 0). En H09 acertó: la curva sí está estandarizada, que es lo que pregunta su criterio.
+En A09 también respondió lo que se le preguntó (la T3 estandarizó) y hasta escribió que 0,9766 «no está
+presente», pero no vio que toda la curva estaba al nivel del azar. El único fallo real de las dos corridas
+**pasó ante el juez**: un juez solo mide lo que pregunta su criterio. Eso confirma la advertencia de la 2.b.
+
+**Qué se debe a la mejora y qué pudo ser azar.** Hay una sola repetición por versión y un modelo que
+muestrea, así que una diferencia de una llamada o de unos minutos en una tarea no es concluyente:
+
+- **Atribuible a la mejora con más confianza:** la baja de tokens del programador, que ocurre en las seis
+  tareas, y la desaparición de las vacías por longitud (aunque eran solo 3 eventos).
+- **Por el camino que tomó el modelo:** la tarea A subió de 408 a 645 s, por un rechazo y una llamada
+  más, y eso fue consecuencia de la regresión.
+- **Por azar:** pudo haberse dado otra combinación de qué tarea reutiliza qué archivo. La regla abre la
+  puerta al error, pero no lo garantiza: H reutilizó bien su división.
+
+**Decisión: la v2 no se promueve.** Su ahorro es real, pero introdujo una regresión silenciosa que la v1 no
+tenía. Una **v3**, que queda propuesta y sin medir, haría dos cosas:
+
+- condicionaría la regla 2: «antes de usar un archivo de una subtarea previa, comprueba que tenga las
+  columnas que la tarea necesita»;
+- añadiría una invariante al script: el punto del 100 % de la curva debe coincidir con la exactitud de la
+  Parte 2.
+
+Del lado del golden, H09 debería comprobar la estandarización sin depender del orden de las filas; por
+ejemplo, con el punto del 100 % (0,9883), que no depende de la submuestra.
 
 # 7. Parte 3 — Guardrails
 
@@ -230,6 +286,11 @@ span de guardrail pasa de 8 ms, y ninguna tarea legítima del golden fue modific
 <!-- incluir: taller04/parte4/parte4.md -->
 
 <!-- incluir: taller04/tablas/tablas_p4.md -->
+
+La corrida mejorada (máximo de 645 s y de 158 585 tokens por corrida) no habría disparado ninguna de las
+tres alertas: los umbrales, sacados de la base, se mantienen. Tampoco habría avisado ninguna de la
+regresión de A09, porque no cambia ni la latencia ni los tokens; solo la ve una evaluación con el golden.
+Por eso, antes de promover una versión nueva del prompt, se corre el golden, que es lo que hizo la 2.c.
 
 # 9. Reproducibilidad, credenciales y datos personales
 
