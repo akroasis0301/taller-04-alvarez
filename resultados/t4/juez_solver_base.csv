@@ -1,0 +1,36 @@
+id,tipo,tarea,acierto,juez_modelo,juez_version,juez_veredicto,juez_puntaje,juez_motivo
+A03,secciones,A,True,gemma3:27b,js1,aprueba,5,El entregable contiene todas las secciones requeridas en el orden correcto.
+A05,cifra_presente,A,True,gemma3:27b,js1,aprueba,5,El entregable menciona el valor 569 (número de ejemplos) en la sección de Metodología.
+A06,cifra,A,True,gemma3:27b,js1,aprueba,5,"El entregable reporta la cifra de accuracy para Naive Bayes gaussiano como 0.9357, que coincide con el valor correcto dentro de la tolerancia especificada."
+A07,cifra,A,True,gemma3:27b,js1,aprueba,5,El entregable reporta la cifra de la regresión logística (0.9883) con el valor correcto dentro de la tolerancia especificada.
+A09,cifra_presente,A,True,gemma3:27b,js1,aprueba,5,El entregable menciona el valor correcto (0.9766) en la tabla de la curva de aprendizaje.
+A10,juez,A,False,gemma3:27b,js1,aprueba,5,"La Discusión identifica correctamente el cruce predicho por Ng y Jordan en los tamaños de muestra de 19-39 ejemplos para el generativo y 99+ para el discriminativo, respaldado por los datos presentados en la tabla y la curva de aprendizaje."
+A11,juez,A,False,gemma3:27b,js1,aprueba,5,"La discusión relaciona explícitamente los resultados con el sesgo y la varianza de los modelos generativos y discriminativos, explicando cómo el supuesto de independencia del Naive Bayes conduce a un alto sesgo y baja varianza, y cómo la regresión logística, con menor sesgo, requiere más datos para "
+B03,cifra_presente,B,True,gemma3:27b,js1,aprueba,5,"El entregable menciona el valor 0.9147 en múltiples lugares, confirmando que cumple con la comprobación."
+B04,cifra_presente,B,True,gemma3:27b,js1,aprueba,5,"El entregable menciona el valor 1.7998 en múltiples lugares, confirmando que se incluye la información requerida."
+B05,cifra_presente,B,True,gemma3:27b,js1,aprueba,5,"El entregable menciona el valor 2.2888 en múltiples lugares, incluyendo la tabla y la discusión sobre la entropía."
+B06,cifra_presente,B,True,gemma3:27b,js1,aprueba,5,El entregable menciona el valor 0.5694 en la Parte 2 y la Parte 3.
+B07,contiene,B,True,gemma3:27b,js1,aprueba,5,"El entregable menciona explícitamente 't0', 't1', 't2' y 't3' en múltiples secciones."
+B10,juez,B,False,gemma3:27b,js1,aprueba,5,"La respuesta explica claramente el comportamiento de la distribución softmax con temperatura al acercarse a 0 y al infinito, relacionándolo con greedy y la distribución uniforme, y respalda sus afirmaciones con los datos de entropía calculados."
+C03,secciones,C,True,gemma3:27b,js1,aprueba,5,"El entregable contiene las secciones Objetivo, Método, Resultados y Discusión en el orden correcto."
+C04,cifra,C,True,gemma3:27b,js1,aprueba,5,"El entregable reporta el valor de MRR para TF-IDF como 0.8611, que está dentro de la tolerancia especificada."
+C05,cifra,C,True,gemma3:27b,js1,aprueba,5,"El entregable reporta el valor de TF-IDF Hit@1 como 0.8333, que está dentro de la tolerancia especificada de 0.006 del valor correcto de 0.8333."
+C06,cifra,C,True,gemma3:27b,js1,aprueba,5,"El entregable reporta el valor de MRR para LSA (k=4) como 0.75, que coincide con el valor correcto dentro de la tolerancia especificada."
+C07,contiene,C,True,gemma3:27b,js1,aprueba,5,"El entregable menciona explícitamente 'q5' en múltiples secciones, cumpliendo con la comprobación."
+C09,juez,C,False,gemma3:27b,js1,aprueba,5,"La Discusión explica claramente cómo un recuperador denso resolvería q5 al capturar la relación semántica entre los términos, y menciona los costos de cómputo, latencia, necesidad de un modelo entrenado y la falta de interpretabilidad en comparación con TF-IDF."
+S103,secciones,S1,True,gemma3:27b,js1,aprueba,5,El entregable contiene todas las secciones requeridas en el orden correcto.
+S105,cifra_presente,S1,True,gemma3:27b,js1,aprueba,5,"El valor 57.9931 aparece en el texto, cumpliendo con la comprobación."
+S106,cifra_presente,S1,True,gemma3:27b,js1,aprueba,5,El entregable menciona el valor correcto 3.1362 en múltiples lugares del texto.
+S107,cifra,S1,True,gemma3:27b,js1,aprueba,5,El entregable reporta correctamente la cifra asociada a 'AI-SRV-01' (363.4598) dentro de la tolerancia especificada.
+S108,cifra,S1,True,gemma3:27b,js1,aprueba,5,El entregable reporta correctamente la cifra asociada a 'AI-SRV-06' como 0.6676.
+H03,secciones,H,True,gemma3:27b,js1,aprueba,5,El entregable contiene todas las secciones requeridas en el orden correcto.
+H05,cifra_presente,H,True,gemma3:27b,js1,aprueba,5,"El entregable menciona explícitamente el valor '569 ejemplos' en la sección de introducción y en las conclusiones, cumpliendo con la comprobación."
+H06,cifra,H,True,gemma3:27b,js1,aprueba,5,El entregable reporta la cifra de exactitud para GaussianNB con el valor correcto de 0.9357.
+H07,cifra,H,True,gemma3:27b,js1,aprueba,5,"El entregable reporta la cifra de exactitud de la regresión logística como 0.9883, que coincide con el valor correcto dentro de la tolerancia especificada."
+H09,cifra_presente,H,True,gemma3:27b,js1,aprueba,5,El entregable menciona el valor correcto (0.9766) en la tabla de resultados para 199 ejemplos de entrenamiento.
+H10,juez,H,False,gemma3:27b,js1,aprueba,5,"El entregable cumple con la comprobación, reportando resultados medidos y evitando las afirmaciones prohibidas."
+P03,cifra_presente,P,True,gemma3:27b,js1,aprueba,5,"El entregable menciona el valor 0.9147 en múltiples lugares, cumpliendo con la comprobación."
+P04,cifra_presente,P,True,gemma3:27b,js1,aprueba,5,"El entregable menciona el valor 1.7998 en múltiples lugares, incluyendo tablas y texto explicativo."
+P05,cifra_presente,P,True,gemma3:27b,js1,aprueba,5,"El entregable menciona el valor 2.2888 en múltiples lugares, incluyendo tablas y texto explicativo."
+P06,cifra_presente,P,True,gemma3:27b,js1,aprueba,5,"El entregable menciona el valor 0.5694 en múltiples lugares, cumpliendo con la comprobación."
+P07,contiene,P,True,gemma3:27b,js1,aprueba,5,"El entregable menciona explícitamente 't0', 't1', 't2' y 't3' en múltiples secciones."

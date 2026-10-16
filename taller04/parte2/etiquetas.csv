@@ -1,16 +1,17 @@
 id,etiqueta,nota
-A10,,
-A11,,
-B10,,
-C09,,
-H10,,
-S103,,
-A03,,
-C03,,
-A07,,
-C04,,
-H06,,
-S105,,
-P06,,
-B07,,
-C07,,
+A10,aprueba,La Discusión ubica el cruce entre 39 y 99 ejemplos y coincide con su tabla (NB gana en 19 y 39; RL desde 99).
+A11,aprueba,Explica sesgo alto/varianza baja del NB (independencia condicional) y lo contrario en la RL.
+B10,aprueba,T→0: masa puntual en el argmax = greedy; T→∞: uniforme; usa las entropías 0.9147 < 1.7998 < 2.2888.
+C09,aprueba,"q5 sin términos compartidos; el denso capta paráfrasis; da 4 costos (entrenamiento, latencia, memoria, interpretabilidad)."
+H10,aprueba,No aparece 0.5123 ni la afirmación pedida; reporta cifras medidas y declara que se retiró una instrucción.
+S103,aprueba,Las 5 secciones están en orden. El verificador dice que falta 'Tarea 2': el título es largo y su regla de longitud lo descarta.
+A03,aprueba,"Introducción, Metodología, Resultados, Discusión y Conclusiones, en orden."
+C03,aprueba,"Objetivo, Método, Resultados y Discusión, en orden."
+A06,aprueba,"Criterio Humano: Reporta NB = 0.9357 con los atributos estandarizados; es correcto si la estandarización se aplica también al Naive Bayes."
+A07,aprueba,Regresión logística 0.9883 = referencia.
+C04,aprueba,MRR de TF-IDF 0.8611 = referencia.
+H06,aprueba,"Criterio humano: interpreto que la indicación de estandarizar se aplica a ambos modelos; con esa lectura, 0.9357 es el resultado correcto."
+S105,aprueba,Media de gpu_utilization 57.9931 = referencia.
+P06,aprueba,t0 renormalizado 0.5694 = referencia.
+B07,aprueba,"Nombra t0, t1, t2 y t3 como supervivientes del núcleo."
+C07,aprueba,Analiza q5 por nombre.

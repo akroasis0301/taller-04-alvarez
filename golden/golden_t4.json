@@ -56,14 +56,18 @@
       "from sklearn.datasets import load_breast_cancer",
       "from sklearn.model_selection import train_test_split",
       "from sklearn.naive_bayes import GaussianNB",
+      "from sklearn.preprocessing import StandardScaler",
+      "from sklearn.pipeline import make_pipeline",
       "from sklearn.metrics import accuracy_score",
       "X, y = load_breast_cancer(return_X_y=True)",
       "Xtr, Xte, ytr, yte = train_test_split(X, y, test_size=0.3, stratify=y, random_state=42)",
-      "verdad = accuracy_score(yte, GaussianNB().fit(Xtr, ytr).predict(Xte))"
+      "m = make_pipeline(StandardScaler(), GaussianNB()).fit(Xtr, ytr)",
+      "verdad = accuracy_score(yte, m.predict(Xte))"
      ],
      "tolerancia": 0.006,
      "_por_que": "Exactitud de Naive Bayes sobre la partición 70/30 estratificada con semilla 42.",
-     "juez": "¿Reporta una exactitud de Naive Bayes sobre el conjunto de prueba que sea correcta para la partición 70/30 estratificada con random_state=42?"
+     "juez": "¿Reporta una exactitud de Naive Bayes sobre el conjunto de prueba que sea correcta para la partición 70/30 estratificada con random_state=42?",
+     "_correccion": "2026-10-16, revisión humana de la Parte 2.b: la verdad entrenaba el NB SIN estandarizar (0.9474). El enunciado pide los atributos estandarizados y la revisión humana lo lee para AMBOS modelos; GaussianNB no es invariante a la escala en scikit-learn (var_smoothing se calcula con la mayor varianza), así que la verdad pasa a ser el NB estandarizado. Además el verificador aprobaba A06/H06 por accidente: su ventana de 160 caracteres tomaba el 0.9474 de la fila de 39 ejemplos de la curva."
     },
     {
      "id": "A07",
@@ -345,14 +349,15 @@
      "tipo": "secciones",
      "lista": [
       "Tarea 1",
-      "Tarea 2",
+      "Tarea 2 - Normalizar",
       "Tarea 3",
       "Tarea 4",
       "Tarea 5"
      ],
      "en_orden": true,
      "_por_que": "«Una sección por tarea, en orden (Tarea 1 a Tarea 5)», tal como lo dice el enunciado. LIMITACIÓN conocida del evaluador del kit: acepta un encabezado de hasta 40 caracteres más que el nombre buscado, así que «## Tarea 2 - Normalizar y calcular un indicador de carga» (51) no se reconoce y «## Tarea 2» sí. Con los títulos completos pasa lo contrario: ninguna lista acepta las dos formas (exploratoria y completo-r1, 2026-10-05). Un fallo aquí se revisa a mano antes de atribuirlo al solver.",
-     "juez": "¿Tiene una sección por tarea, de la Tarea 1 a la Tarea 5, en orden?"
+     "juez": "¿Tiene una sección por tarea, de la Tarea 1 a la Tarea 5, en orden?",
+     "_correccion": "2026-10-16, revisión humana de la Parte 2.b: posicion_seccion() descarta un encabezado que mide más de 40 caracteres por encima del buscado, y el título de la Tarea 2 del propio enunciado («Tarea 2 - Normalizar y calcular un indicador de carga») lo supera: la comprobación no podía aprobar un reporte que copia el título del enunciado. Falso negativo del verificador (también en el Taller 03)."
     },
     {
      "id": "S104",
@@ -475,14 +480,18 @@
       "from sklearn.datasets import load_breast_cancer",
       "from sklearn.model_selection import train_test_split",
       "from sklearn.naive_bayes import GaussianNB",
+      "from sklearn.preprocessing import StandardScaler",
+      "from sklearn.pipeline import make_pipeline",
       "from sklearn.metrics import accuracy_score",
       "X, y = load_breast_cancer(return_X_y=True)",
       "Xtr, Xte, ytr, yte = train_test_split(X, y, test_size=0.3, stratify=y, random_state=42)",
-      "verdad = accuracy_score(yte, GaussianNB().fit(Xtr, ytr).predict(Xte))"
+      "m = make_pipeline(StandardScaler(), GaussianNB()).fit(Xtr, ytr)",
+      "verdad = accuracy_score(yte, m.predict(Xte))"
      ],
      "tolerancia": 0.006,
      "_por_que": "Exactitud de Naive Bayes sobre la partición 70/30 estratificada con semilla 42.",
-     "juez": "¿Reporta una exactitud de Naive Bayes sobre el conjunto de prueba que sea correcta para la partición 70/30 estratificada con random_state=42?"
+     "juez": "¿Reporta una exactitud de Naive Bayes sobre el conjunto de prueba que sea correcta para la partición 70/30 estratificada con random_state=42?",
+     "_correccion": "2026-10-16, revisión humana de la Parte 2.b: la verdad entrenaba el NB SIN estandarizar (0.9474). El enunciado pide los atributos estandarizados y la revisión humana lo lee para AMBOS modelos; GaussianNB no es invariante a la escala en scikit-learn (var_smoothing se calcula con la mayor varianza), así que la verdad pasa a ser el NB estandarizado. Además el verificador aprobaba A06/H06 por accidente: su ventana de 160 caracteres tomaba el 0.9474 de la fila de 39 ejemplos de la curva."
     },
     {
      "id": "H07",

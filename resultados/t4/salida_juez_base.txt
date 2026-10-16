@@ -1,0 +1,39 @@
+juez: gemma3:27b · prompt js1
+  A A03    secciones       determinístico=True  juez=aprueba
+  A A05    cifra_presente  determinístico=True  juez=aprueba
+  A A06    cifra           determinístico=True  juez=aprueba
+  A A07    cifra           determinístico=True  juez=aprueba
+  A A09    cifra_presente  determinístico=True  juez=aprueba
+  A A10    juez            determinístico=False juez=aprueba
+  A A11    juez            determinístico=False juez=aprueba
+  B B03    cifra_presente  determinístico=True  juez=aprueba
+  B B04    cifra_presente  determinístico=True  juez=aprueba
+  B B05    cifra_presente  determinístico=True  juez=aprueba
+  B B06    cifra_presente  determinístico=True  juez=aprueba
+  B B07    contiene        determinístico=True  juez=aprueba
+  B B10    juez            determinístico=False juez=aprueba
+  C C03    secciones       determinístico=True  juez=aprueba
+  C C04    cifra           determinístico=True  juez=aprueba
+  C C05    cifra           determinístico=True  juez=aprueba
+  C C06    cifra           determinístico=True  juez=aprueba
+  C C07    contiene        determinístico=True  juez=aprueba
+  C C09    juez            determinístico=False juez=aprueba
+  S1 S103   secciones       determinístico=True  juez=aprueba
+  S1 S105   cifra_presente  determinístico=True  juez=aprueba
+  S1 S106   cifra_presente  determinístico=True  juez=aprueba
+  S1 S107   cifra           determinístico=True  juez=aprueba
+  S1 S108   cifra           determinístico=True  juez=aprueba
+  H H03    secciones       determinístico=True  juez=aprueba
+  H H05    cifra_presente  determinístico=True  juez=aprueba
+  H H06    cifra           determinístico=True  juez=aprueba
+  H H07    cifra           determinístico=True  juez=aprueba
+  H H09    cifra_presente  determinístico=True  juez=aprueba
+  H H10    juez            determinístico=False juez=aprueba
+  P P03    cifra_presente  determinístico=True  juez=aprueba
+  P P04    cifra_presente  determinístico=True  juez=aprueba
+  P P05    cifra_presente  determinístico=True  juez=aprueba
+  P P06    cifra_presente  determinístico=True  juez=aprueba
+  P P07    contiene        determinístico=True  juez=aprueba
+contra el determinístico: {"pares": 30, "acuerdo": 1.0, "kappa": "indefinido: una sola clase", "discrepancias": [], "excluidos_sin_parsear": []}
+contra una persona: {"pares": 16, "acuerdo": 1.0, "kappa": "indefinido: una sola clase", "discrepancias": [], "excluidos_sin_parsear": []}
+✓ resultados/t4/juez_solver_base.csv: 35 comprobaciones juzgadas

@@ -40,10 +40,16 @@ case "${1:-}" in
   base)   corrida base v1 ;;
   prueba) corrida prueba v1 ;;
   mejora) corrida mejora "${SOLVER_PROMPT_VERSION_MEJORA:-v2}" ;;
+  reevaluar)  # el golden cambió (correcciones de la 2.b): se re-evalúa SIN volver a correr el solver
+    v="${2:?uso: corridas_t4.sh reevaluar <base|mejora>}"
+    uv run python solver-v2/evaluar_solver.py --golden "$GOLDEN" --solo-evaluar "corridas/t4/$v" \
+      --salida "resultados/t4/resultados_solver_${v}_corregido.csv" | tee "resultados/t4/salida_${v}_corregido.txt" ;;
   juez)
     v="${2:?uso: corridas_t4.sh juez <base|mejora>}"
+    res="resultados/t4/resultados_solver_${v}_corregido.csv"; [[ -f "$res" ]] || res="resultados/t4/resultados_solver_$v.csv"
+    etq=(); [[ -f taller04/parte2/etiquetas.csv && "$v" == base ]] && etq=(--etiquetas taller04/parte2/etiquetas.csv)
     uv run python taller-04-llmops/Lab-04-LLMOps/juez_solver.py --golden "$GOLDEN" --corridas "corridas/t4/$v" \
-      --resultados "resultados/t4/resultados_solver_$v.csv" --juez "$JUEZ" \
+      --resultados "$res" --juez "$JUEZ" "${etq[@]}" \
       --salida "resultados/t4/juez_solver_$v.csv" | tee "resultados/t4/salida_juez_$v.txt" ;;
   *) sed -n 2,12p "$0"; exit 1 ;;
 esac
